@@ -25,6 +25,7 @@ class OfflineAlgo(Basic):
         self.node_list.append(new_node)
         new_node.server = server
         server.add_node(node_id=node_id, node_type=node_type, write_freq=write_freq)
+        new_node.assign_virtual_primary_copy(server_list=self.server_list)
         adj_node_list = self.network_dataset.get_all_adj_node_id_list(node_id=node_id)
         for adj_node in adj_node_list:
             self.check_node_locality(node_id=node_id, adj_node_id=adj_node, meet_flag=True)
@@ -62,3 +63,37 @@ class OfflineAlgo(Basic):
             if node.id == node_id:
                 return node
         return None
+
+    def get_relation_with_node(self, source_node_id, target_node_id):
+        return -1
+
+    def is_ssn_with(self, source_node_id, target_node_id):
+        s_node = self.get_node_with_id(node_id=source_node_id)
+        t_node = self.get_node_with_id(node_id=target_node_id)
+        if s_node.server.id == t_node.server.id and self.network_dataset.has_edge(s_node_id=source_node_id,
+                                                                                  t_node_id=target_node_id):
+            return True
+        else:
+            return False
+
+    def is_pssn_with(self, source_node_id, target_node_id):
+        if not self.is_ssn_with(source_node_id, target_node_id):
+            return False
+        else:
+            node_list = self.network_dataset.get_all_adj_node_id_list(node_id=source_node_id)
+            for node_i in node_list:
+                if not self.is_ssn_with(source_node_id, node_i):
+                    return False
+            return True
+
+    def is_dns_with(self, source_node_id, target_node_id):
+        s_node = self.get_node_with_id(node_id=source_node_id)
+        t_node = self.get_node_with_id(node_id=target_node_id)
+        if s_node.server.id != t_node.server.id and self.network_dataset.has_edge(s_node_id=source_node_id,
+                                                                                  t_node_id=target_node_id):
+            return True
+        else:
+            return False
+
+    def is_pdsn_with(self, source_node_id, target_node_id):
+        pass
