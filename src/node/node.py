@@ -20,3 +20,7 @@ class Node(Basic):
                 server_id = np.random.randint(low=0, high=len(server_list))
             self.virtual_primary_copy_server_list.append(server_id)
             server_list[server_id].add_node(node_id=self.id, node_type=Constant.VIRTUAL_PRIMARY_COPY, write_freq=0.0)
+
+    def add_non_primary_copy(self, target_server):
+        target_server.add_node(node_id=self.id, node_type=Constant.NON_PRIMARY_COPY, write_freq=0.0)
+        self.non_primary_copy_server_list.append(target_server)

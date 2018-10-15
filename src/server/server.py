@@ -24,5 +24,8 @@ class Server(Basic):
     def get_load(self):
         return self.graph.order()
 
+    def has_node(self, node_id):
+        return self.graph.has_node(node_id)
+
     def remove_node(self, node_id):
         self.graph.remove_node(node_id)
