@@ -19,7 +19,7 @@ class Server(Basic):
             return self.graph.nodes[node_id]
         else:
             print("Node %d not existed" % (node_id))
-            return -1
+            return False
 
     def get_load(self):
         return self.graph.order()

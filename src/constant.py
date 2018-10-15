@@ -14,6 +14,7 @@ class Constant(Basic):
     # ALGO PARAMETER
     OFFLINE_ETA = 10
     OFFLINE_EPSILON = 10
+    LEASET_VIRTUAL_PRIMARY_COPY_NUMBER = 10
 
     def __init__(self):
         super().__init__()
