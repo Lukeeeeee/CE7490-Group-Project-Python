@@ -1,29 +1,32 @@
 from src.core import Basic
 import networkx as nx
 import numpy as np
+from dataset import DATASET_PATH
+import os
+
 
 class Dataset(Basic):
     def __init__(self, dataset_str):
         super().__init__()
         self.graph = self.load_dataset(dataset_str)
 
-    def load_dataset(self,dataset_str):
+    def load_dataset(self, dataset_str):
         g = nx.Graph()
-        # Load dataset
+        edgelist = []
         if dataset_str == 'facebook':
-            edgelist = np.loadtxt(r'C:\Users\user\Desktop\CE7490-Group-Project-Python-L1\dataset\Facebook.txt',int)
+            edgelist = np.loadtxt(os.path.join(DATASET_PATH, 'Facebook.txt'), int)
         elif dataset_str == 'twitter':
-            edgelist = np.loadtxt(r'C:\Users\user\Desktop\CE7490-Group-Project-Python-L1\dataset\Twitter.txt',int)
+            edgelist = np.loadtxt(os.path.join(DATASET_PATH, 'Twitter.txt'), int)
         elif dataset_str == 'twitters1':
-            edgelist = np.loadtxt(r'C:\Users\user\Desktop\CE7490-Group-Project-Python-L1\dataset\TwittersSample1.txt',int)
+            edgelist = np.loadtxt(os.path.join(DATASET_PATH, 'TwitterSample1.txt'), int)
         elif dataset_str == 'twitters2':
-            edgelist = np.loadtxt(r'C:\Users\user\Desktop\CE7490-Group-Project-Python-L1\dataset\TwittersSample2.txt',int)
+            edgelist = np.loadtxt(os.path.join(DATASET_PATH, 'TwitterSample2.txt'), int)
         elif dataset_str == 'amazon':
-            edgelist = np.loadtxt(r'C:\Users\user\Desktop\CE7490-Group-Project-Python-L1\dataset\Amazon.txt',int)
+            edgelist = np.loadtxt(os.path.join(DATASET_PATH, 'AmazonSample.txt'), int)
         elif dataset_str == 'amazons':
-            edgelist = np.loadtxt(r'C:\Users\user\Desktop\CE7490-Group-Project-Python-L1\dataset\AmazonSample.txt',int)
+            edgelist = np.loadtxt(os.path.join(DATASET_PATH, 'AmazonSample.txt'), int)
         elif dataset_str == 'p2pgnutella':
-            edgelist = np.loadtxt(r'C:\Users\user\Desktop\CE7490-Group-Project-Python-L1\dataset\p2pGnutella.txt',int)
+            edgelist = np.loadtxt(os.path.join(DATASET_PATH, 'p2pGnutella.txt'), int)
         else:
             pass
         g.add_edges_from(edgelist)
@@ -37,4 +40,3 @@ class Dataset(Basic):
             return True
         else:
             return False
-

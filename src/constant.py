@@ -9,7 +9,10 @@ class Constant(Basic):
     SSN = 1
     PSSN = 2
     DSN = 3
-    PDSN = 3
+    PDSN = 4
+
+    # node
+    WRITE_FREQ = 10.0
 
     # ALGO PARAMETER
     OFFLINE_ETA = 10

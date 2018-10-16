@@ -1,12 +1,13 @@
 import numpy as np
 import networkx as nx
 from tqdm import tqdm
-from src.read_data import read_file_digraph, read_file_ndgraph
-from src.Spar import Spar
+from src.algo.baselines.SPAR.read_data import read_file_digraph, read_file_ndgraph
+from src.algo.baselines.SPAR.Spar import Spar
+from dataset import DATASET_PATH
 
-if __name__ == '__main__':
 
-    filename = 'AmazonSample.txt'
+def test_spar_sample(dataset_file=DATASET_PATH + '/AmazonSample.txt'):
+    filename = dataset_file
 
     node_list, node_neighbor_dic, col_data = read_file_digraph(filename)
 
@@ -23,3 +24,7 @@ if __name__ == '__main__':
     graph = spar.G
 
     print(masters_in_each_server)
+
+
+if __name__ == '__main__':
+    test_spar_sample()

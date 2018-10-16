@@ -1,6 +1,7 @@
 from src.core import Basic
 from src.constant import Constant
 from src.node.node import Node
+from src.algo.inter_server_cost import compute_inter_sever_cost
 
 
 class OfflineAlgo(Basic):
@@ -59,13 +60,13 @@ class OfflineAlgo(Basic):
                 return False
 
     def get_node_with_id(self, node_id):
-        for node in self.node_list:
-            if node.id == node_id:
-                return node
-        return None
+        node = filter(lambda x: x.id == node_id, self.node_list)
+        for node_i in node:
+            return node_i
 
-    def get_relation_with_node(self, source_node_id, target_node_id):
-        return -1
+    # def get_relation_with_node(self, source_node_id, target_node_id):
+    #     # TODO
+    #     return -1
 
     def is_ssn_with(self, source_node_id, target_node_id):
         s_node = self.get_node_with_id(node_id=source_node_id)
@@ -96,4 +97,36 @@ class OfflineAlgo(Basic):
             return False
 
     def is_pdsn_with(self, source_node_id, target_node_id):
+        if not self.is_dns_with(source_node_id, target_node_id):
+            return False
+        else:
+            source_node_adj_list = self.network_dataset.get_all_adj_node_id_list(node_id=source_node_id)
+            target_node = self.get_node_with_id(target_node_id)
+
+            for node_i in source_node_adj_list:
+                if self.get_node_with_id(
+                        node_id=node_i).server.id == target_node.server.id and node_i != target_node_id:
+                    return False
+            return False
+
+    def compute_inter_server_cost(self):
+        return compute_inter_sever_cost(servers=self.server_list)
+
+    def node_bonus_on_server(self, node_id, server_id):
+        adj_node_list = self.network_dataset.get_all_adj_node_id_list(node_id=node_id)
+        for adj_node in adj_node_list:
+            if self.get_node_with_id(node_id=adj_node).server.id == server_id and self.is_dns_with(
+                    source_node_id=node_id, target_node_id=adj_node):
+                return 1
+        return 0
+
+    def node_penalty_on_server(self, node_id, server_id):
+        adj_node_list = self.network_dataset.get_all_adj_node_id_list(node_id=node_id)
+        for adj_node in adj_node_list:
+            if self.get_node_with_id(node_id=adj_node).server.id == server_id and self.is_ssn_with(
+                    source_node_id=node_id, target_node_id=adj_node):
+                return 1
+        return 0
+
+    def compute_scb(self, node_id, target_server_id):
         pass
