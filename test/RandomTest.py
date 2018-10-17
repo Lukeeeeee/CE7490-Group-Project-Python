@@ -1,6 +1,6 @@
 from src.dataset import Dataset
 from src.server.server import Server
-from src.randomP.randomP import RandomP
+from src.algo.baselines.randomP.randomP import RandomP
 import random
 import time
 
