@@ -175,9 +175,12 @@ class OfflineAlgo(Algo):
                                                                      relation_func=relation_func)
         return count
 
-    def node_relocation_process(self, iteration_times):
+    def node_relocation_process(self, iteration_times=Constant.MAX_RELOCATE_ITERATION):
         for _ in range(iteration_times):
-            pass
+            for node in self.node_list:
+                pre_server_id = node.server.id
+                if self.node_relocate(node=node):
+                    print("Node was relocated from %d to %d" % (pre_server_id, node.server.id))
 
     def node_relocate(self, node):
         max_scb = 0.0

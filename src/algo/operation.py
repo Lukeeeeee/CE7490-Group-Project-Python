@@ -21,10 +21,14 @@ class Operation(Basic):
                     node.server.graph['node_type'] == Constant.NON_PRIMARY_COPY:
                 Operation.remove_node_from_server(node_id=adj_node_id, server=node.server)
 
-        node.server = target_server
         if target_server.has_node(node_id=node.id):
             target_server.remove_node(node_id=node.id)
+            # If target server has virtual primary copy, do add a new virtual primary copy in original server of node
+            if target_server.graph[node.id]['node_type'] == Constant.PRIMARY_COPY:
+                node.server.add_node(node_id=node.id, node_type=Constant.VIRTUAL_PRIMARY_COPY,
+                                     write_freq=Constant.WRITE_FREQ)
         target_server.add_node(node_id=node.id, node_type=Constant.PRIMARY_COPY, write_freq=Constant.WRITE_FREQ)
+        node.server = target_server
 
     @staticmethod
     def remove_redundant_replica(server, algo):

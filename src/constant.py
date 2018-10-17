@@ -18,7 +18,8 @@ class Constant(Basic):
     MAX_LOAD_DIFFERENCE_AMONG_SERER = 2
     OFFLINE_ETA = 10
     OFFLINE_EPSILON = 10
-    LEASET_VIRTUAL_PRIMARY_COPY_NUMBER = 2
+    LEAST_VIRTUAL_PRIMARY_COPY_NUMBER = 2
+    MAX_RELOCATE_ITERATION = 10
 
     def __init__(self):
         super().__init__()
