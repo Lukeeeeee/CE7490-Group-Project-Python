@@ -10,6 +10,8 @@ class Server(Basic):
         self.id = serer_id
 
     def add_node(self, node_id, node_type, write_freq):
+        if self.has_node(node_id=node_id):
+            raise ValueError('Node %d existed' % node_id)
         self.graph.add_node(node_id,
                             node_type=node_type,
                             write_freq=write_freq)

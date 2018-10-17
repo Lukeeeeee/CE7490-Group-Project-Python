@@ -207,6 +207,3 @@ class OfflineAlgo(Algo):
                     Operation.move_node_to_server(adj_node, target_server=node.server, algo=self)
         Operation.remove_redundant_replica(server=target_server, algo=self)
         Operation.remove_redundant_replica(server=node.server, algo=self)
-
-    def _move_node_to_server(self, node, target_server_i):
-        pass

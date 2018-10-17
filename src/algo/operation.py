@@ -10,7 +10,21 @@ class Operation(Basic):
 
     @staticmethod
     def move_node_to_server(node, target_server, algo):
-        pass
+        adj_node_list = algo.network_dataset.get_all_adj_node_id_list(node_id=node.id)
+        # CHECK ALL ADJ NODE WHETHER REMOVE REPLICA ON ORIGINAL SERVER (degree == 1)
+        for adj_node_id in adj_node_list:
+            if len(list(algo.network_dataset[adj_node_id])) == 1 and node.server.has_node(node_id=adj_node_id) and \
+                    node.server.graph['node_type'] == Constant.NON_PRIMARY_COPY:
+                Operation.remove_node_from_server(node_id=adj_node_id, server=node.server)
+        for adj_node_id in adj_node_list:
+            if len(list(algo.network_dataset[adj_node_id])) == 1 and node.server.has_node(node_id=adj_node_id) and \
+                    node.server.graph['node_type'] == Constant.NON_PRIMARY_COPY:
+                Operation.remove_node_from_server(node_id=adj_node_id, server=node.server)
+
+        node.server = target_server
+        if target_server.has_node(node_id=node.id):
+            target_server.remove_node(node_id=node.id)
+        target_server.add_node(node_id=node.id, node_type=Constant.PRIMARY_COPY, write_freq=Constant.WRITE_FREQ)
 
     @staticmethod
     def remove_redundant_replica(server, algo):
@@ -46,3 +60,25 @@ class Operation(Basic):
                 return True
             else:
                 return False
+
+    @staticmethod
+    def delete_node(node, algo):
+        for server in node.non_primary_copy_server_list:
+            if server.has_node(node_id=node.id):
+                server.remove_node(node_id=node.id)
+        for server in node.virtual_primary_copy_server_list:
+            if server.has_node(node_id=node.id):
+                server.remove_node(node_id=node.id)
+        algo.network_dataset.grah.remove_node(node.id)
+
+    @staticmethod
+    def remove_node_from_server(node_id, server):
+        server.remove_node(node_id=node_id)
+
+    @staticmethod
+    def has_adj_node_server_id(node, server, algo):
+        adj_node_list = algo.network_dataset.get_all_adj_node_id_list(node_id=node.id)
+        for adj_node_i in adj_node_list:
+            if server.graph.has_node(node_id=adj_node_i):
+                return True
+        return False
