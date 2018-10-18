@@ -228,6 +228,7 @@ class OfflineAlgo(Algo):
             merged_node.launch_merge_node_process(algo=self)
 
     def init_group_swap_process(self):
+        # TODO
         # Get two random group
         # Compute the replica will decrease or not after swapped
         # Also check the data availability (i.e. the number of virtual primary copy)
@@ -236,6 +237,7 @@ class OfflineAlgo(Algo):
         pass
 
     def virtual_primary_copy_swap(self):
+        # TODO
         # Random choose two virtual primary copy
         # if swapped resulted into eliminating the non-primary copy, then swap
         pass
