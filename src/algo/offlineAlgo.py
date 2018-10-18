@@ -4,6 +4,8 @@ from src.node.node import Node
 from src.algo.inter_server_cost import compute_inter_sever_cost
 from src.algo.operation import Operation
 from src.algo.algo import Algo
+import numpy as np
+from src.node.mergedNode import MergedNode
 
 
 class OfflineAlgo(Algo):
@@ -14,6 +16,7 @@ class OfflineAlgo(Algo):
         self.server_list = server_list
         self.network_dataset = network_dataset
         self.node_list = []
+        self.merged_node_list = []
 
     def add_new_primary_node(self, node_id, write_freq):
         min_server = self.server_list[0]
@@ -210,3 +213,8 @@ class OfflineAlgo(Algo):
                     Operation.move_node_to_server(adj_node, target_server=node.server, algo=self)
         Operation.remove_redundant_replica(server=target_server, algo=self)
         Operation.remove_redundant_replica(server=node.server, algo=self)
+
+    def init_merge_process(self):
+        rand_id = np.random.randint(0, len(self.node_list))
+        merge_node = MergedNode(ID=0)
+        merge_node.add_node(node=self.node_list[rand_id], dataset_graph=self.network_dataset)

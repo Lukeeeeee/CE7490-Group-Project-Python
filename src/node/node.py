@@ -11,7 +11,7 @@ class Node(Basic):
         self.server = None
         self.non_primary_copy_server_list = []
         self.virtual_primary_copy_server_list = []
-        self.merged_node_flag = False
+        self.merged_node_id = -1
 
     def assign_virtual_primary_copy(self, server_list):
         least_virtual_primary_count = min(Constant.LEAST_VIRTUAL_PRIMARY_COPY_NUMBER, len(server_list) - 1)
