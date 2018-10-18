@@ -215,6 +215,27 @@ class OfflineAlgo(Algo):
         Operation.remove_redundant_replica(server=node.server, algo=self)
 
     def init_merge_process(self):
-        rand_id = np.random.randint(0, len(self.node_list))
-        merge_node = MergedNode(ID=0)
-        merge_node.add_node(node=self.node_list[rand_id], dataset_graph=self.network_dataset)
+        node_rand_index = np.arange(len(self.node_list))
+        np.random.shuffle(node_rand_index)
+        for index in node_rand_index:
+            node = self.node_list[index]
+            merge_node = MergedNode(ID=node.id, server=node.server)
+            self.merged_node_list.append(merge_node)
+        node_rand_index = np.arange(len(self.merged_node_list))
+        np.random.shuffle(node_rand_index)
+        for index in node_rand_index:
+            merged_node = self.merged_node_list[index]
+            merged_node.launch_merge_node_process(algo=self)
+
+    def init_group_swap_process(self):
+        # Get two random group
+        # Compute the replica will decrease or not after swapped
+        # Also check the data availability (i.e. the number of virtual primary copy)
+        # Use loose constraint, if the one of the server became unbalanced, after merged, just migrated node from high
+        # to low load server
+        pass
+
+    def virtual_primary_copy_swap(self):
+        # Random choose two virtual primary copy
+        # if swapped resulted into eliminating the non-primary copy, then swap
+        pass
