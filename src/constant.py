@@ -21,6 +21,9 @@ class Constant(Basic):
     LEAST_VIRTUAL_PRIMARY_COPY_NUMBER = 2
     MAX_RELOCATE_ITERATION = 10
 
+    # Merge
+    MERGED_GROUP_LOOSE_CONSTRAINT_EPSILON = 10
+
     def __init__(self):
         super().__init__()
         self._global_node_id = 0
