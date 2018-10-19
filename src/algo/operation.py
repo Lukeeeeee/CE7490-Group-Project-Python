@@ -2,6 +2,7 @@ from src.core import Basic
 from src.constant import Constant
 from src.node.node import Node
 from src.algo.inter_server_cost import compute_inter_sever_cost
+import networkx as nx
 
 
 class Operation(Basic):
@@ -86,3 +87,17 @@ class Operation(Basic):
             if server.graph.has_node(node_id=adj_node_i):
                 return True
         return False
+
+    @staticmethod
+    def swap_virtual_primary_copy(s_node, t_node, s_server, t_server):
+        try:
+            s_node.virtual_primary_copy_server_list.remove(s_server)
+            s_server.remove_node(node_id=s_node.id)
+            s_node.add_virtual_primary_copy(target_server=t_server)
+
+            t_node.virtual_primary_copy_server_list.remove(t_node)
+            t_node.remove_node(node_id=t_node.id)
+            t_node.add_virtual_primary_copy(target_server=s_server)
+            return True
+        except nx.NetworkXError:
+            return False

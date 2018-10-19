@@ -19,10 +19,13 @@ class Node(Basic):
             server_id = self.server.id
             while server_list[server_id].id == self.server.id:
                 server_id = np.random.randint(low=0, high=len(server_list))
-            self.virtual_primary_copy_server_list.append(server_id)
-            server_list[server_id].add_node(node_id=self.id, node_type=Constant.VIRTUAL_PRIMARY_COPY,
-                                            write_freq=Constant.WRITE_FREQ)
+                self.add_virtual_primary_copy(target_server=server_list[server_id])
 
     def add_non_primary_copy(self, target_server):
         target_server.add_node(node_id=self.id, node_type=Constant.NON_PRIMARY_COPY, write_freq=Constant.WRITE_FREQ)
         self.non_primary_copy_server_list.append(target_server)
+
+    def add_virtual_primary_copy(self, target_server):
+        self.virtual_primary_copy_server_list.append(target_server)
+        target_server.add_node(node_id=self.id, node_type=Constant.VIRTUAL_PRIMARY_COPY,
+                               write_freq=Constant.WRITE_FREQ)

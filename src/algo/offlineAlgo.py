@@ -232,10 +232,33 @@ class OfflineAlgo(Algo):
         # Also check the data availability (i.e. the number of virtual primary copy)
         # Use loose constraint, if the one of the server became unbalanced, after merged, just migrated node from high
         # to low load server
+        self.merged_node_list.sort(key=lambda x: x.node_count, reverse=True)
+        for i in range(len(self.merged_node_list) - 1):
+            for j in range(i + 1, len(self.merged_node_list)):
+                if abs(self.merged_node_list[i].node_count - self.merged_node_list[j].node_count) > \
+                        Constant.MERGED_GROUP_LOOSE_CONSTRAINT_EPSILON:
+                    break
+                else:
+                    # Try to swap
+                    pass
         pass
 
     def virtual_primary_copy_swap(self):
         # TODO
         # Random choose two virtual primary copy
         # if swapped resulted into eliminating the non-primary copy, then swap
-        pass
+        for node in self.node_list:
+            for vir_pr_server in node.virtual_primary_copy_server_list:
+                for non_pr_server in node.non_primary_copy_server_list:
+                    non_pr_node_list = vir_pr_server.return_type_nodes(
+                        node_type=Constant.NON_PRIMARY_COPY)
+                    vir_pr_node_list = non_pr_server.return_type_nodes(
+                        node_type=Constant.VIRTUAL_PRIMARY_COPY)
+
+                    satisfied_node_list = list(set(non_pr_node_list) & set(vir_pr_node_list))
+                    for t_node in satisfied_node_list:
+                        if Operation.swap_virtual_primary_copy(s_node=node,
+                                                               t_node=self.get_node_with_id(t_node),
+                                                               s_server=vir_pr_server,
+                                                               t_server=non_pr_server) is True:
+                            break

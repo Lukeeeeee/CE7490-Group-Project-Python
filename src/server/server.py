@@ -31,3 +31,9 @@ class Server(Basic):
 
     def remove_node(self, node_id):
         self.graph.remove_node(node_id)
+
+    def return_type_nodes(self, node_type):
+        res = filter(lambda x: self.graph[x]['node_type'] == node_type, iterable=list(self.graph.nodes))
+        return list(res)
+
+
