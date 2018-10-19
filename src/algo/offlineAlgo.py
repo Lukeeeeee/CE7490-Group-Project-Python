@@ -57,7 +57,6 @@ class OfflineAlgo(Algo):
             return node_i
 
     # def get_relation_with_node(self, source_node_id, target_node_id):
-    #     # TODO
     #     return -1
 
     def is_ssn_with(self, source_node_id, target_node_id):
@@ -154,7 +153,6 @@ class OfflineAlgo(Algo):
 
         scb += self.node_bonus_on_server(node_id=node_id, server_id=target_server_id)
 
-        # TODO how to compute penalty
         scb += self.node_penalty_on_server(node_id=node_id, server_id=self.get_node_with_id(node_id=node_id).server.id)
 
         return scb
@@ -217,4 +215,5 @@ class OfflineAlgo(Algo):
     def init_merge_process(self):
         rand_id = np.random.randint(0, len(self.node_list))
         merge_node = MergedNode(ID=0)
-        merge_node.add_node(node=self.node_list[rand_id], dataset_graph=self.network_dataset)
+        merge_node.add_node(node=self.node_list[rand_id],
+                            algo=self)
