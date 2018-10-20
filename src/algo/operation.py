@@ -30,9 +30,30 @@ class Operation(Basic):
                                      write_freq=Constant.WRITE_FREQ)
         target_server.add_node(node_id=node.id, node_type=Constant.PRIMARY_COPY, write_freq=Constant.WRITE_FREQ)
         node.server = target_server
+        Operation.remove_redundant_replica_of_node(node=node,
+                                                   algo=algo)
 
     @staticmethod
-    def remove_redundant_replica(server, algo):
+    def remove_redundant_replica_on_server(server, algo):
+        # TODO
+        non_primary_copy_list = server.return_type_nodes(node_type=Constant.NON_PRIMARY_COPY)
+        for node_id in non_primary_copy_list:
+            pass
+
+    @staticmethod
+    def _non_primary_copy_is_redundant(node, non_primary_copy_server, algo):
+        if Operation.count_adj_node_server_id(node=node,
+                                              server=non_primary_copy_server,
+                                              algo=algo,
+                                              adj_node_type=Constant.PRIMARY_COPY) == 0 and \
+                non_primary_copy_server.has_node(node_id=node.id, node_type=Constant.NON_PRIMARY_COPY) is True:
+            return True
+        else:
+            return False
+
+    @staticmethod
+    def _virtual_primary_copy_is_redundant():
+        # TODO
         pass
 
     @staticmethod
@@ -45,7 +66,7 @@ class Operation(Basic):
         adj_node_list = algo.network_dataset.get_all_adj_node_id_list(node_id=node_id)
         for adj_node in adj_node_list:
             Operation.check_node_locality(node=new_node,
-                                          adj_node=algo.get_node_id(adj_node),
+                                          adj_node=algo.get_node_with_id(adj_node),
                                           algo=algo,
                                           meet_flag=True)
         return True
@@ -81,12 +102,22 @@ class Operation(Basic):
         server.remove_node(node_id=node_id)
 
     @staticmethod
-    def has_adj_node_server_id(node, server, algo):
+    def has_adj_node_server_id(node, server, algo, adj_node_type=None):
         adj_node_list = algo.network_dataset.get_all_adj_node_id_list(node_id=node.id)
         for adj_node_i in adj_node_list:
             if server.graph.has_node(node_id=adj_node_i):
-                return True
+                if adj_node_type and server.graph[adj_node_i]['node_type'] == adj_node_type:
+                    return True
         return False
+
+    @staticmethod
+    def count_adj_node_server_id(node, server, algo, adj_node_type=None):
+        count = 0
+        adj_node_list = algo.network_dataset.get_all_adj_node_id_list(node_id=node.id)
+        for adj_node_i in adj_node_list:
+            if adj_node_type and server.graph[adj_node_i]['node_type'] == adj_node_type:
+                count += 1
+        return count
 
     @staticmethod
     def swap_virtual_primary_copy(s_node, t_node, s_server, t_server):
@@ -101,3 +132,24 @@ class Operation(Basic):
             return True
         except nx.NetworkXError:
             return False
+
+    @staticmethod
+    def move_merged_node(merged_node, target_server, algo):
+        for node in merged_node.node_list:
+            Operation.move_node_to_server(node=node,
+                                          target_server=target_server,
+                                          algo=algo)
+
+    @staticmethod
+    def remove_redundant_replica_of_node(node, algo):
+        for server in algo.server_list:
+            # If node has no connected with node that its primary copy on server,
+            # but the node has a non primary copy on server to meet locality, remove it.
+            if Operation._non_primary_copy_is_redundant(node=node,
+                                                        non_primary_copy_server=server,
+                                                        algo=algo) is True:
+                server.remove_node(node_id=node.id)
+                node.non_primary_copy_server_list.remove(server)
+        while len(node.virtual_primary_copy_server_list) > Constant.LEAST_VIRTUAL_PRIMARY_COPY_NUMBER:
+            node.virtual_primary_copy_server_list[-1].remove_node(node_id=node.id)
+            node.virtual_primary_copy_server_list.pop()

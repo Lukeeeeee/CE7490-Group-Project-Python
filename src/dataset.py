@@ -36,7 +36,7 @@ class Dataset(Basic):
         return list(self.graph[node_id])
 
     def has_edge(self, s_node_id, t_node_id):
-        if t_node_id in self.graph.adj[s_node_id]:
+        if t_node_id in list(self.graph.adj[s_node_id]):
             return True
         else:
             return False

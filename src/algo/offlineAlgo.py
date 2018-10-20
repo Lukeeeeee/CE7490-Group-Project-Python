@@ -159,6 +159,7 @@ class OfflineAlgo(Algo):
 
     def _certain_relation_node_count_in_server(self, source_node_id, target_server_id, relation_func):
         count = 0
+        # TODO this can be done by Operation.count_adj_node_server_id()?
         adj_node_list = self.network_dataset.get_all_adj_node_id_list(node_id=source_node_id)
         for adj_node in adj_node_list:
             if self.get_node_with_id(node_id=adj_node).server.id == target_server_id and relation_func(
@@ -209,8 +210,7 @@ class OfflineAlgo(Algo):
                 if self.compute_scb(node_id=adj_node_i, target_server_id=node.server.id) + scb > 0:
                     Operation.move_node_to_server(node=node, target_server=target_server, algo=self)
                     Operation.move_node_to_server(adj_node, target_server=node.server, algo=self)
-        Operation.remove_redundant_replica(server=target_server, algo=self)
-        Operation.remove_redundant_replica(server=node.server, algo=self)
+        Operation.remove_redundant_replica_of_node(node=node, algo=self)
 
     def init_merge_process(self):
         node_rand_index = np.arange(len(self.node_list))
@@ -236,15 +236,19 @@ class OfflineAlgo(Algo):
         for i in range(len(self.merged_node_list) - 1):
             for j in range(i + 1, len(self.merged_node_list)):
                 if abs(self.merged_node_list[i].node_count - self.merged_node_list[j].node_count) > \
-                        Constant.MERGED_GROUP_LOOSE_CONSTRAINT_EPSILON:
+                        Constant.MERGED_GROUP_LOOSE_CONSTRAINT_EPSILON or \
+                        self._compute_gain_in_swap_merged_node_process(s_merged_node=self.merged_node_list[i],
+                                                                       t_merged_node=self.merged_node_list[j]):
                     break
                 else:
-                    # Try to swap
-                    pass
-        pass
+                    Operation.move_merged_node(merged_node=self.merged_node_list[i],
+                                               target_server=self.merged_node_list[j].server,
+                                               algo=self)
+                    Operation.move_merged_node(merged_node=self.merged_node_list[j],
+                                               target_server=self.merged_node_list[i].server,
+                                               algo=self)
 
     def virtual_primary_copy_swap(self):
-        # TODO
         # Random choose two virtual primary copy
         # if swapped resulted into eliminating the non-primary copy, then swap
         for node in self.node_list:
@@ -262,3 +266,44 @@ class OfflineAlgo(Algo):
                                                                s_server=vir_pr_server,
                                                                t_server=non_pr_server) is True:
                             break
+
+    def _compute_gain_in_swap_merged_node_process(self, s_merged_node, t_merged_node):
+        s_server = s_merged_node.server
+        t_server = t_merged_node.server
+        gain = 0
+        for node in s_merged_node.node_list:
+            gain += self._compute_gain_in_swap_merge_node_process_of_node(node=node,
+                                                                          s_merged_node=s_merged_node,
+                                                                          t_merged_node=t_merged_node,
+                                                                          s_server=s_server,
+                                                                          t_server=t_server)
+        for node in t_merged_node.node_list:
+            gain += self._compute_gain_in_swap_merge_node_process_of_node(node=node,
+                                                                          s_merged_node=t_merged_node,
+                                                                          t_merged_node=s_merged_node,
+                                                                          s_server=t_server,
+                                                                          t_server=s_server)
+
+        return gain
+
+    def _compute_gain_in_swap_merge_node_process_of_node(self, node, s_merged_node, t_merged_node, s_server, t_server):
+        reduced_replica = 0
+
+        for rest_node_id in s_server.primary_copy_node_list:
+            # count the replicas need to be created after move to t server
+            if rest_node_id not in s_merged_node.node_id_list and \
+                    self.network_dataset.has_edge(node.id, rest_node_id):
+                reduced_replica -= 1
+        adj_node_id_list = self.network_dataset.get_all_adj_node_id_list(node_id=node.id)
+        for adj_node_id in adj_node_id_list:
+            # count the replicas that can be removed after move to t server,
+            # the adj node's primary copy need to be at t server,
+            # and have only one adj node which is node in s server
+            # then its replica can be removed
+            if adj_node_id in t_server.primary_copy_node_list and \
+                    Operation.count_adj_node_server_id(node=self.get_node_with_id(node_id=adj_node_id),
+                                                       server=s_server,
+                                                       adj_node_type=Constant.PRIMARY_COPY,
+                                                       algo=self) == 1:
+                reduced_replica -= 1
+        return reduced_replica

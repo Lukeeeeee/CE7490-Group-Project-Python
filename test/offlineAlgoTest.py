@@ -20,11 +20,18 @@ def main():
         n = node_list[i]
         print("(%d/%d) Adding node: " % (i, node_len), n)
         algo.add_new_primary_node(node_id=n, write_freq=Constant.WRITE_FREQ)
+
+    algo.node_relocation_process()
+    algo.init_merge_process()
+    algo.init_group_swap_process()
+    algo.virtual_primary_copy_swap()
+
+    print(algo.compute_inter_server_cost())
+
     for server in server_list:
         print("Server: %d, load: %d" % (server.id, server.get_load()))
         for node in server.graph.nodes:
             print(node, server.graph.nodes[node])
-    print(algo.compute_inter_server_cost())
 
 
 if __name__ == '__main__':
