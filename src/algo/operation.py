@@ -14,21 +14,19 @@ class Operation(Basic):
         adj_node_list = algo.network_dataset.get_all_adj_node_id_list(node_id=node.id)
         # CHECK ALL ADJ NODE WHETHER REMOVE REPLICA ON ORIGINAL SERVER (degree == 1)
         for adj_node_id in adj_node_list:
-            if len(list(algo.network_dataset[adj_node_id])) == 1 and node.server.has_node(node_id=adj_node_id) and \
-                    node.server.graph['node_type'] == Constant.NON_PRIMARY_COPY:
-                Operation.remove_node_from_server(node_id=adj_node_id, server=node.server)
-        for adj_node_id in adj_node_list:
-            if len(list(algo.network_dataset[adj_node_id])) == 1 and node.server.has_node(node_id=adj_node_id) and \
-                    node.server.graph['node_type'] == Constant.NON_PRIMARY_COPY:
+            if len(list(algo.network_dataset.graph[adj_node_id])) == 1 and node.server.has_node(node_id=adj_node_id) and \
+                    node.server.graph.nodes[adj_node_id]['node_type'] == Constant.NON_PRIMARY_COPY:
                 Operation.remove_node_from_server(node_id=adj_node_id, server=node.server)
 
         if target_server.has_node(node_id=node.id):
+            target_server_node_type = target_server.graph.nodes[node.id]['node_type']
             target_server.remove_node(node_id=node.id)
             # If target server has virtual primary copy, do add a new virtual primary copy in original server of node
-            if target_server.graph[node.id]['node_type'] == Constant.PRIMARY_COPY:
+            if target_server_node_type == Constant.VIRTUAL_PRIMARY_COPY:
                 node.server.add_node(node_id=node.id, node_type=Constant.VIRTUAL_PRIMARY_COPY,
                                      write_freq=Constant.WRITE_FREQ)
         target_server.add_node(node_id=node.id, node_type=Constant.PRIMARY_COPY, write_freq=Constant.WRITE_FREQ)
+        node.server.remove_node(node_id=node.id)
         node.server = target_server
         Operation.remove_redundant_replica_of_node(node=node,
                                                    algo=algo)
@@ -39,6 +37,7 @@ class Operation(Basic):
         non_primary_copy_list = server.return_type_nodes(node_type=Constant.NON_PRIMARY_COPY)
         for node_id in non_primary_copy_list:
             pass
+        raise NotImplementedError
 
     @staticmethod
     def _non_primary_copy_is_redundant(node, non_primary_copy_server, algo):
@@ -58,17 +57,29 @@ class Operation(Basic):
 
     @staticmethod
     def add_node_to_server(node_id, node_type, write_freq, server, algo):
+        if node_type == Constant.PRIMARY_COPY:
+            return Operation._add_new_primary_copy_node_to_server(node_id=node_id,
+                                                                  write_freq=write_freq,
+                                                                  server=server,
+                                                                  algo=algo)
+        else:
+            server.add_node(node_id=node_id, node_type=node_type, write_freq=write_freq)
+            return True
+
+    @staticmethod
+    def _add_new_primary_copy_node_to_server(node_id, write_freq, server, algo):
         new_node = Node(id=node_id)
         algo.node_list.append(new_node)
         new_node.server = server
-        server.add_node(node_id=node_id, node_type=node_type, write_freq=write_freq)
+        server.add_node(node_id=node_id, node_type=Constant.PRIMARY_COPY, write_freq=write_freq)
         new_node.assign_virtual_primary_copy(server_list=algo.server_list)
         adj_node_list = algo.network_dataset.get_all_adj_node_id_list(node_id=node_id)
         for adj_node in adj_node_list:
-            Operation.check_node_locality(node=new_node,
-                                          adj_node=algo.get_node_with_id(adj_node),
-                                          algo=algo,
-                                          meet_flag=True)
+            if not Operation.check_node_locality(node=new_node,
+                                                 adj_node=algo.get_node_with_id(adj_node),
+                                                 algo=algo,
+                                                 meet_flag=True):
+                raise ValueError('Locality not meet')
         return True
 
     @staticmethod
@@ -106,7 +117,7 @@ class Operation(Basic):
         adj_node_list = algo.network_dataset.get_all_adj_node_id_list(node_id=node.id)
         for adj_node_i in adj_node_list:
             if server.graph.has_node(node_id=adj_node_i):
-                if adj_node_type and server.graph[adj_node_i]['node_type'] == adj_node_type:
+                if adj_node_type and server.graph.nodes[adj_node_i]['node_type'] == adj_node_type:
                     return True
         return False
 
@@ -115,7 +126,7 @@ class Operation(Basic):
         count = 0
         adj_node_list = algo.network_dataset.get_all_adj_node_id_list(node_id=node.id)
         for adj_node_i in adj_node_list:
-            if adj_node_type and server.graph[adj_node_i]['node_type'] == adj_node_type:
+            if server.has_node(node_id=adj_node_i, node_type=adj_node_type):
                 count += 1
         return count
 

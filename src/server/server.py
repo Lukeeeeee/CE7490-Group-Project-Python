@@ -12,7 +12,7 @@ class Server(Basic):
         self.primary_copy_node_list = []
 
     def add_node(self, node_id, node_type, write_freq):
-        if self.has_node(node_id=node_id):
+        if self.has_node(node_id=node_id, node_type=node_type):
             raise ValueError('Node %d existed' % node_id)
         self.graph.add_node(node_id,
                             node_type=node_type,
@@ -32,17 +32,22 @@ class Server(Basic):
 
     def has_node(self, node_id, node_type=None):
         if node_type:
-            return self.graph.has_node(node_id) and self.graph[node_id]['node_type'] == node_type
+            return self.graph.has_node(node_id) and self.graph.nodes[node_id]['node_type'] == node_type
         else:
             return self.graph.has_node(node_id)
 
-    def remove_node(self, node_id):
-        if self.graph[node_id]['node_type'] == Constant.PRIMARY_COPY:
+    def remove_node(self, node_id, node_type=None):
+        if node_type:
+            if self.graph.nodes[node_id]['node_type'] == node_type:
+                self._remove_node(node_id=node_id)
+        else:
+            self._remove_node(node_id=node_id)
+
+    def _remove_node(self, node_id):
+        if self.graph.nodes[node_id]['node_type'] == Constant.PRIMARY_COPY:
             self.primary_copy_node_list.remove(node_id)
         self.graph.remove_node(node_id)
 
     def return_type_nodes(self, node_type):
-        res = filter(lambda x: self.graph[x]['node_type'] == node_type, iterable=list(self.graph.nodes))
+        res = filter(lambda x: self.graph.nodes[x]['node_type'] == node_type, iterable=list(self.graph.nodes))
         return list(res)
-
-

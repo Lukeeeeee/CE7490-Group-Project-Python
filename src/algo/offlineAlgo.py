@@ -52,9 +52,11 @@ class OfflineAlgo(Algo):
                                       algo=self)
 
     def get_node_with_id(self, node_id):
-        node = filter(lambda x: x.id == node_id, self.node_list)
+        node = list(filter(lambda x: x.id == node_id, self.node_list))
+        assert len(node) <= 1
         for node_i in node:
             return node_i
+        return None
 
     # def get_relation_with_node(self, source_node_id, target_node_id):
     #     return -1
@@ -98,7 +100,7 @@ class OfflineAlgo(Algo):
                 if self.get_node_with_id(
                         node_id=node_i).server.id == target_node.server.id and node_i != target_node_id:
                     return False
-            return False
+            return True
 
     def compute_inter_server_cost(self):
         return compute_inter_sever_cost(servers=self.server_list)
@@ -123,12 +125,14 @@ class OfflineAlgo(Algo):
     def compute_scb(self, node_id, target_server_id):
         scb = 0
         # add PDSN_B
+        node = self.get_node_with_id(node_id=node_id)
+        assert node.server_id != target_server_id
         scb += self.get_certain_relation_node_count_with_servers(source_node_id=node_id,
                                                                  relation_func=self.is_pdsn_with,
                                                                  target_server_list=[target_server_id])
         # add PDSN_no_A_B
         tmp_server_list = list(range(len(self.server_list)))
-        tmp_server_list.remove(self.get_node_with_id(node_id).server_id)
+        tmp_server_list.remove(node.server_id)
         tmp_server_list.remove(target_server_id)
         scb += self.get_certain_relation_node_count_with_servers(source_node_id=node_id,
                                                                  relation_func=self.is_pdsn_with,
@@ -136,7 +140,7 @@ class OfflineAlgo(Algo):
 
         # minus pssn
         tmp_server_list = list(range(len(self.server_list)))
-        tmp_server_list.remove(self.get_node_with_id(node_id).server_id)
+        tmp_server_list.remove(node.server_id)
         tmp_server_list.remove(target_server_id)
         scb -= self.get_certain_relation_node_count_with_servers(source_node_id=node_id,
                                                                  relation_func=self.is_pssn_with,
@@ -144,7 +148,7 @@ class OfflineAlgo(Algo):
 
         # minus dsn
         tmp_server_list = list(range(len(self.server_list)))
-        tmp_server_list.remove(self.get_node_with_id(node_id).server_id)
+        tmp_server_list.remove(node.server_id)
         tmp_server_list.remove(target_server_id)
 
         scb -= self.get_certain_relation_node_count_with_servers(source_node_id=node_id,
@@ -182,7 +186,7 @@ class OfflineAlgo(Algo):
             for node in self.node_list:
                 pre_server_id = node.server.id
                 if self.node_relocate(node=node):
-                    print("Node was relocated from %d to %d" % (pre_server_id, node.server.id))
+                    print("Node %d was relocated from %d to %d" % (node.id, pre_server_id, node.server.id))
 
     def node_relocate(self, node):
         max_scb = 0.0
@@ -198,7 +202,9 @@ class OfflineAlgo(Algo):
                     node.server.get_load() - 1)) <= Constant.MAX_LOAD_DIFFERENCE_AMONG_SERER:
                 Operation.move_node_to_server(node=node, target_server=final_new_server, algo=self)
             else:
+                assert final_new_server != node.server_id
                 self.swap_node_on_server(node=node, target_server=final_new_server, scb=max_scb)
+            return True
         else:
             return False
 
