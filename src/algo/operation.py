@@ -17,7 +17,7 @@ class Operation(Basic):
             if len(list(algo.network_dataset.graph[adj_node_id])) == 1 and node.server.has_node(node_id=adj_node_id) and \
                     node.server.graph.nodes[adj_node_id]['node_type'] == Constant.NON_PRIMARY_COPY:
                 Operation.remove_node_from_server(node_id=adj_node_id, server=node.server)
-
+        node.server.remove_node(node_id=node.id, node_type=Constant.PRIMARY_COPY)
         if target_server.has_node(node_id=node.id):
             target_server_node_type = target_server.graph.nodes[node.id]['node_type']
             target_server.remove_node(node_id=node.id)
@@ -26,10 +26,13 @@ class Operation(Basic):
                 node.server.add_node(node_id=node.id, node_type=Constant.VIRTUAL_PRIMARY_COPY,
                                      write_freq=Constant.WRITE_FREQ)
         target_server.add_node(node_id=node.id, node_type=Constant.PRIMARY_COPY, write_freq=Constant.WRITE_FREQ)
-        node.server.remove_node(node_id=node.id)
         node.server = target_server
         Operation.remove_redundant_replica_of_node(node=node,
                                                    algo=algo)
+
+        Operation._check_node_locality_with_all_adj_node(node=node,
+                                                         algo=algo,
+                                                         meet_flag=True)
 
     @staticmethod
     def remove_redundant_replica_on_server(server, algo):
@@ -67,19 +70,26 @@ class Operation(Basic):
             return True
 
     @staticmethod
+    def _check_node_locality_with_all_adj_node(node, algo, meet_flag):
+        adj_node_list = algo.network_dataset.get_all_adj_node_id_list(node_id=node.id)
+        for adj_node in adj_node_list:
+            if not Operation.check_node_locality(node=node,
+                                                 adj_node=algo.get_node_with_id(adj_node),
+                                                 algo=algo,
+                                                 meet_flag=meet_flag):
+                raise ValueError('Locality not meet')
+        return True
+
+    @staticmethod
     def _add_new_primary_copy_node_to_server(node_id, write_freq, server, algo):
         new_node = Node(id=node_id)
         algo.node_list.append(new_node)
         new_node.server = server
         server.add_node(node_id=node_id, node_type=Constant.PRIMARY_COPY, write_freq=write_freq)
         new_node.assign_virtual_primary_copy(server_list=algo.server_list)
-        adj_node_list = algo.network_dataset.get_all_adj_node_id_list(node_id=node_id)
-        for adj_node in adj_node_list:
-            if not Operation.check_node_locality(node=new_node,
-                                                 adj_node=algo.get_node_with_id(adj_node),
-                                                 algo=algo,
-                                                 meet_flag=True):
-                raise ValueError('Locality not meet')
+        Operation._check_node_locality_with_all_adj_node(node=new_node,
+                                                         algo=algo,
+                                                         meet_flag=True)
         return True
 
     @staticmethod

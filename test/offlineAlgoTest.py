@@ -17,8 +17,12 @@ def main():
     data.graph = nx.Graph()
     for i in range(10):
         data.graph.add_node(i)
-    for i in range(10):
-        data.graph.add_edge(i, (i + 1) % 10)
+    # for i in range(10):
+    #     data.graph.add_edge(i, (i + 1) % 10)
+    data.graph.add_edge(0, 1)
+    data.graph.add_edge(0, 2)
+    data.graph.add_edge(0, 3)
+    data.graph.add_edge(0, 4)
     server_list = [Server(serer_id=i) for i in range(8)]
     algo = OfflineAlgo(server_list=server_list, network_dataset=data)
     node_list = list(data.graph.nodes)

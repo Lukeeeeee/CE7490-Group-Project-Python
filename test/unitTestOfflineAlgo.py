@@ -93,6 +93,25 @@ class TestOfflineAlgo(unittest.TestCase):
         self.assertFalse(algo.server_list[1].has_node(0, node_type=Constant.NON_PRIMARY_COPY))
         self.assertFalse(algo.server_list[1].has_node(0, node_type=Constant.VIRTUAL_PRIMARY_COPY))
 
+    def test_relocate_process(self):
+        data = Dataset(dataset_str='facebook')
+        data.graph = nx.Graph()
+        for i in range(10):
+            data.graph.add_node(i)
+        data.graph.add_edge(0, 1)
+        data.graph.add_edge(0, 2)
+        data.graph.add_edge(0, 3)
+        data.graph.add_edge(0, 4)
+        server_list = [Server(serer_id=i) for i in range(8)]
+        algo = OfflineAlgo(server_list=server_list, network_dataset=data)
+        node_list = list(data.graph.nodes)
+        node_len = len(node_list)
+        for i in range(node_len):
+            n = node_list[i]
+            algo.add_new_primary_node(node_id=n, write_freq=Constant.WRITE_FREQ)
+        algo.node_relocation_process()
+        self.assertEqual(algo.compute_inter_server_cost(), 0)
+
 
 if __name__ == '__main__':
     unittest.main()
