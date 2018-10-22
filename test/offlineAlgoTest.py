@@ -38,8 +38,9 @@ def main():
 
     algo.node_relocation_process()
 
-    # algo.init_merge_process()
-    # algo.init_group_swap_process()
+    algo.init_merge_process()
+    algo.start_merge_process()
+    algo.init_group_swap_process()
     # algo.virtual_primary_copy_swap()
     print_graph(server_list)
     print(algo.compute_inter_server_cost())

@@ -223,16 +223,19 @@ class OfflineAlgo(Algo):
         np.random.shuffle(node_rand_index)
         for index in node_rand_index:
             node = self.node_list[index]
-            merge_node = MergedNode(ID=node.id, server=node.server)
+            merge_node = MergedNode(ID=node.id, server=node.server, node=node, algo=self)
             self.merged_node_list.append(merge_node)
+
+    def start_merge_process(self):
         node_rand_index = np.arange(len(self.merged_node_list))
         np.random.shuffle(node_rand_index)
         for index in node_rand_index:
+            while index >= len(self.merged_node_list):
+                index = np.random.randint(0, len(self.merged_node_list))
             merged_node = self.merged_node_list[index]
             merged_node.launch_merge_node_process(algo=self)
 
     def init_group_swap_process(self):
-        # TODO
         # Get two random group
         # Compute the replica will decrease or not after swapped
         # Also check the data availability (i.e. the number of virtual primary copy)
@@ -244,7 +247,7 @@ class OfflineAlgo(Algo):
                 if abs(self.merged_node_list[i].node_count - self.merged_node_list[j].node_count) > \
                         Constant.MERGED_GROUP_LOOSE_CONSTRAINT_EPSILON or \
                         self._compute_gain_in_swap_merged_node_process(s_merged_node=self.merged_node_list[i],
-                                                                       t_merged_node=self.merged_node_list[j]):
+                                                                       t_merged_node=self.merged_node_list[j]) < 0:
                     break
                 else:
                     Operation.move_merged_node(merged_node=self.merged_node_list[i],
@@ -311,5 +314,5 @@ class OfflineAlgo(Algo):
                                                        server=s_server,
                                                        adj_node_type=Constant.PRIMARY_COPY,
                                                        algo=self) == 1:
-                reduced_replica -= 1
+                reduced_replica += 1
         return reduced_replica
