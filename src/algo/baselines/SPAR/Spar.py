@@ -1,13 +1,14 @@
 import numpy as np
 import networkx as nx
 
-MINIMUM_REPLICAS = 3
+
 MAXIMUM_LOAD_DIFFERENCE = 1
 
 
 class Spar:
 
-    def __init__(self, num_servers):
+    def __init__(self, num_servers, minimum_replicas):
+        self.minimum_replicas = minimum_replicas
         self.G = nx.Graph()
         self.nodes = []
         # self.new_node = -1
@@ -81,12 +82,12 @@ class Spar:
             for server in r_neighbor_server_list:
                 self.servers_slave[server].append(target_node)
                 self.replica_server_dic[node].append(server)
-            if len(self.replica_server_dic[target_node]) < MINIMUM_REPLICAS:
-                num_needed = MINIMUM_REPLICAS - len(self.replica_server_dic[target_node])
+            if len(self.replica_server_dic[target_node]) < self.minimum_replicas:
+                num_needed = self.minimum_replicas - len(self.replica_server_dic[target_node])
                 self.generate_random_replicas(num_needed, target_node)
 
-        if len(self.replica_server_dic[node]) < MINIMUM_REPLICAS:
-            num_needed = MINIMUM_REPLICAS - len(self.replica_server_dic[node])
+        if len(self.replica_server_dic[node]) < self.minimum_replicas:
+            num_needed = self.minimum_replicas - len(self.replica_server_dic[node])
             self.generate_random_replicas(num_needed, node)
 
         return len(r_node_server_list) + len(r_neighbor_server_list), action
