@@ -160,6 +160,7 @@ class Operation(Basic):
             Operation.move_node_to_server(node=node,
                                           target_server=target_server,
                                           algo=algo)
+        merged_node.server = target_server
 
     @staticmethod
     def remove_redundant_replica_of_node(node, algo):

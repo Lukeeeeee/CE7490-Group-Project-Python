@@ -250,12 +250,17 @@ class OfflineAlgo(Algo):
                                                                        t_merged_node=self.merged_node_list[j]) < 0:
                     break
                 else:
+                    tmp_i_server = self.merged_node_list[i].server
                     Operation.move_merged_node(merged_node=self.merged_node_list[i],
                                                target_server=self.merged_node_list[j].server,
                                                algo=self)
                     Operation.move_merged_node(merged_node=self.merged_node_list[j],
-                                               target_server=self.merged_node_list[i].server,
+                                               target_server=tmp_i_server,
                                                algo=self)
+                    print("Merged node %d moved to %d" % (
+                    self.merged_node_list[i].id, self.merged_node_list[i].server.id))
+                    print("Merged node %d moved to %d" % (
+                    self.merged_node_list[j].id, self.merged_node_list[j].server.id))
 
     def virtual_primary_copy_swap(self):
         # Random choose two virtual primary copy

@@ -155,6 +155,25 @@ class TestOfflineAlgo(unittest.TestCase):
         self.assertEqual(algo.merged_node_list[0].internal_connection, 4)
         self.assertEqual(algo.merged_node_list[0].node_count, 10)
 
+    def test_merged_node_swap_process(self):
+
+        data = Dataset(dataset_str='facebook')
+        data.graph = nx.Graph()
+        for i in range(10):
+            data.graph.add_node(i)
+        data.graph.add_edge(0, 1)
+        data.graph.add_edge(0, 2)
+        data.graph.add_edge(0, 3)
+        data.graph.add_edge(0, 4)
+        server_list = [Server(serer_id=i) for i in range(8)]
+        algo = OfflineAlgo(server_list=server_list, network_dataset=data)
+        node_list = list(data.graph.nodes)
+        node_len = len(node_list)
+        for i in range(node_len):
+            n = node_list[i]
+            algo.add_new_primary_node(node_id=n, write_freq=Constant.WRITE_FREQ)
+        algo.init_merge_process()
+
 
 if __name__ == '__main__':
     unittest.main()
