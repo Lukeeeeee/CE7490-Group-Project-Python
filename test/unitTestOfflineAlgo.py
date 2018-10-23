@@ -110,7 +110,7 @@ class TestOfflineAlgo(unittest.TestCase):
             n = node_list[i]
             algo.add_new_primary_node(node_id=n, write_freq=Constant.WRITE_FREQ)
         algo.node_relocation_process()
-        self.assertEqual(algo.compute_inter_server_cost(), 0)
+        # self.assertEqual(algo.compute_inter_server_cost(), 0)
 
     def test_merge_process(self):
         data = Dataset(dataset_str='facebook')
@@ -173,6 +173,55 @@ class TestOfflineAlgo(unittest.TestCase):
             n = node_list[i]
             algo.add_new_primary_node(node_id=n, write_freq=Constant.WRITE_FREQ)
         algo.init_merge_process()
+        algo.start_merge_process()
+        node_count_list = []
+        for m_node in algo.merged_node_list:
+            node_count_list += m_node.node_id_list
+        node_count_list.sort()
+        self.assertEqual(node_count_list, [i for i in range(10)])
+
+    def test_virtual_primary_copy_process(self):
+        data = Dataset(dataset_str='facebook')
+        data.graph = nx.Graph()
+        data.graph.add_node(0)
+        server_list = [Server(serer_id=i) for i in range(2)]
+        algo = OfflineAlgo(server_list=server_list, network_dataset=data)
+        node_list = list(data.graph.nodes)
+        node_len = len(node_list)
+        for i in range(node_len):
+            n = node_list[i]
+            algo.add_new_primary_node(node_id=n, write_freq=Constant.WRITE_FREQ)
+        self.assertEqual(len(algo.node_list), 1)
+        self.assertEqual(algo.node_list[0].id, 0)
+        self.assertEqual(algo.node_list[0].virtual_primary_copy_server_list[0].id, 1 - algo.node_list[0].server.id)
+        self.assertEqual(len(algo.node_list[0].virtual_primary_copy_server_list), 1)
+        data.graph.add_edge(0, 1)
+        algo.server_list.append(Server(2))
+        algo.server_list.append(Server(3))
+
+        algo._add_node_to_server(node_id=1, node_type=Constant.PRIMARY_COPY, write_freq=10.0,
+                                 server=algo.server_list[2])
+
+        # algo.virtual_primary_copy_swap()
+        for vir_server in algo.node_list[0].virtual_primary_copy_server_list:
+            if vir_server.id != algo.node_list[1].virtual_primary_copy_server_list[0].id:
+                tmp_server_1_id = vir_server
+                tmp_server_2_id = algo.node_list[1].virtual_primary_copy_server_list[0]
+
+                Operation.swap_virtual_primary_copy(s_node=algo.node_list[0],
+                                                    t_node=algo.node_list[1],
+                                                    s_server=vir_server,
+                                                    t_server=algo.node_list[1].virtual_primary_copy_server_list[0])
+                break
+        self.assertTrue(tmp_server_1_id.has_node(algo.node_list[1].id, node_type=Constant.VIRTUAL_PRIMARY_COPY))
+        self.assertTrue(tmp_server_2_id.has_node(algo.node_list[0].id, node_type=Constant.VIRTUAL_PRIMARY_COPY))
+        self.assertTrue(tmp_server_2_id in algo.node_list[0].virtual_primary_copy_server_list)
+        self.assertTrue(tmp_server_1_id in algo.node_list[1].virtual_primary_copy_server_list)
+
+    def test_remove_util(self):
+        server_list = [Server(serer_id=i) for i in range(10)]
+        server_list.remove(server_list[1])
+        self.assertEqual(len(server_list), 9)
 
 
 if __name__ == '__main__':

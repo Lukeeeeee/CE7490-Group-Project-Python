@@ -15,6 +15,7 @@ class MergedNode(Basic):
         self.external_connection = len(list(algo.network_dataset.graph[ID]))
         self.id = ID
         self.server = server
+        print("new merged node %d with node %d, server %d" % (self.id, self.node_id_list[0], server.id))
 
     @property
     def merge_process_metric_beta(self):
@@ -51,6 +52,7 @@ class MergedNode(Basic):
             index = list(filter(lambda x: x.id == node.id, algo.merged_node_list))
             assert len(index) == 1
             algo.merged_node_list.remove(index[0])
+        print("node %d was merged into %d, node_list=" % (node.id, self.id), self.node_id_list)
 
     def launch_merge_node_process(self, algo):
         rand_index = np.arange((len(self.node_list)))

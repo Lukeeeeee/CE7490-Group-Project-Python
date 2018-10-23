@@ -103,7 +103,8 @@ class Operation(Basic):
                     adj_node.add_non_primary_copy(node.server)
                 if not adj_node.server.has_node(node.id):
                     node.add_non_primary_copy(adj_node.server)
-                assert node.server.has_node(node_id=adj_node.id) and adj_node.server.has_node(node_id=node.id)
+                assert node.server.has_node(node_id=adj_node.id) and \
+                       adj_node.server.has_node(node_id=node.id)
                 return True
             else:
                 return False
@@ -147,9 +148,12 @@ class Operation(Basic):
             s_server.remove_node(node_id=s_node.id)
             s_node.add_virtual_primary_copy(target_server=t_server)
 
-            t_node.virtual_primary_copy_server_list.remove(t_node)
-            t_node.remove_node(node_id=t_node.id)
+            t_node.virtual_primary_copy_server_list.remove(t_server)
+            t_server.remove_node(node_id=t_node.id)
             t_node.add_virtual_primary_copy(target_server=s_server)
+            print(
+                "Swap virtual copy, node %d to server %d, node %d to server %d" %
+                (s_node.id, t_server.id, t_node.id, s_server.id))
             return True
         except nx.NetworkXError:
             return False
@@ -171,7 +175,9 @@ class Operation(Basic):
                                                         non_primary_copy_server=server,
                                                         algo=algo) is True:
                 server.remove_node(node_id=node.id)
-                node.non_primary_copy_server_list.remove(server)
+                for server_i in node.non_primary_copy_server_list:
+                    if server.id == server_i.id:
+                        node.non_primary_copy_server_list.remove(server_i)
         while len(node.virtual_primary_copy_server_list) > Constant.LEAST_VIRTUAL_PRIMARY_COPY_NUMBER:
             node.virtual_primary_copy_server_list[-1].remove_node(node_id=node.id)
             node.virtual_primary_copy_server_list.pop()

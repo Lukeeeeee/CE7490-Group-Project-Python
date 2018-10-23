@@ -202,7 +202,7 @@ class OfflineAlgo(Algo):
                     node.server.get_load() - 1)) <= Constant.MAX_LOAD_DIFFERENCE_AMONG_SERER:
                 Operation.move_node_to_server(node=node, target_server=final_new_server, algo=self)
             else:
-                assert final_new_server != node.server_id
+                assert final_new_server.id != node.server_id
                 self.swap_node_on_server(node=node, target_server=final_new_server, scb=max_scb)
             return True
         else:
@@ -216,6 +216,7 @@ class OfflineAlgo(Algo):
                 if self.compute_scb(node_id=adj_node_i, target_server_id=node.server.id) + scb > 0:
                     Operation.move_node_to_server(node=node, target_server=target_server, algo=self)
                     Operation.move_node_to_server(adj_node, target_server=node.server, algo=self)
+                    break
         Operation.remove_redundant_replica_of_node(node=node, algo=self)
 
     def init_merge_process(self):
@@ -257,10 +258,6 @@ class OfflineAlgo(Algo):
                     Operation.move_merged_node(merged_node=self.merged_node_list[j],
                                                target_server=tmp_i_server,
                                                algo=self)
-                    print("Merged node %d moved to %d" % (
-                    self.merged_node_list[i].id, self.merged_node_list[i].server.id))
-                    print("Merged node %d moved to %d" % (
-                    self.merged_node_list[j].id, self.merged_node_list[j].server.id))
 
     def virtual_primary_copy_swap(self):
         # Random choose two virtual primary copy
