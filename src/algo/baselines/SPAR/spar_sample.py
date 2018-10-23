@@ -39,7 +39,7 @@ def test_spar_sample(file, server_number, minimum_replicas, percent10_stop=False
     start_time = time.time()
     spar = Spar(server_number, minimum_replicas)
     if percent10_stop:
-        for i in range(len(node_list)/10):
+        for i in range(int(len(node_list)/10)):
             n = node_list[i]
             spar.new_node(n, node_neighbor_dic[n])
     else:
@@ -115,4 +115,4 @@ def spar_experiment_1(percent10_stop = False):
 
 
 if __name__ == '__main__':
-    spar_experiment_1()
+    spar_experiment_1(percent10_stop=True)
