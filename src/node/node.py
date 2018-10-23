@@ -45,8 +45,14 @@ class Node(Basic):
     def add_virtual_primary_copy(self, target_server):
         # TODO check for this
 
-        if target_server in self.virtual_primary_copy_server_list:
+        if target_server in self.virtual_primary_copy_server_list and target_server.has_node(self.id,
+                                                                                             node_type=Constant.VIRTUAL_PRIMARY_COPY):
             return
+
+        if int(target_server in self.virtual_primary_copy_server_list) + \
+                int(target_server.has_node(self.id, node_type=Constant.VIRTUAL_PRIMARY_COPY)) == 1:
+            raise ValueError
+
         self.virtual_primary_copy_server_list.append(target_server)
         target_server.add_node(node_id=self.id, node_type=Constant.VIRTUAL_PRIMARY_COPY,
                                write_freq=Constant.WRITE_FREQ)

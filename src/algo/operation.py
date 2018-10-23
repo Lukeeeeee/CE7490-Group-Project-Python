@@ -14,9 +14,9 @@ class Operation(Basic):
         adj_node_list = algo.network_dataset.get_all_adj_node_id_list(node_id=node.id)
         # CHECK ALL ADJ NODE WHETHER REMOVE REPLICA ON ORIGINAL SERVER (degree == 1)
         for adj_node_id in adj_node_list:
-            if len(list(algo.network_dataset.graph[adj_node_id])) == 1 and node.server.has_node(node_id=adj_node_id) and \
-                    node.server.graph.nodes[adj_node_id]['node_type'] == Constant.NON_PRIMARY_COPY:
-                Operation.remove_node_from_server(node_id=adj_node_id, server=node.server)
+            if len(algo.network_dataset.get_all_adj_node_id_list(node_id=adj_node_id)) == 1 and node.server.has_node(
+                    node_id=adj_node_id, node_type=Constant.NON_PRIMARY_COPY):
+                Operation.remove_node_from_server(node_id=adj_node_id, server=node.server, algo=algo)
         node.server.remove_node(node_id=node.id, node_type=Constant.PRIMARY_COPY)
         if target_server.has_node(node_id=node.id):
             target_server_node_type = target_server.graph.nodes[node.id]['node_type']
@@ -120,7 +120,13 @@ class Operation(Basic):
         algo.network_dataset.grah.remove_node(node.id)
 
     @staticmethod
-    def remove_node_from_server(node_id, server):
+    def remove_node_from_server(node_id, server, algo):
+        node = algo.get_node_with_id(node_id)
+        node_type = server.graph.nodes[node_id]['node_type']
+        if node_type == Constant.NON_PRIMARY_COPY:
+            node.non_primary_copy_server_list.remove(server)
+        elif node_type == Constant.VIRTUAL_PRIMARY_COPY:
+            node.virtual_primary_copy_server_list.remove(server)
         server.remove_node(node_id=node_id)
 
     @staticmethod
