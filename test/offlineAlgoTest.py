@@ -1,3 +1,11 @@
+import os
+import sys
+
+CURRENT_PATH = os.path.dirname(os.path.realpath(__file__))
+sys.path.append(CURRENT_PATH)
+PAR_PATH = os.path.abspath(os.path.join(CURRENT_PATH, os.pardir))
+sys.path.append(PAR_PATH)
+
 from src.algo.offlineAlgo import OfflineAlgo
 import networkx as nx
 from src.dataset import Dataset
@@ -14,16 +22,8 @@ def print_graph(server_list):
 
 def main():
     data = Dataset(dataset_str='facebook')
-    # data.graph = nx.Graph()
-    # for i in range(10):
-    #     data.graph.add_node(i)
-    # # for i in range(10):
-    # #     data.graph.add_edge(i, (i + 1) % 10)
-    # data.graph.add_edge(0, 1)
-    # data.graph.add_edge(0, 2)
-    # data.graph.add_edge(0, 3)
-    # data.graph.add_edge(0, 4)
-    server_list = [Server(serer_id=i) for i in range(50)]
+
+    server_list = [Server(serer_id=i) for i in range(100)]
     algo = OfflineAlgo(server_list=server_list, network_dataset=data)
     node_list = list(data.graph.nodes)
     node_len = len(node_list)
@@ -35,12 +35,19 @@ def main():
     print_graph(server_list)
 
     print(algo.compute_inter_server_cost())
-
+    print("Running relocation process")
     algo.node_relocation_process()
 
+    print("Running init merge process")
     algo.init_merge_process()
+    print("Running node merge process")
+
     algo.start_merge_process()
+    print("Running group swap process")
+
     algo.init_group_swap_process()
+    print("Running virtual primary copy swap process")
+
     algo.virtual_primary_copy_swap()
     print_graph(server_list)
     print(algo.compute_inter_server_cost())

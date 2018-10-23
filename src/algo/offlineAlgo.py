@@ -184,6 +184,7 @@ class OfflineAlgo(Algo):
     def node_relocation_process(self, iteration_times=Constant.MAX_RELOCATE_ITERATION):
         for _ in range(iteration_times):
             for node in self.node_list:
+                print("Relocate change node %d" % node.id)
                 pre_server_id = node.server.id
                 if self.node_relocate(node=node):
                     print("Node %d was relocated from %d to %d" % (node.id, pre_server_id, node.server.id))
