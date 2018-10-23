@@ -1,9 +1,10 @@
 import numpy as np
 import networkx as nx
+import time
 import logging
 import pickle
 from tqdm import tqdm
-from src.algo.baselines.SPAR.read_data import read_file_digraph, read_file_ndgraph
+from src.algo.baselines.SPAR.read_data import read_file_to_dict
 from src.algo.baselines.SPAR.Spar import Spar
 from dataset import DATASET_PATH
 from log import LOG_PATH
@@ -27,43 +28,51 @@ def spar_inter_server_cost(slave_dict):
     return cost
 
 
-def test_spar_sample(file, server_number, minimum_replicas, digraph = True):
-    filename = DATASET_PATH + file + '.txt'
+def test_spar_sample(file, server_number, minimum_replicas, percent10_stop=False):
+    filename = DATASET_PATH + '/'+file + '.txt'
+    #path = '././dataset/'
+    #filename = path + file + '.txt'
 
-    if digraph:
-        node_list, node_neighbor_dic, col_data = read_file_digraph(filename)
-    else:
-        node_list, node_neighbor_dic, col_data = read_file_ndgraph(filename)
 
+    node_list, node_neighbor_dic, col_data = read_file_to_dict(filename)
+
+    start_time = time.time()
     spar = Spar(server_number, minimum_replicas)
-    for n in tqdm(node_list):
-        spar.new_node(n, node_neighbor_dic[n])
+    if percent10_stop:
+        for i in range(len(node_list)/10):
+            n = node_list[i]
+            spar.new_node(n, node_neighbor_dic[n])
+    else:
+        for n in tqdm(node_list):
+            spar.new_node(n, node_neighbor_dic[n])
 
+    running_time = time.time() - start_time
     #master_node_to_server = spar.node_server_dic
     #replicas_to_server = spar.replica_server_dic
 
     masters_in_each_server = spar.servers_master
     replicas_in_each_server = spar.servers_slave
 
-
+    del spar
     #graph = spar.G
 
-    return spar_inter_server_cost(replicas_in_each_server)
+    return spar_inter_server_cost(replicas_in_each_server), running_time
 
 
-def spar_experiment_1():
+def spar_experiment_1(percent10_stop = False):
     # Experiment 1 inter server traffic cost
-    digraph_files = ['AmazonSample', 'Amazon', 'Twitter', 'TwitterSample1', 'TwitterSample2']
-    ndgraph_files = ['Facebook', 'p2pGnutella']
+    #digraph_files = ['AmazonSample', 'Amazon', 'Twitter', 'TwitterSample1', 'TwitterSample2', 'Facebook', 'p2pGnutella']
+    digraph_files = ['AmazonSample', 'TwitterSample1', 'TwitterSample2', 'Facebook', 'p2pGnutella']
+    #digraph_files = ['AmazonSample']
     num_server = 128
 
     # create logger
-    logger_name = "Spar_experiment1"
-    logger = logging.getLogger(logger_name)
+    #logger_name = "Spar_experiment1"
+    logger = logging.getLogger(__name__)
     logger.setLevel(logging.DEBUG)
 
     # create file handler
-    log_path = LOG_PATH
+    log_path = LOG_PATH+'/spar_experiment1.log'
     fh = logging.FileHandler(log_path)
     fh.setLevel(logging.INFO)
 
@@ -76,37 +85,33 @@ def spar_experiment_1():
     fh.setFormatter(formatter)
     logger.addHandler(fh)
 
+    logger.info('Start experiment 1')
+    if percent10_stop:
+        logger.info('Stop at 10 percent of the data')
     replica_2_result = {}
     minimum_replica = 2
     for file in digraph_files:
         print('Processing 2 replicas' + file)
-        cost = test_spar_sample(file, num_server, minimum_replica, digraph=True)
-        logger.info('file %s, server number = %s, minimum replicas = %s, cost = %s', file,
-                    str(num_server), str(minimum_replica), str(cost))
+        cost, running_time = test_spar_sample(file, num_server, minimum_replica, percent10_stop)
+        logger.info('file %s, server number = %s, minimum replicas = %s, cost = %s, time = %s', file,
+                    str(num_server), str(minimum_replica), str(cost), str(running_time))
         replica_2_result[file] = cost
 
-    for file in ndgraph_files:
-        print('Processing 2 replicas' + file)
-        cost = test_spar_sample(file, num_server, minimum_replica, digraph=True)
-        logger.info('file %s, server number = %s, minimum replicas = %s, cost = %s', file,
-                    str(num_server), str(minimum_replica), str(cost))
-        replica_2_result[file] = cost
+    print(replica_2_result)
+    logger.info('replica 2 results: %s', str(replica_2_result))
 
     replica_3_result = {}
     minimum_replica = 3
     for file in digraph_files:
         print('Processing 3 replicas' + file)
-        cost = test_spar_sample(file, num_server, minimum_replica, digraph=True)
-        logger.info('file %s, server number = %s, minimum replicas = %s, cost = %s', file,
-                    str(num_server), str(minimum_replica), str(cost))
+        cost, running_time = test_spar_sample(file, num_server, minimum_replica, percent10_stop)
+        logger.info('file %s, server number = %s, minimum replicas = %s, cost = %s, time = %s', file,
+                    str(num_server), str(minimum_replica), str(cost), str(running_time))
         replica_3_result[file] = cost
 
-    for file in ndgraph_files:
-        print('Processing 3 replicas' + file)
-        cost = test_spar_sample(file, num_server, minimum_replica, digraph=True)
-        logger.info('file %s, server number = %s, minimum replicas = %s, cost = %s', file,
-                    str(num_server), str(minimum_replica), str(cost))
-        replica_3_result[file] = cost
+    print(replica_3_result)
+    logger.info('replica 3 results: %s', str(replica_3_result))
+    logger.info('End experiment 1')
 
 
 if __name__ == '__main__':
