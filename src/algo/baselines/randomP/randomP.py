@@ -9,34 +9,60 @@ class RandomP(Basic):
         self.network_dataset = network_dataset
         self.node_list = node_list
 
-    def add_new_primary_node(self):
+    def add_new_primary_node(self,server_list,vp_number):
         i = 0
-        a = 4
-        b = 8
-        c = 12
-        for n in self.node_list:
-            if i > len(self.server_list)-1:
-                i = 0
-            if a > len(self.server_list)-1:
-                a = 0
-            if b > len(self.server_list)-1:
-                b = 0
-            if c > len(self.server_list)-1:
-                c = 0
-            primary_server = self.server_list[i]
-            self.add_primary_copy_to_server(node_id=n, server=primary_server)
+        q = len(server_list)//(vp_number+1)
+        if vp_number == 3:
+            a = q
+            b = q * 2
+            c = q * 3
+            for n in self.node_list:
+                if i > len(self.server_list) - 1:
+                    i = 0
+                if a > len(self.server_list) - 1:
+                    a = 0
+                if b > len(self.server_list) - 1:
+                    b = 0
+                if c > len(self.server_list) - 1:
+                    c = 0
+                primary_server = self.server_list[i]
+                self.add_primary_copy_to_server(node_id=n, server=primary_server)
 
-            vps1 = self.server_list[a]
-            vps2 = self.server_list[b]
-            vps3 = self.server_list[c]
-            self.add_virtual_primary_copy_to_server(node_id=n, server=vps1)
-            self.add_virtual_primary_copy_to_server(node_id=n, server=vps2)
-            self.add_virtual_primary_copy_to_server(node_id=n, server=vps3)
+                vps1 = self.server_list[a]
+                vps2 = self.server_list[b]
+                vps3 = self.server_list[c]
+                self.add_virtual_primary_copy_to_server(node_id=n, server=vps1)
+                self.add_virtual_primary_copy_to_server(node_id=n, server=vps2)
+                self.add_virtual_primary_copy_to_server(node_id=n, server=vps3)
 
-            i = i + 1
-            a = a + 1
-            b = b + 1
-            c = c + 1
+                i = i + 1
+                a = a + 1
+                b = b + 1
+                c = c + 1
+        elif vp_number == 2:
+            a = q
+            b = q * 2
+            for n in self.node_list:
+                if i > len(self.server_list) - 1:
+                    i = 0
+                if a > len(self.server_list) - 1:
+                    a = 0
+                if b > len(self.server_list) - 1:
+                    b = 0
+                primary_server = self.server_list[i]
+                self.add_primary_copy_to_server(node_id=n, server=primary_server)
+
+                vps1 = self.server_list[a]
+                vps2 = self.server_list[b]
+
+                self.add_virtual_primary_copy_to_server(node_id=n, server=vps1)
+                self.add_virtual_primary_copy_to_server(node_id=n, server=vps2)
+
+                i = i + 1
+                a = a + 1
+                b = b + 1
+        else:
+            print('vp_number should be 2 or 3')
 
 
     def add_primary_copy_to_server(self, node_id,  server):
