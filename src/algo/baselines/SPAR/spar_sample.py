@@ -29,17 +29,16 @@ def spar_inter_server_cost(slave_dict):
 
 
 def test_spar_sample(file, server_number, minimum_replicas, percent10_stop=False):
-    filename = DATASET_PATH + '/'+file + '.txt'
-    #path = '././dataset/'
-    #filename = path + file + '.txt'
-
+    filename = DATASET_PATH + '/' + file + '.txt'
+    # path = '././dataset/'
+    # filename = path + file + '.txt'
 
     node_list, node_neighbor_dic, col_data = read_file_to_dict(filename)
 
     start_time = time.time()
     spar = Spar(server_number, minimum_replicas)
-    if percent10_stop:
-        for i in range(int(len(node_list)/10)):
+    if percent10_stop is True:
+        for i in range(int(len(node_list) / 10)):
             n = node_list[i]
             spar.new_node(n, node_neighbor_dic[n])
     else:
@@ -47,32 +46,32 @@ def test_spar_sample(file, server_number, minimum_replicas, percent10_stop=False
             spar.new_node(n, node_neighbor_dic[n])
 
     running_time = time.time() - start_time
-    #master_node_to_server = spar.node_server_dic
-    #replicas_to_server = spar.replica_server_dic
+    # master_node_to_server = spar.node_server_dic
+    # replicas_to_server = spar.replica_server_dic
 
     masters_in_each_server = spar.servers_master
     replicas_in_each_server = spar.servers_slave
 
     del spar
-    #graph = spar.G
+    # graph = spar.G
 
     return spar_inter_server_cost(replicas_in_each_server), running_time
 
 
-def spar_experiment_1(percent10_stop = False):
+def spar_experiment_1(percent10_stop=False):
     # Experiment 1 inter server traffic cost
-    #digraph_files = ['AmazonSample', 'Amazon', 'Twitter', 'TwitterSample1', 'TwitterSample2', 'Facebook', 'p2pGnutella']
+    # digraph_files = ['AmazonSample', 'Amazon', 'Twitter', 'TwitterSample1', 'TwitterSample2', 'Facebook', 'p2pGnutella']
     digraph_files = ['AmazonSample', 'TwitterSample1', 'TwitterSample2', 'Facebook', 'p2pGnutella']
-    #digraph_files = ['AmazonSample']
+    # digraph_files = ['AmazonSample']
     num_server = 128
 
     # create logger
-    #logger_name = "Spar_experiment1"
+    # logger_name = "Spar_experiment1"
     logger = logging.getLogger(__name__)
     logger.setLevel(logging.DEBUG)
 
     # create file handler
-    log_path = LOG_PATH+'/spar_experiment1.log'
+    log_path = LOG_PATH + '/spar_experiment1.log'
     fh = logging.FileHandler(log_path)
     fh.setLevel(logging.INFO)
 

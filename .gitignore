@@ -271,3 +271,4 @@ venv.bak/
 
 oldCode/*
 .idea/*
+!log/*

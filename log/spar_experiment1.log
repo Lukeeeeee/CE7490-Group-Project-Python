@@ -1,0 +1,32 @@
+
+Wed 24 Oct 2018 00:35:41 INFO spar_sample.py 88 4064 Start experiment 1
+Wed 24 Oct 2018 00:35:45 INFO spar_sample.py 97 4064 file AmazonSample, server number = 128, minimum replicas = 2, cost = 10428, time = 2.9022440910339355
+Wed 24 Oct 2018 00:36:13 INFO spar_sample.py 97 4064 file TwitterSample1, server number = 128, minimum replicas = 2, cost = 30195, time = 27.701159477233887
+Wed 24 Oct 2018 00:37:07 INFO spar_sample.py 97 4064 file TwitterSample2, server number = 128, minimum replicas = 2, cost = 39826, time = 51.086732149124146
+Wed 24 Oct 2018 00:44:07 INFO spar_sample.py 97 4064 file Facebook, server number = 128, minimum replicas = 2, cost = 75047, time = 416.92881321907043
+Wed 24 Oct 2018 00:44:34 INFO spar_sample.py 97 4064 file p2pGnutella, server number = 128, minimum replicas = 2, cost = 29367, time = 25.367282390594482
+Wed 24 Oct 2018 00:44:34 INFO spar_sample.py 100 4064 replica 2 results: {'AmazonSample': 10428, 'TwitterSample1': 30195, 'TwitterSample2': 39826, 'Facebook': 75047, 'p2pGnutella': 29367}
+Wed 24 Oct 2018 00:44:38 INFO spar_sample.py 108 4064 file AmazonSample, server number = 128, minimum replicas = 3, cost = 11857, time = 3.0528135299682617
+Wed 24 Oct 2018 00:45:07 INFO spar_sample.py 108 4064 file TwitterSample1, server number = 128, minimum replicas = 3, cost = 31412, time = 28.368190050125122
+Wed 24 Oct 2018 00:46:02 INFO spar_sample.py 108 4064 file TwitterSample2, server number = 128, minimum replicas = 3, cost = 42860, time = 52.31616401672363
+Wed 24 Oct 2018 00:53:14 INFO spar_sample.py 108 4064 file Facebook, server number = 128, minimum replicas = 3, cost = 75936, time = 428.5790958404541
+Wed 24 Oct 2018 00:53:41 INFO spar_sample.py 108 4064 file p2pGnutella, server number = 128, minimum replicas = 3, cost = 34677, time = 25.2781400680542
+Wed 24 Oct 2018 00:53:41 INFO spar_sample.py 112 4064 replica 3 results: {'AmazonSample': 11857, 'TwitterSample1': 31412, 'TwitterSample2': 42860, 'Facebook': 75936, 'p2pGnutella': 34677}
+Wed 24 Oct 2018 00:53:41 INFO spar_sample.py 113 4064 End experiment 1
+Wed 24 Oct 2018 01:16:54 INFO spar_sample.py 88 13500 Start experiment 1
+Wed 24 Oct 2018 01:16:54 INFO spar_sample.py 90 13500 Stop at 10 percent of the data
+Wed 24 Oct 2018 01:17:13 INFO spar_sample.py 88 13612 Start experiment 1
+Wed 24 Oct 2018 01:17:13 INFO spar_sample.py 90 13612 Stop at 10 percent of the data
+Wed 24 Oct 2018 01:17:13 INFO spar_sample.py 97 13612 file AmazonSample, server number = 128, minimum replicas = 2, cost = 980, time = 0.07277345657348633
+Wed 24 Oct 2018 01:17:16 INFO spar_sample.py 97 13612 file TwitterSample1, server number = 128, minimum replicas = 2, cost = 5472, time = 2.0295536518096924
+Wed 24 Oct 2018 01:17:22 INFO spar_sample.py 97 13612 file TwitterSample2, server number = 128, minimum replicas = 2, cost = 4505, time = 2.4399526119232178
+Wed 24 Oct 2018 01:17:26 INFO spar_sample.py 97 13612 file Facebook, server number = 128, minimum replicas = 2, cost = 3074, time = 0.7815194129943848
+Wed 24 Oct 2018 01:17:28 INFO spar_sample.py 97 13612 file p2pGnutella, server number = 128, minimum replicas = 2, cost = 2299, time = 0.4298264980316162
+Wed 24 Oct 2018 01:17:28 INFO spar_sample.py 101 13612 replica 2 results: {'AmazonSample': 980, 'TwitterSample1': 5472, 'TwitterSample2': 4505, 'Facebook': 3074, 'p2pGnutella': 2299}
+Wed 24 Oct 2018 01:17:28 INFO spar_sample.py 109 13612 file AmazonSample, server number = 128, minimum replicas = 3, cost = 1148, time = 0.07682347297668457
+Wed 24 Oct 2018 01:17:31 INFO spar_sample.py 109 13612 file TwitterSample1, server number = 128, minimum replicas = 3, cost = 5481, time = 2.102889060974121
+Wed 24 Oct 2018 01:17:36 INFO spar_sample.py 109 13612 file TwitterSample2, server number = 128, minimum replicas = 3, cost = 4779, time = 2.37864351272583
+Wed 24 Oct 2018 01:17:40 INFO spar_sample.py 109 13612 file Facebook, server number = 128, minimum replicas = 3, cost = 3181, time = 0.7998859882354736
+Wed 24 Oct 2018 01:17:42 INFO spar_sample.py 109 13612 file p2pGnutella, server number = 128, minimum replicas = 3, cost = 2926, time = 0.43680667877197266
+Wed 24 Oct 2018 01:17:42 INFO spar_sample.py 113 13612 replica 3 results: {'AmazonSample': 1148, 'TwitterSample1': 5481, 'TwitterSample2': 4779, 'Facebook': 3181, 'p2pGnutella': 2926}
+Wed 24 Oct 2018 01:17:42 INFO spar_sample.py 114 13612 End experiment 1

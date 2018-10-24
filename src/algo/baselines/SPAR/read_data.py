@@ -30,6 +30,7 @@ def read_file_digraph(filename):
     return node_list, node_neighbor_dic, col_data
 '''
 
+
 def read_file_to_dict(filename):
     # Read data from non-directed graph like data from txt files
     # Input: filename in string

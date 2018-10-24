@@ -1,7 +1,6 @@
 import numpy as np
 import networkx as nx
 
-
 MAXIMUM_LOAD_DIFFERENCE = 1
 
 
@@ -55,7 +54,7 @@ class Spar:
 
         self.update_master_load()
 
-        #return num_replicas, action
+        # return num_replicas, action
 
     def swap_create(self, node, neighbors):
         action, target_node, target_server, r_node_server_list, r_neighbor_server_list = self.run_spar(node, neighbors)
