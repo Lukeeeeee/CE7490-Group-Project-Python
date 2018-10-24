@@ -30,3 +30,14 @@ Wed 24 Oct 2018 01:17:40 INFO spar_sample.py 109 13612 file Facebook, server num
 Wed 24 Oct 2018 01:17:42 INFO spar_sample.py 109 13612 file p2pGnutella, server number = 128, minimum replicas = 3, cost = 2926, time = 0.43680667877197266
 Wed 24 Oct 2018 01:17:42 INFO spar_sample.py 113 13612 replica 3 results: {'AmazonSample': 1148, 'TwitterSample1': 5481, 'TwitterSample2': 4779, 'Facebook': 3181, 'p2pGnutella': 2926}
 Wed 24 Oct 2018 01:17:42 INFO spar_sample.py 114 13612 End experiment 1
+
+Amazon and Twitter dataset(10% of the data)
+Wed 24 Oct 2018 02:36:42 INFO spar_sample.py 89 26644 Start experiment 1
+Wed 24 Oct 2018 02:36:42 INFO spar_sample.py 91 26644 Stop at 10 percent of the data
+Wed 24 Oct 2018 04:21:15 INFO spar_sample.py 98 26644 file Amazon, server number = 128, minimum replicas = 2, cost = 86355, time = 300.43514490127563
+Wed 24 Oct 2018 05:12:54 INFO spar_sample.py 98 26644 file Twitter, server number = 128, minimum replicas = 2, cost = 140850, time = 1603.447932958603
+Wed 24 Oct 2018 05:12:54 INFO spar_sample.py 102 26644 replica 2 results: {'Amazon': 86355, 'Twitter': 140850}
+Wed 24 Oct 2018 07:08:04 INFO spar_sample.py 110 26644 file Amazon, server number = 128, minimum replicas = 3, cost = 96156, time = 328.0363857746124
+Wed 24 Oct 2018 08:00:13 INFO spar_sample.py 110 26644 file Twitter, server number = 128, minimum replicas = 3, cost = 141083, time = 1586.530996799469
+Wed 24 Oct 2018 08:00:13 INFO spar_sample.py 114 26644 replica 3 results: {'Amazon': 96156, 'Twitter': 141083}
+Wed 24 Oct 2018 08:00:13 INFO spar_sample.py 115 26644 End experiment 1
