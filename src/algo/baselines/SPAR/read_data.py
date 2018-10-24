@@ -1,4 +1,4 @@
-
+'''
 def read_file_digraph(filename):
     # Read data from directed graph like data from txt files
     # Input: filename in string
@@ -28,9 +28,9 @@ def read_file_digraph(filename):
             node_neighbor_dic[col_data[i][0]].append(col_data[i][1])
 
     return node_list, node_neighbor_dic, col_data
+'''
 
-
-def read_file_ndgraph(filename):
+def read_file_to_dict(filename):
     # Read data from non-directed graph like data from txt files
     # Input: filename in string
     # Output:
@@ -56,6 +56,7 @@ def read_file_ndgraph(filename):
                 node_neighbor_dic[col_data[i][j]] = {}
                 node_neighbor_dic[col_data[i][j]] = []
 
-            node_neighbor_dic[col_data[i][j]].append(col_data[i][_j])
+            if col_data[i][_j] not in node_neighbor_dic[col_data[i][j]]:
+                node_neighbor_dic[col_data[i][j]].append(col_data[i][_j])
 
     return node_list, node_neighbor_dic, col_data
