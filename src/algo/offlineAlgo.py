@@ -12,8 +12,6 @@ import logging
 class OfflineAlgo(Algo):
     def __init__(self, server_list, network_dataset):
         super().__init__(server_list=server_list, network_dataset=network_dataset)
-        self.ETA = Constant.OFFLINE_ETA
-        self.EPSILON = Constant.OFFLINE_EPSILON
         self.server_list = server_list
         self.network_dataset = network_dataset
         self.node_list = []

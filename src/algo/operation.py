@@ -5,6 +5,7 @@ from src.algo.inter_server_cost import compute_inter_sever_cost
 import networkx as nx
 import logging
 
+
 class Operation(Basic):
     def __init__(self):
         super().__init__()
@@ -23,8 +24,7 @@ class Operation(Basic):
             Operation.remove_node_from_server(node_id=node.id, server=target_server, algo=algo)
             # If target server has virtual primary copy, do add a new virtual primary copy in original server of node
             if target_server_node_type == Constant.VIRTUAL_PRIMARY_COPY:
-                node.server.add_node(node_id=node.id, node_type=Constant.VIRTUAL_PRIMARY_COPY,
-                                     write_freq=Constant.WRITE_FREQ)
+                node.add_virtual_primary_copy(target_server=node.server)
         target_server.add_node(node_id=node.id, node_type=Constant.PRIMARY_COPY, write_freq=Constant.WRITE_FREQ)
         node.server = target_server
         Operation.remove_redundant_replica_of_node(node=node,
@@ -151,7 +151,7 @@ class Operation(Basic):
         Operation.remove_node_from_server(node_id=t_node.id, server=t_server, algo=algo)
         t_node.add_virtual_primary_copy(target_server=s_server)
         log_str = "Swap virtual copy, node %d to server %d, node %d to server %d" % (
-        s_node.id, t_server.id, t_node.id, s_server.id)
+            s_node.id, t_server.id, t_node.id, s_server.id)
         logging.info(log_str)
         print(log_str)
         return True
