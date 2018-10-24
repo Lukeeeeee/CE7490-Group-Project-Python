@@ -1,16 +1,19 @@
 import os
 import sys
-import logging
-from log import LOG_PATH
+
 CURRENT_PATH = os.path.dirname(os.path.realpath(__file__))
 sys.path.append(CURRENT_PATH)
 PAR_PATH = os.path.abspath(os.path.join(CURRENT_PATH, os.pardir))
 sys.path.append(PAR_PATH)
+import logging
+from log import LOG_PATH
+
 from src.algo.offlineAlgo import OfflineAlgo
 import networkx as nx
 from src.dataset import Dataset
 from src.server.server import Server
 from src.constant import Constant
+import time
 
 
 def print_graph(server_list):
@@ -26,14 +29,14 @@ def print_graph(server_list):
 
 
 def main(dataset='amazon', part_flag=0.01):
-
     logging.basicConfig(level=logging.DEBUG,
-                        filename=os.path.join(LOG_PATH, '%s_%s_%s' % ('Offline', dataset, str(part_flag))),
+                        filename=os.path.join(LOG_PATH, '%s_%s_%s_%s' % (
+                            time.strftime("%Y-%m-%d_%H-%M-%S"), 'offline', dataset, str(part_flag))),
                         filemode='w')
     Constant().log_out()
     data = Dataset(dataset_str=dataset, part_flag=part_flag)
 
-    server_list = [Server(serer_id=i) for i in range(30)]
+    server_list = [Server(serer_id=i) for i in range(Constant.SERVER_NUMBER)]
     algo = OfflineAlgo(server_list=server_list, network_dataset=data)
     node_list = list(data.graph.nodes)
     node_len = len(node_list)
@@ -82,4 +85,4 @@ def main(dataset='amazon', part_flag=0.01):
 
 
 if __name__ == '__main__':
-    main()
+    main(dataset='p2pgnutella', part_flag=0.1)
