@@ -3,7 +3,7 @@ from src.constant import Constant
 from src.node.node import Node
 from src.algo.inter_server_cost import compute_inter_sever_cost
 import networkx as nx
-
+import logging
 
 class Operation(Basic):
     def __init__(self):
@@ -36,10 +36,6 @@ class Operation(Basic):
 
     @staticmethod
     def remove_redundant_replica_on_server(server, algo):
-        # TODO
-        non_primary_copy_list = server.return_type_nodes(node_type=Constant.NON_PRIMARY_COPY)
-        for node_id in non_primary_copy_list:
-            pass
         raise NotImplementedError
 
     @staticmethod
@@ -56,6 +52,7 @@ class Operation(Basic):
     @staticmethod
     def _virtual_primary_copy_is_redundant():
         # TODO
+        raise NotImplementedError
         pass
 
     @staticmethod
@@ -153,9 +150,10 @@ class Operation(Basic):
         s_node.add_virtual_primary_copy(target_server=t_server)
         Operation.remove_node_from_server(node_id=t_node.id, server=t_server, algo=algo)
         t_node.add_virtual_primary_copy(target_server=s_server)
-        print(
-            "Swap virtual copy, node %d to server %d, node %d to server %d" %
-            (s_node.id, t_server.id, t_node.id, s_server.id))
+        log_str = "Swap virtual copy, node %d to server %d, node %d to server %d" % (
+        s_node.id, t_server.id, t_node.id, s_server.id)
+        logging.info(log_str)
+        print(log_str)
         return True
 
     @staticmethod

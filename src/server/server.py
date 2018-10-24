@@ -1,6 +1,7 @@
 from src.core import Basic
 import networkx as nx
 from src.constant import Constant
+import logging
 
 
 class Server(Basic):
@@ -24,7 +25,9 @@ class Server(Basic):
         if self.graph.has_node(node_id):
             return self.graph.nodes[node_id]
         else:
-            print("Node %d not existed" % (node_id))
+            log_str = "Node %d not existed" % node_id
+            logging.info(log_str)
+            print(log_str)
             return False
 
     def get_load(self):

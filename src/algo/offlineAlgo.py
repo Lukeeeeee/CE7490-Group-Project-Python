@@ -6,6 +6,7 @@ from src.algo.operation import Operation
 from src.algo.algo import Algo
 import numpy as np
 from src.node.mergedNode import MergedNode
+import logging
 
 
 class OfflineAlgo(Algo):
@@ -39,6 +40,7 @@ class OfflineAlgo(Algo):
             pr_node = server.get_node(node_id=node_id)
             if not pr_node and pr_node['NODE_TYPE'] == Constant.PRIMARY_COPY:
                 if res is not None:
+                    logging.error("Multiple primary copy existed")
                     raise RuntimeError("Multiple primary copy existed")
                 res = server
                 break
@@ -192,10 +194,14 @@ class OfflineAlgo(Algo):
     def node_relocation_process(self, iteration_times=Constant.MAX_RELOCATE_ITERATION):
         for _ in range(iteration_times):
             for node in self.node_list:
-                print("Relocate change node %d" % node.id)
+                log_str = "Relocate change node %d" % node.id
+                logging.info(log_str)
+                print(log_str)
                 pre_server_id = node.server.id
                 if self.node_relocate(node=node):
-                    print("Node %d was relocated from %d to %d" % (node.id, pre_server_id, node.server.id))
+                    log_str = "Node %d was relocated from %d to %d" % (node.id, pre_server_id, node.server.id)
+                    logging.info(log_str)
+                    print(log_str)
 
     def node_relocate(self, node):
         max_scb = 0.0
@@ -293,7 +299,6 @@ class OfflineAlgo(Algo):
                         break
                 if swapped_flag is True:
                     break
-
 
     def _compute_gain_in_swap_merged_node_process(self, s_merged_node, t_merged_node):
         s_server = s_merged_node.server

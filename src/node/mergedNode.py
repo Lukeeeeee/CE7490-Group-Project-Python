@@ -4,6 +4,7 @@ from src.core import Basic
 from copy import deepcopy as dp
 import numpy as np
 from src.constant import Constant
+import logging
 
 
 class MergedNode(Basic):
@@ -16,7 +17,9 @@ class MergedNode(Basic):
         self.external_connection = len(list(algo.network_dataset.graph[ID]))
         self.id = ID
         self.server = server
-        print("new merged node %d with node %d, server %d" % (self.id, self.node_id_list[0], server.id))
+        log_str = "new merged node %d with node %d, server %d" % (self.id, self.node_id_list[0], server.id)
+        logging.info(log_str)
+        print(log_str)
 
     @property
     def merge_process_metric_beta(self):
@@ -35,9 +38,7 @@ class MergedNode(Basic):
 
         if remove_flag is True:
             original_merged_node = list(filter(lambda x: x.id == prev_node_id, algo.merged_node_list))
-            if len(original_merged_node) != 1:
-                print("%d" % node.id, self.node_id_list)
-                pass
+
             assert len(original_merged_node) == 1
             original_merged_node = original_merged_node[0]
             algo.merged_node_list.remove(original_merged_node)
@@ -57,7 +58,9 @@ class MergedNode(Basic):
         self.node_id_list.append(node.id)
 
         node.merged_node_id = self.id
-        print("node %d was merged into %d, node_list=" % (node.id, self.id), self.node_id_list)
+        log_str = "node %d was merged into %d, node_list=" % (node.id, self.id), self.node_id_list
+        logging.info(log_str)
+        print(log_str)
 
     def launch_merge_node_process(self, algo):
         rand_index = np.arange((len(self.node_list)))
