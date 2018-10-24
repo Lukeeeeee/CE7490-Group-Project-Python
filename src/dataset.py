@@ -6,9 +6,16 @@ import os
 
 
 class Dataset(Basic):
-    def __init__(self, dataset_str):
+    def __init__(self, dataset_str, part_flag=None):
         super().__init__()
         self.graph = self.load_dataset(dataset_str)
+        if part_flag:
+            self.node_list = list(self.graph.nodes)
+        split_index = int(len(self.node_list) * part_flag)
+
+        for i in range(split_index, len(self.node_list)):
+            self.graph.remove_node(n=self.node_list[i])
+        pass
 
     def load_dataset(self, dataset_str):
         g = nx.Graph()

@@ -17,10 +17,10 @@ class Operation(Basic):
             if len(algo.network_dataset.get_all_adj_node_id_list(node_id=adj_node_id)) == 1 and node.server.has_node(
                     node_id=adj_node_id, node_type=Constant.NON_PRIMARY_COPY):
                 Operation.remove_node_from_server(node_id=adj_node_id, server=node.server, algo=algo)
-        node.server.remove_node(node_id=node.id, node_type=Constant.PRIMARY_COPY)
+        Operation.remove_node_from_server(node_id=node.id, server=node.server, algo=algo)
         if target_server.has_node(node_id=node.id):
             target_server_node_type = target_server.graph.nodes[node.id]['node_type']
-            target_server.remove_node(node_id=node.id)
+            Operation.remove_node_from_server(node_id=node.id, server=target_server, algo=algo)
             # If target server has virtual primary copy, do add a new virtual primary copy in original server of node
             if target_server_node_type == Constant.VIRTUAL_PRIMARY_COPY:
                 node.server.add_node(node_id=node.id, node_type=Constant.VIRTUAL_PRIMARY_COPY,
@@ -148,21 +148,15 @@ class Operation(Basic):
         return count
 
     @staticmethod
-    def swap_virtual_primary_copy(s_node, t_node, s_server, t_server):
-        try:
-            s_node.virtual_primary_copy_server_list.remove(s_server)
-            s_server.remove_node(node_id=s_node.id)
-            s_node.add_virtual_primary_copy(target_server=t_server)
-
-            t_node.virtual_primary_copy_server_list.remove(t_server)
-            t_server.remove_node(node_id=t_node.id)
-            t_node.add_virtual_primary_copy(target_server=s_server)
-            print(
-                "Swap virtual copy, node %d to server %d, node %d to server %d" %
-                (s_node.id, t_server.id, t_node.id, s_server.id))
-            return True
-        except nx.NetworkXError:
-            return False
+    def swap_virtual_primary_copy(s_node, t_node, s_server, t_server, algo):
+        Operation.remove_node_from_server(node_id=s_node.id, server=s_server, algo=algo)
+        s_node.add_virtual_primary_copy(target_server=t_server)
+        Operation.remove_node_from_server(node_id=t_node.id, server=t_server, algo=algo)
+        t_node.add_virtual_primary_copy(target_server=s_server)
+        print(
+            "Swap virtual copy, node %d to server %d, node %d to server %d" %
+            (s_node.id, t_server.id, t_node.id, s_server.id))
+        return True
 
     @staticmethod
     def move_merged_node(merged_node, target_server, algo):

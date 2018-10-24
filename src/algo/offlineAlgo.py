@@ -58,6 +58,14 @@ class OfflineAlgo(Algo):
             return node_i
         return None
 
+    def get_merged_node_with_id(self, node_id):
+        node = self.get_node_with_id(node_id=node_id)
+        merged_node = list(filter(lambda x: x.id == node.merged_node_id, self.merged_node_list))
+        assert len(merged_node) <= 1
+        for node in merged_node:
+            return node
+        return None
+
     # def get_relation_with_node(self, source_node_id, target_node_id):
     #     return -1
 
@@ -200,7 +208,7 @@ class OfflineAlgo(Algo):
                     final_new_server = server_i
         if final_new_server:
             if abs(final_new_server.get_load() + 1 - (
-                    node.server.get_load() - 1)) <= Constant.MAX_LOAD_DIFFERENCE_AMONG_SERER:
+                    node.server.get_load() - 1)) <= Constant.MAX_LOAD_DIFFERENCE_AMONG_SERVER:
                 Operation.move_node_to_server(node=node, target_server=final_new_server, algo=self)
             else:
                 assert final_new_server.id != node.server_id
@@ -265,6 +273,7 @@ class OfflineAlgo(Algo):
         # if swapped resulted into eliminating the non-primary copy, then swap
         for node in self.node_list:
             for vir_pr_server in node.virtual_primary_copy_server_list:
+                swapped_flag = False
                 for non_pr_server in node.non_primary_copy_server_list:
                     non_pr_node_list = vir_pr_server.return_type_nodes(
                         node_type=Constant.NON_PRIMARY_COPY)
@@ -276,8 +285,15 @@ class OfflineAlgo(Algo):
                         if Operation.swap_virtual_primary_copy(s_node=node,
                                                                t_node=self.get_node_with_id(t_node),
                                                                s_server=vir_pr_server,
-                                                               t_server=non_pr_server) is True:
+                                                               t_server=non_pr_server,
+                                                               algo=self) is True:
+                            swapped_flag = True
                             break
+                    if swapped_flag is True:
+                        break
+                if swapped_flag is True:
+                    break
+
 
     def _compute_gain_in_swap_merged_node_process(self, s_merged_node, t_merged_node):
         s_server = s_merged_node.server

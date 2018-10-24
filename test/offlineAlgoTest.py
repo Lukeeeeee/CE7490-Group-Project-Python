@@ -21,9 +21,9 @@ def print_graph(server_list):
 
 
 def main():
-    data = Dataset(dataset_str='facebook')
+    data = Dataset(dataset_str='amazons', part_flag=0.01)
 
-    server_list = [Server(serer_id=i) for i in range(100)]
+    server_list = [Server(serer_id=i) for i in range(30)]
     algo = OfflineAlgo(server_list=server_list, network_dataset=data)
     node_list = list(data.graph.nodes)
     node_len = len(node_list)

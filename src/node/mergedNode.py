@@ -10,6 +10,7 @@ class MergedNode(Basic):
     def __init__(self, node, ID, server, algo):
         super().__init__()
         self.node_list = [node]
+        node.merged_node_id = ID
         self.node_id_list = [ID]
         self.internal_connection = 0
         self.external_connection = len(list(algo.network_dataset.graph[ID]))
@@ -27,12 +28,19 @@ class MergedNode(Basic):
         return len(self.node_list)
 
     def _add_node(self, node, algo, remove_flag=True):
-        if isinstance(node, Node):
-            self._add_single_node(node=node, algo=algo, remove_flag=remove_flag)
-        else:
-            for node_i in node.node_list:
-                self._add_single_node(node=node_i, algo=algo, remove_flag=remove_flag)
-            pass
+        prev_node_id = node.id
+        assert isinstance(node, MergedNode)
+        for node_i in node.node_list:
+            self._add_single_node(node=node_i, algo=algo, remove_flag=remove_flag)
+
+        if remove_flag is True:
+            original_merged_node = list(filter(lambda x: x.id == prev_node_id, algo.merged_node_list))
+            if len(original_merged_node) != 1:
+                print("%d" % node.id, self.node_id_list)
+                pass
+            assert len(original_merged_node) == 1
+            original_merged_node = original_merged_node[0]
+            algo.merged_node_list.remove(original_merged_node)
 
     def _add_single_node(self, node, algo, remove_flag=True):
         inside_degree = 0
@@ -47,11 +55,8 @@ class MergedNode(Basic):
 
         self.node_list.append(node)
         self.node_id_list.append(node.id)
+
         node.merged_node_id = self.id
-        if remove_flag is True:
-            index = list(filter(lambda x: x.id == node.id, algo.merged_node_list))
-            assert len(index) == 1
-            algo.merged_node_list.remove(index[0])
         print("node %d was merged into %d, node_list=" % (node.id, self.id), self.node_id_list)
 
     def launch_merge_node_process(self, algo):
@@ -67,11 +72,26 @@ class MergedNode(Basic):
                 for index_i in adj_node_index:
                     adj_node_id = adj_node_list[index_i]
                     if adj_node_id not in self.node_id_list:
-                        temp_node = dp(self)
-                        adj_node = algo.get_node_with_id(adj_node_id)
-                        temp_node._add_node(node=adj_node, algo=algo, remove_flag=False)
-                        if temp_node.merge_process_metric_beta > self.merge_process_metric_beta:
-                            self._add_node(node=adj_node, algo=algo)
+                        to_merge_node = algo.get_merged_node_with_id(adj_node_id)
+                        copyed_adj_node = dp(to_merge_node)
+                        copyed_temp_node = dp(self)
+                        copyed_temp_node._add_node(node=copyed_adj_node, algo=dp(algo), remove_flag=False)
+                        if copyed_temp_node.merge_process_metric_beta > self.merge_process_metric_beta:
+                            self._add_node(node=to_merge_node, algo=algo)
                             merged_flag = True
                 if not merged_flag:
                     break
+
+    def remove_one_node(self, node, algo):
+        self.node_list.remove(node)
+        self.node_id_list.remove(node.id)
+        inside_degree = 0
+        for node_s in self.node_id_list:
+            # Add internal connection count if has edge, also remove external connection
+            if node.id in list(algo.network_dataset.graph[node_s]):
+                self.internal_connection -= 1
+                self.external_connection += 1
+                inside_degree += 1
+        # Add external connection with node that connected with new add node and not in the merged node
+        self.external_connection -= len(algo.network_dataset.graph[node.id]) - inside_degree
+        pass
