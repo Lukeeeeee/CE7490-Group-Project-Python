@@ -1,0 +1,9 @@
+INFO:root:Experiment Fig.3, different server number, dataset = Facebook
+INFO:root:file Facebook, server number = 128, nodes = 256, edges = 1492 cost = 1454
+INFO:root:average: replica_per_node=5, master_per_server=2, replicas_per_server=11
+INFO:root:file Facebook, server number = 128, nodes = 512, edges = 3598 cost = 3469
+INFO:root:average: replica_per_node=6, master_per_server=4, replicas_per_server=27
+INFO:root:file Facebook, server number = 128, nodes = 1024, edges = 13251 cost = 12001
+INFO:root:average: replica_per_node=11, master_per_server=8, replicas_per_server=93
+INFO:root:file Facebook, server number = 128, nodes = 2048, edges = 40183 cost = 34301
+INFO:root:average: replica_per_node=16, master_per_server=16, replicas_per_server=267

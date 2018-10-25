@@ -1,0 +1,31 @@
+INFO:root:Experiment Fig.3, different server number, dataset = TwitterSample2
+INFO:root:file TwitterSample2, server number = 2, nodes = 7251, edges = 39089 cost = 5905, time = 50.326579093933105
+INFO:root:average: replica_per_node=0, master_per_server=3625, replicas_per_server=2952
+INFO:root:End experiment fig3
+INFO:root:file TwitterSample2, server number = 4, nodes = 7251, edges = 39089 cost = 13409, time = 52.70484256744385
+INFO:root:average: replica_per_node=1, master_per_server=1812, replicas_per_server=3352
+INFO:root:End experiment fig3
+INFO:root:file TwitterSample2, server number = 8, nodes = 7251, edges = 39089 cost = 21513, time = 53.32349920272827
+INFO:root:average: replica_per_node=2, master_per_server=906, replicas_per_server=2689
+INFO:root:End experiment fig3
+INFO:root:file TwitterSample2, server number = 16, nodes = 7251, edges = 39089 cost = 28424, time = 54.777650594711304
+INFO:root:average: replica_per_node=3, master_per_server=453, replicas_per_server=1776
+INFO:root:End experiment fig3
+INFO:root:file TwitterSample2, server number = 32, nodes = 7251, edges = 39089 cost = 33206, time = 56.753578186035156
+INFO:root:average: replica_per_node=4, master_per_server=226, replicas_per_server=1037
+INFO:root:End experiment fig3
+INFO:root:file TwitterSample2, server number = 64, nodes = 7251, edges = 39089 cost = 36182, time = 54.540247440338135
+INFO:root:average: replica_per_node=4, master_per_server=113, replicas_per_server=565
+INFO:root:End experiment fig3
+INFO:root:file TwitterSample2, server number = 128, nodes = 7251, edges = 39089 cost = 37556, time = 56.92886233329773
+INFO:root:average: replica_per_node=5, master_per_server=56, replicas_per_server=293
+INFO:root:End experiment fig3
+INFO:root:file TwitterSample2, server number = 256, nodes = 7251, edges = 39089 cost = 38358, time = 57.58710479736328
+INFO:root:average: replica_per_node=5, master_per_server=28, replicas_per_server=149
+INFO:root:End experiment fig3
+INFO:root:file TwitterSample2, server number = 512, nodes = 7251, edges = 39089 cost = 38858, time = 55.45023775100708
+INFO:root:average: replica_per_node=5, master_per_server=14, replicas_per_server=75
+INFO:root:End experiment fig3
+INFO:root:file TwitterSample2, server number = 1000, nodes = 7251, edges = 39089 cost = 38986, time = 59.54586887359619
+INFO:root:average: replica_per_node=5, master_per_server=7, replicas_per_server=38
+INFO:root:End experiment fig3
