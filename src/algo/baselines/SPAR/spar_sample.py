@@ -7,6 +7,7 @@ from tqdm import tqdm
 from src.algo.baselines.SPAR.read_data import read_file_to_dict
 from src.algo.baselines.SPAR.Spar import Spar
 from dataset import DATASET_PATH
+from graphs.spar import SPAR_GRAPH_SAVE_PATH
 from log import LOG_PATH
 from src.constant import Constant
 
@@ -38,7 +39,7 @@ def calculate_mean_length(dict):
     return int(length/iter)
 
 
-def test_spar_sample(file, server_number, minimum_replicas, percent10_stop=False):
+def test_spar_sample(file, server_number, minimum_replicas, percent10_stop, path):
     filename = DATASET_PATH + '/' + file + '.txt'
     # path = '././dataset/'
     # filename = path + file + '.txt'
@@ -77,6 +78,9 @@ def test_spar_sample(file, server_number, minimum_replicas, percent10_stop=False
     print('cost'+str(cost))
     print('averages'+str(averages))
     print('data_shape'+str(np.shape(col_data)))
+    save_obj(graph, file+'_graph', path)
+    save_obj(replicas_in_each_server, file + '_replicas', path)
+    save_obj(masters_in_each_server, file + '_masters', path)
 
     del spar
 
@@ -115,6 +119,7 @@ def spar_experiment_1(percent10_stop=False):
     fh.setFormatter(formatter)
     logger.addHandler(fh)
 
+    save_file_dir = SPAR_GRAPH_SAVE_PATH + '/Fig10_'
     logger.info('Start experiment 1')
     if percent10_stop:
         logger.info('Stop at 10 percent of the data')
@@ -123,7 +128,7 @@ def spar_experiment_1(percent10_stop=False):
     for file in digraph_files:
         print('Processing 2 replicas' + file)
         cost, running_time, averages, num_nodes, num_edges = test_spar_sample(file, num_server, minimum_replica,
-                                                                              percent10_stop)
+                                                                              percent10_stop, save_file_dir)
         logger.info('file %s, server number = %s, nodes = %s, edges = %s cost = %s, time = %s', file,
                     str(num_server), str(num_nodes), str(num_edges), str(cost), str(running_time))
         logger.info('average: replica_per_node=%s, master_per_server=%s, replicas_per_server=%s',
@@ -133,12 +138,13 @@ def spar_experiment_1(percent10_stop=False):
     print(replica_2_result)
     logger.info('replica 2 results: %s', str(replica_2_result))
 
+    save_file_dir = SPAR_GRAPH_SAVE_PATH + '/Fig11_'
     replica_3_result = {}
     minimum_replica = 3
     for file in digraph_files:
         print('Processing 3 replicas' + file)
         cost, running_time, averages, num_nodes, num_edges = test_spar_sample(file, num_server, minimum_replica,
-                                                                              percent10_stop)
+                                                                              percent10_stop, save_file_dir)
         logger.info('file %s, server number = %s, nodes = %s, edges = %s cost = %s, time = %s', file,
                     str(num_server), str(num_nodes), str(num_edges), str(cost), str(running_time))
         logger.info('average: replica_per_node=%s, master_per_server=%s, replicas_per_server=%s',
@@ -151,4 +157,4 @@ def spar_experiment_1(percent10_stop=False):
 
 
 if __name__ == '__main__':
-    spar_experiment_1(percent10_stop=False)
+    spar_experiment_1(percent10_stop=True)
