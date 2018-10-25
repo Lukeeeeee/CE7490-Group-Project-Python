@@ -81,7 +81,9 @@ def main(dataset='amazon', part_flag=0.01):
     logging.info("Running virtual primary copy swap process")
     algo.virtual_primary_copy_swap()
     print_graph(server_list)
-    print(algo.compute_inter_server_cost())
+    log_str = 'Inter Server cost is %f' % algo.compute_inter_server_cost()
+    print(log_str)
+    logging.info(log_str)
 
 
 if __name__ == '__main__':

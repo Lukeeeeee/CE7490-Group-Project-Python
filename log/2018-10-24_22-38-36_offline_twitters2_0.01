@@ -1,0 +1,805 @@
+INFO:root:MERGED_GROUP_LOOSE_CONSTRAINT_EPSILON 4
+INFO:root:SERVER_NUMBER 128
+INFO:root:MAX_RELOCATE_ITERATION 5
+INFO:root:LEAST_VIRTUAL_PRIMARY_COPY_NUMBER 2
+INFO:root:MAX_LOAD_DIFFERENCE_AMONG_SERVER 1
+INFO:root:MERGED_GROUP_LOOSE_CONSTRAINT_EPSILON 4
+INFO:root:SERVER_NUMBER 128
+INFO:root:MAX_RELOCATE_ITERATION 5
+INFO:root:LEAST_VIRTUAL_PRIMARY_COPY_NUMBER 2
+INFO:root:MAX_LOAD_DIFFERENCE_AMONG_SERVER 1
+INFO:root:(0/72) Adding node: 1
+INFO:root:(1/72) Adding node: 2400
+INFO:root:(2/72) Adding node: 5167
+INFO:root:(3/72) Adding node: 6042
+INFO:root:(4/72) Adding node: 2
+INFO:root:(5/72) Adding node: 951
+INFO:root:(6/72) Adding node: 1285
+INFO:root:(7/72) Adding node: 1490
+INFO:root:(8/72) Adding node: 3
+INFO:root:(9/72) Adding node: 1715
+INFO:root:(10/72) Adding node: 2510
+INFO:root:(11/72) Adding node: 2613
+INFO:root:(12/72) Adding node: 2751
+INFO:root:(13/72) Adding node: 3226
+INFO:root:(14/72) Adding node: 4106
+INFO:root:(15/72) Adding node: 4306
+INFO:root:(16/72) Adding node: 4523
+INFO:root:(17/72) Adding node: 4774
+INFO:root:(18/72) Adding node: 5919
+INFO:root:(19/72) Adding node: 6471
+INFO:root:(20/72) Adding node: 5
+INFO:root:(21/72) Adding node: 6740
+INFO:root:(22/72) Adding node: 7207
+INFO:root:(23/72) Adding node: 6
+INFO:root:(24/72) Adding node: 1548
+INFO:root:(25/72) Adding node: 7
+INFO:root:(26/72) Adding node: 292
+INFO:root:(27/72) Adding node: 1644
+INFO:root:(28/72) Adding node: 3129
+INFO:root:(29/72) Adding node: 3301
+INFO:root:(30/72) Adding node: 3597
+INFO:root:(31/72) Adding node: 3730
+INFO:root:(32/72) Adding node: 4749
+INFO:root:(33/72) Adding node: 6059
+INFO:root:(34/72) Adding node: 6129
+INFO:root:(35/72) Adding node: 7046
+INFO:root:(36/72) Adding node: 7622
+INFO:root:(37/72) Adding node: 9
+INFO:root:(38/72) Adding node: 2390
+INFO:root:(39/72) Adding node: 4783
+INFO:root:(40/72) Adding node: 5195
+INFO:root:(41/72) Adding node: 8064
+INFO:root:(42/72) Adding node: 12
+INFO:root:(43/72) Adding node: 3524
+INFO:root:(44/72) Adding node: 3938
+INFO:root:(45/72) Adding node: 4053
+INFO:root:(46/72) Adding node: 4326
+INFO:root:(47/72) Adding node: 6239
+INFO:root:(48/72) Adding node: 7049
+INFO:root:(49/72) Adding node: 7604
+INFO:root:(50/72) Adding node: 13
+INFO:root:(51/72) Adding node: 273
+INFO:root:(52/72) Adding node: 800
+INFO:root:(53/72) Adding node: 1203
+INFO:root:(54/72) Adding node: 1888
+INFO:root:(55/72) Adding node: 3099
+INFO:root:(56/72) Adding node: 3762
+INFO:root:(57/72) Adding node: 4263
+INFO:root:(58/72) Adding node: 4489
+INFO:root:(59/72) Adding node: 4542
+INFO:root:(60/72) Adding node: 4809
+INFO:root:(61/72) Adding node: 6921
+INFO:root:(62/72) Adding node: 14
+INFO:root:(63/72) Adding node: 3737
+INFO:root:(64/72) Adding node: 17
+INFO:root:(65/72) Adding node: 388
+INFO:root:(66/72) Adding node: 6376
+INFO:root:(67/72) Adding node: 20
+INFO:root:(68/72) Adding node: 3494
+INFO:root:(69/72) Adding node: 4698
+INFO:root:(70/72) Adding node: 6512
+INFO:root:(71/72) Adding node: 7147
+INFO:root:Server: 0, load: 4
+INFO:root:1: node type 1, write freq 10.000000
+INFO:root:2400: node type 2, write freq 10.000000
+INFO:root:5167: node type 2, write freq 10.000000
+INFO:root:6042: node type 2, write freq 10.000000
+INFO:root:Server: 1, load: 8
+INFO:root:1: node type 3, write freq 10.000000
+INFO:root:4749: node type 1, write freq 10.000000
+INFO:root:7: node type 2, write freq 10.000000
+INFO:root:292: node type 2, write freq 10.000000
+INFO:root:3129: node type 2, write freq 10.000000
+INFO:root:3730: node type 2, write freq 10.000000
+INFO:root:3301: node type 2, write freq 10.000000
+INFO:root:7622: node type 2, write freq 10.000000
+INFO:root:Server: 2, load: 4
+INFO:root:1: node type 3, write freq 10.000000
+INFO:root:4749: node type 3, write freq 10.000000
+INFO:root:3762: node type 1, write freq 10.000000
+INFO:root:13: node type 2, write freq 10.000000
+INFO:root:Server: 3, load: 3
+INFO:root:1: node type 3, write freq 10.000000
+INFO:root:4749: node type 3, write freq 10.000000
+INFO:root:3762: node type 3, write freq 10.000000
+INFO:root:Server: 4, load: 3
+INFO:root:2400: node type 1, write freq 10.000000
+INFO:root:1: node type 2, write freq 10.000000
+INFO:root:5167: node type 2, write freq 10.000000
+INFO:root:Server: 5, load: 3
+INFO:root:2400: node type 3, write freq 10.000000
+INFO:root:4749: node type 3, write freq 10.000000
+INFO:root:3762: node type 3, write freq 10.000000
+INFO:root:Server: 6, load: 6
+INFO:root:2400: node type 3, write freq 10.000000
+INFO:root:6059: node type 1, write freq 10.000000
+INFO:root:7: node type 2, write freq 10.000000
+INFO:root:1644: node type 2, write freq 10.000000
+INFO:root:4106: node type 2, write freq 10.000000
+INFO:root:7046: node type 2, write freq 10.000000
+INFO:root:Server: 7, load: 3
+INFO:root:2400: node type 3, write freq 10.000000
+INFO:root:6059: node type 3, write freq 10.000000
+INFO:root:3762: node type 3, write freq 10.000000
+INFO:root:Server: 8, load: 3
+INFO:root:5167: node type 1, write freq 10.000000
+INFO:root:1: node type 2, write freq 10.000000
+INFO:root:2400: node type 2, write freq 10.000000
+INFO:root:Server: 9, load: 6
+INFO:root:5167: node type 3, write freq 10.000000
+INFO:root:6059: node type 3, write freq 10.000000
+INFO:root:4263: node type 1, write freq 10.000000
+INFO:root:13: node type 2, write freq 10.000000
+INFO:root:1203: node type 2, write freq 10.000000
+INFO:root:4542: node type 2, write freq 10.000000
+INFO:root:Server: 10, load: 3
+INFO:root:5167: node type 3, write freq 10.000000
+INFO:root:6059: node type 3, write freq 10.000000
+INFO:root:4263: node type 3, write freq 10.000000
+INFO:root:Server: 11, load: 6
+INFO:root:5167: node type 3, write freq 10.000000
+INFO:root:6129: node type 1, write freq 10.000000
+INFO:root:7: node type 2, write freq 10.000000
+INFO:root:292: node type 2, write freq 10.000000
+INFO:root:3597: node type 2, write freq 10.000000
+INFO:root:3730: node type 2, write freq 10.000000
+INFO:root:Server: 12, load: 3
+INFO:root:6042: node type 1, write freq 10.000000
+INFO:root:1: node type 2, write freq 10.000000
+INFO:root:4263: node type 3, write freq 10.000000
+INFO:root:Server: 13, load: 3
+INFO:root:6042: node type 3, write freq 10.000000
+INFO:root:6129: node type 3, write freq 10.000000
+INFO:root:4263: node type 3, write freq 10.000000
+INFO:root:Server: 14, load: 5
+INFO:root:6042: node type 3, write freq 10.000000
+INFO:root:6129: node type 3, write freq 10.000000
+INFO:root:4489: node type 1, write freq 10.000000
+INFO:root:13: node type 2, write freq 10.000000
+INFO:root:3099: node type 2, write freq 10.000000
+INFO:root:Server: 15, load: 3
+INFO:root:6042: node type 3, write freq 10.000000
+INFO:root:6129: node type 3, write freq 10.000000
+INFO:root:4489: node type 3, write freq 10.000000
+INFO:root:Server: 16, load: 4
+INFO:root:2: node type 1, write freq 10.000000
+INFO:root:951: node type 2, write freq 10.000000
+INFO:root:1285: node type 2, write freq 10.000000
+INFO:root:1490: node type 2, write freq 10.000000
+INFO:root:Server: 17, load: 9
+INFO:root:2: node type 3, write freq 10.000000
+INFO:root:7046: node type 1, write freq 10.000000
+INFO:root:7: node type 2, write freq 10.000000
+INFO:root:3129: node type 2, write freq 10.000000
+INFO:root:3597: node type 2, write freq 10.000000
+INFO:root:3730: node type 2, write freq 10.000000
+INFO:root:1644: node type 2, write freq 10.000000
+INFO:root:6059: node type 2, write freq 10.000000
+INFO:root:7622: node type 2, write freq 10.000000
+INFO:root:Server: 18, load: 3
+INFO:root:2: node type 3, write freq 10.000000
+INFO:root:7046: node type 3, write freq 10.000000
+INFO:root:4489: node type 3, write freq 10.000000
+INFO:root:Server: 19, load: 3
+INFO:root:2: node type 3, write freq 10.000000
+INFO:root:7046: node type 3, write freq 10.000000
+INFO:root:4489: node type 3, write freq 10.000000
+INFO:root:Server: 20, load: 3
+INFO:root:951: node type 1, write freq 10.000000
+INFO:root:2: node type 2, write freq 10.000000
+INFO:root:1490: node type 2, write freq 10.000000
+INFO:root:Server: 21, load: 5
+INFO:root:951: node type 3, write freq 10.000000
+INFO:root:7046: node type 3, write freq 10.000000
+INFO:root:4542: node type 1, write freq 10.000000
+INFO:root:13: node type 2, write freq 10.000000
+INFO:root:4263: node type 2, write freq 10.000000
+INFO:root:Server: 22, load: 9
+INFO:root:951: node type 3, write freq 10.000000
+INFO:root:7622: node type 1, write freq 10.000000
+INFO:root:7: node type 2, write freq 10.000000
+INFO:root:292: node type 2, write freq 10.000000
+INFO:root:3129: node type 2, write freq 10.000000
+INFO:root:3597: node type 2, write freq 10.000000
+INFO:root:3730: node type 2, write freq 10.000000
+INFO:root:4749: node type 2, write freq 10.000000
+INFO:root:7046: node type 2, write freq 10.000000
+INFO:root:Server: 23, load: 3
+INFO:root:951: node type 3, write freq 10.000000
+INFO:root:7622: node type 3, write freq 10.000000
+INFO:root:4542: node type 3, write freq 10.000000
+INFO:root:Server: 24, load: 3
+INFO:root:1285: node type 1, write freq 10.000000
+INFO:root:2: node type 2, write freq 10.000000
+INFO:root:4542: node type 3, write freq 10.000000
+INFO:root:Server: 25, load: 3
+INFO:root:1285: node type 3, write freq 10.000000
+INFO:root:7622: node type 3, write freq 10.000000
+INFO:root:4542: node type 3, write freq 10.000000
+INFO:root:Server: 26, load: 5
+INFO:root:1285: node type 3, write freq 10.000000
+INFO:root:7622: node type 3, write freq 10.000000
+INFO:root:4809: node type 1, write freq 10.000000
+INFO:root:13: node type 2, write freq 10.000000
+INFO:root:273: node type 2, write freq 10.000000
+INFO:root:Server: 27, load: 6
+INFO:root:1285: node type 3, write freq 10.000000
+INFO:root:9: node type 1, write freq 10.000000
+INFO:root:2390: node type 2, write freq 10.000000
+INFO:root:4783: node type 2, write freq 10.000000
+INFO:root:5195: node type 2, write freq 10.000000
+INFO:root:8064: node type 2, write freq 10.000000
+INFO:root:Server: 28, load: 3
+INFO:root:1490: node type 1, write freq 10.000000
+INFO:root:2: node type 2, write freq 10.000000
+INFO:root:951: node type 2, write freq 10.000000
+INFO:root:Server: 29, load: 3
+INFO:root:1490: node type 3, write freq 10.000000
+INFO:root:9: node type 3, write freq 10.000000
+INFO:root:4809: node type 3, write freq 10.000000
+INFO:root:Server: 30, load: 3
+INFO:root:1490: node type 3, write freq 10.000000
+INFO:root:9: node type 3, write freq 10.000000
+INFO:root:4809: node type 3, write freq 10.000000
+INFO:root:Server: 31, load: 3
+INFO:root:1490: node type 3, write freq 10.000000
+INFO:root:9: node type 3, write freq 10.000000
+INFO:root:4809: node type 3, write freq 10.000000
+INFO:root:Server: 32, load: 12
+INFO:root:3: node type 1, write freq 10.000000
+INFO:root:1715: node type 2, write freq 10.000000
+INFO:root:2510: node type 2, write freq 10.000000
+INFO:root:2613: node type 2, write freq 10.000000
+INFO:root:2751: node type 2, write freq 10.000000
+INFO:root:3226: node type 2, write freq 10.000000
+INFO:root:4106: node type 2, write freq 10.000000
+INFO:root:4306: node type 2, write freq 10.000000
+INFO:root:4523: node type 2, write freq 10.000000
+INFO:root:4774: node type 2, write freq 10.000000
+INFO:root:5919: node type 2, write freq 10.000000
+INFO:root:6471: node type 2, write freq 10.000000
+INFO:root:Server: 33, load: 7
+INFO:root:3: node type 3, write freq 10.000000
+INFO:root:2390: node type 1, write freq 10.000000
+INFO:root:9: node type 2, write freq 10.000000
+INFO:root:4783: node type 2, write freq 10.000000
+INFO:root:5195: node type 2, write freq 10.000000
+INFO:root:8064: node type 2, write freq 10.000000
+INFO:root:3737: node type 2, write freq 10.000000
+INFO:root:Server: 34, load: 4
+INFO:root:3: node type 3, write freq 10.000000
+INFO:root:2390: node type 3, write freq 10.000000
+INFO:root:6921: node type 1, write freq 10.000000
+INFO:root:13: node type 2, write freq 10.000000
+INFO:root:Server: 35, load: 3
+INFO:root:3: node type 3, write freq 10.000000
+INFO:root:2390: node type 3, write freq 10.000000
+INFO:root:6921: node type 3, write freq 10.000000
+INFO:root:Server: 36, load: 4
+INFO:root:1715: node type 1, write freq 10.000000
+INFO:root:3: node type 2, write freq 10.000000
+INFO:root:4306: node type 2, write freq 10.000000
+INFO:root:4774: node type 2, write freq 10.000000
+INFO:root:Server: 37, load: 3
+INFO:root:1715: node type 3, write freq 10.000000
+INFO:root:2390: node type 3, write freq 10.000000
+INFO:root:6921: node type 3, write freq 10.000000
+INFO:root:Server: 38, load: 6
+INFO:root:1715: node type 3, write freq 10.000000
+INFO:root:4783: node type 1, write freq 10.000000
+INFO:root:9: node type 2, write freq 10.000000
+INFO:root:2390: node type 2, write freq 10.000000
+INFO:root:5195: node type 2, write freq 10.000000
+INFO:root:8064: node type 2, write freq 10.000000
+INFO:root:Server: 39, load: 3
+INFO:root:1715: node type 3, write freq 10.000000
+INFO:root:4783: node type 3, write freq 10.000000
+INFO:root:6921: node type 3, write freq 10.000000
+INFO:root:Server: 40, load: 7
+INFO:root:2510: node type 1, write freq 10.000000
+INFO:root:3: node type 2, write freq 10.000000
+INFO:root:3226: node type 2, write freq 10.000000
+INFO:root:4106: node type 2, write freq 10.000000
+INFO:root:4306: node type 2, write freq 10.000000
+INFO:root:4523: node type 2, write freq 10.000000
+INFO:root:4774: node type 2, write freq 10.000000
+INFO:root:Server: 41, load: 4
+INFO:root:2510: node type 3, write freq 10.000000
+INFO:root:4783: node type 3, write freq 10.000000
+INFO:root:14: node type 1, write freq 10.000000
+INFO:root:3737: node type 2, write freq 10.000000
+INFO:root:Server: 42, load: 3
+INFO:root:2510: node type 3, write freq 10.000000
+INFO:root:4783: node type 3, write freq 10.000000
+INFO:root:14: node type 3, write freq 10.000000
+INFO:root:Server: 43, load: 5
+INFO:root:2510: node type 3, write freq 10.000000
+INFO:root:5195: node type 1, write freq 10.000000
+INFO:root:9: node type 2, write freq 10.000000
+INFO:root:2390: node type 2, write freq 10.000000
+INFO:root:4783: node type 2, write freq 10.000000
+INFO:root:Server: 44, load: 4
+INFO:root:2613: node type 1, write freq 10.000000
+INFO:root:3: node type 2, write freq 10.000000
+INFO:root:4523: node type 2, write freq 10.000000
+INFO:root:6471: node type 2, write freq 10.000000
+INFO:root:Server: 45, load: 3
+INFO:root:2613: node type 3, write freq 10.000000
+INFO:root:5195: node type 3, write freq 10.000000
+INFO:root:14: node type 3, write freq 10.000000
+INFO:root:Server: 46, load: 3
+INFO:root:2613: node type 3, write freq 10.000000
+INFO:root:5195: node type 3, write freq 10.000000
+INFO:root:14: node type 3, write freq 10.000000
+INFO:root:Server: 47, load: 8
+INFO:root:2613: node type 3, write freq 10.000000
+INFO:root:5195: node type 3, write freq 10.000000
+INFO:root:3737: node type 1, write freq 10.000000
+INFO:root:14: node type 2, write freq 10.000000
+INFO:root:2390: node type 2, write freq 10.000000
+INFO:root:4053: node type 2, write freq 10.000000
+INFO:root:8064: node type 2, write freq 10.000000
+INFO:root:6376: node type 2, write freq 10.000000
+INFO:root:Server: 48, load: 4
+INFO:root:2751: node type 1, write freq 10.000000
+INFO:root:3: node type 2, write freq 10.000000
+INFO:root:4106: node type 2, write freq 10.000000
+INFO:root:4306: node type 2, write freq 10.000000
+INFO:root:Server: 49, load: 6
+INFO:root:2751: node type 3, write freq 10.000000
+INFO:root:8064: node type 1, write freq 10.000000
+INFO:root:9: node type 2, write freq 10.000000
+INFO:root:2390: node type 2, write freq 10.000000
+INFO:root:4783: node type 2, write freq 10.000000
+INFO:root:3737: node type 2, write freq 10.000000
+INFO:root:Server: 50, load: 3
+INFO:root:2751: node type 3, write freq 10.000000
+INFO:root:8064: node type 3, write freq 10.000000
+INFO:root:3737: node type 3, write freq 10.000000
+INFO:root:Server: 51, load: 3
+INFO:root:2751: node type 3, write freq 10.000000
+INFO:root:8064: node type 3, write freq 10.000000
+INFO:root:3737: node type 3, write freq 10.000000
+INFO:root:Server: 52, load: 7
+INFO:root:3226: node type 1, write freq 10.000000
+INFO:root:3: node type 2, write freq 10.000000
+INFO:root:2510: node type 2, write freq 10.000000
+INFO:root:4106: node type 2, write freq 10.000000
+INFO:root:4306: node type 2, write freq 10.000000
+INFO:root:4523: node type 2, write freq 10.000000
+INFO:root:4774: node type 2, write freq 10.000000
+INFO:root:Server: 53, load: 3
+INFO:root:3226: node type 3, write freq 10.000000
+INFO:root:8064: node type 3, write freq 10.000000
+INFO:root:3737: node type 3, write freq 10.000000
+INFO:root:Server: 54, load: 9
+INFO:root:3226: node type 3, write freq 10.000000
+INFO:root:12: node type 1, write freq 10.000000
+INFO:root:3524: node type 2, write freq 10.000000
+INFO:root:3938: node type 2, write freq 10.000000
+INFO:root:4053: node type 2, write freq 10.000000
+INFO:root:4326: node type 2, write freq 10.000000
+INFO:root:6239: node type 2, write freq 10.000000
+INFO:root:7049: node type 2, write freq 10.000000
+INFO:root:7604: node type 2, write freq 10.000000
+INFO:root:Server: 55, load: 5
+INFO:root:3226: node type 3, write freq 10.000000
+INFO:root:12: node type 3, write freq 10.000000
+INFO:root:17: node type 1, write freq 10.000000
+INFO:root:388: node type 2, write freq 10.000000
+INFO:root:6376: node type 2, write freq 10.000000
+INFO:root:Server: 56, load: 10
+INFO:root:4106: node type 1, write freq 10.000000
+INFO:root:3: node type 2, write freq 10.000000
+INFO:root:2510: node type 2, write freq 10.000000
+INFO:root:2751: node type 2, write freq 10.000000
+INFO:root:3226: node type 2, write freq 10.000000
+INFO:root:4306: node type 2, write freq 10.000000
+INFO:root:4523: node type 2, write freq 10.000000
+INFO:root:4774: node type 2, write freq 10.000000
+INFO:root:6471: node type 2, write freq 10.000000
+INFO:root:6059: node type 2, write freq 10.000000
+INFO:root:Server: 57, load: 3
+INFO:root:4106: node type 3, write freq 10.000000
+INFO:root:12: node type 3, write freq 10.000000
+INFO:root:17: node type 3, write freq 10.000000
+INFO:root:Server: 58, load: 3
+INFO:root:4106: node type 3, write freq 10.000000
+INFO:root:12: node type 3, write freq 10.000000
+INFO:root:17: node type 3, write freq 10.000000
+INFO:root:Server: 59, load: 7
+INFO:root:4106: node type 3, write freq 10.000000
+INFO:root:3524: node type 1, write freq 10.000000
+INFO:root:12: node type 2, write freq 10.000000
+INFO:root:3938: node type 2, write freq 10.000000
+INFO:root:4326: node type 2, write freq 10.000000
+INFO:root:6239: node type 2, write freq 10.000000
+INFO:root:7604: node type 2, write freq 10.000000
+INFO:root:Server: 60, load: 9
+INFO:root:4306: node type 1, write freq 10.000000
+INFO:root:3: node type 2, write freq 10.000000
+INFO:root:1715: node type 2, write freq 10.000000
+INFO:root:2510: node type 2, write freq 10.000000
+INFO:root:2751: node type 2, write freq 10.000000
+INFO:root:3226: node type 2, write freq 10.000000
+INFO:root:4106: node type 2, write freq 10.000000
+INFO:root:4523: node type 2, write freq 10.000000
+INFO:root:4774: node type 2, write freq 10.000000
+INFO:root:Server: 61, load: 3
+INFO:root:4306: node type 3, write freq 10.000000
+INFO:root:3524: node type 3, write freq 10.000000
+INFO:root:17: node type 3, write freq 10.000000
+INFO:root:Server: 62, load: 4
+INFO:root:4306: node type 3, write freq 10.000000
+INFO:root:3524: node type 3, write freq 10.000000
+INFO:root:388: node type 1, write freq 10.000000
+INFO:root:17: node type 2, write freq 10.000000
+INFO:root:Server: 63, load: 3
+INFO:root:4306: node type 3, write freq 10.000000
+INFO:root:3524: node type 3, write freq 10.000000
+INFO:root:388: node type 3, write freq 10.000000
+INFO:root:Server: 64, load: 9
+INFO:root:4523: node type 1, write freq 10.000000
+INFO:root:3: node type 2, write freq 10.000000
+INFO:root:2510: node type 2, write freq 10.000000
+INFO:root:3226: node type 2, write freq 10.000000
+INFO:root:4106: node type 2, write freq 10.000000
+INFO:root:4306: node type 2, write freq 10.000000
+INFO:root:2613: node type 2, write freq 10.000000
+INFO:root:4774: node type 2, write freq 10.000000
+INFO:root:6471: node type 2, write freq 10.000000
+INFO:root:Server: 65, load: 7
+INFO:root:4523: node type 3, write freq 10.000000
+INFO:root:3938: node type 1, write freq 10.000000
+INFO:root:12: node type 2, write freq 10.000000
+INFO:root:3524: node type 2, write freq 10.000000
+INFO:root:4326: node type 2, write freq 10.000000
+INFO:root:6239: node type 2, write freq 10.000000
+INFO:root:7604: node type 2, write freq 10.000000
+INFO:root:Server: 66, load: 3
+INFO:root:4523: node type 3, write freq 10.000000
+INFO:root:3938: node type 3, write freq 10.000000
+INFO:root:388: node type 3, write freq 10.000000
+INFO:root:Server: 67, load: 3
+INFO:root:4523: node type 3, write freq 10.000000
+INFO:root:3938: node type 3, write freq 10.000000
+INFO:root:388: node type 3, write freq 10.000000
+INFO:root:Server: 68, load: 9
+INFO:root:4774: node type 1, write freq 10.000000
+INFO:root:3: node type 2, write freq 10.000000
+INFO:root:2510: node type 2, write freq 10.000000
+INFO:root:4106: node type 2, write freq 10.000000
+INFO:root:4306: node type 2, write freq 10.000000
+INFO:root:1715: node type 2, write freq 10.000000
+INFO:root:3226: node type 2, write freq 10.000000
+INFO:root:4523: node type 2, write freq 10.000000
+INFO:root:5919: node type 2, write freq 10.000000
+INFO:root:Server: 69, load: 5
+INFO:root:4774: node type 3, write freq 10.000000
+INFO:root:3938: node type 3, write freq 10.000000
+INFO:root:6376: node type 1, write freq 10.000000
+INFO:root:17: node type 2, write freq 10.000000
+INFO:root:3737: node type 2, write freq 10.000000
+INFO:root:Server: 70, load: 6
+INFO:root:4774: node type 3, write freq 10.000000
+INFO:root:4053: node type 1, write freq 10.000000
+INFO:root:12: node type 2, write freq 10.000000
+INFO:root:4326: node type 2, write freq 10.000000
+INFO:root:6239: node type 2, write freq 10.000000
+INFO:root:3737: node type 2, write freq 10.000000
+INFO:root:Server: 71, load: 3
+INFO:root:4774: node type 3, write freq 10.000000
+INFO:root:4053: node type 3, write freq 10.000000
+INFO:root:6376: node type 3, write freq 10.000000
+INFO:root:Server: 72, load: 3
+INFO:root:5919: node type 1, write freq 10.000000
+INFO:root:3: node type 2, write freq 10.000000
+INFO:root:4774: node type 2, write freq 10.000000
+INFO:root:Server: 73, load: 3
+INFO:root:5919: node type 3, write freq 10.000000
+INFO:root:4053: node type 3, write freq 10.000000
+INFO:root:6376: node type 3, write freq 10.000000
+INFO:root:Server: 74, load: 3
+INFO:root:5919: node type 3, write freq 10.000000
+INFO:root:4053: node type 3, write freq 10.000000
+INFO:root:6376: node type 3, write freq 10.000000
+INFO:root:Server: 75, load: 8
+INFO:root:5919: node type 3, write freq 10.000000
+INFO:root:4326: node type 1, write freq 10.000000
+INFO:root:12: node type 2, write freq 10.000000
+INFO:root:3524: node type 2, write freq 10.000000
+INFO:root:3938: node type 2, write freq 10.000000
+INFO:root:4053: node type 2, write freq 10.000000
+INFO:root:6239: node type 2, write freq 10.000000
+INFO:root:7604: node type 2, write freq 10.000000
+INFO:root:Server: 76, load: 5
+INFO:root:6471: node type 1, write freq 10.000000
+INFO:root:3: node type 2, write freq 10.000000
+INFO:root:4106: node type 2, write freq 10.000000
+INFO:root:4523: node type 2, write freq 10.000000
+INFO:root:2613: node type 2, write freq 10.000000
+INFO:root:Server: 77, load: 7
+INFO:root:6471: node type 3, write freq 10.000000
+INFO:root:4326: node type 3, write freq 10.000000
+INFO:root:20: node type 1, write freq 10.000000
+INFO:root:3494: node type 2, write freq 10.000000
+INFO:root:4698: node type 2, write freq 10.000000
+INFO:root:6512: node type 2, write freq 10.000000
+INFO:root:7147: node type 2, write freq 10.000000
+INFO:root:Server: 78, load: 3
+INFO:root:6471: node type 3, write freq 10.000000
+INFO:root:4326: node type 3, write freq 10.000000
+INFO:root:20: node type 3, write freq 10.000000
+INFO:root:Server: 79, load: 3
+INFO:root:6471: node type 3, write freq 10.000000
+INFO:root:4326: node type 3, write freq 10.000000
+INFO:root:20: node type 3, write freq 10.000000
+INFO:root:Server: 80, load: 3
+INFO:root:5: node type 1, write freq 10.000000
+INFO:root:6740: node type 2, write freq 10.000000
+INFO:root:7207: node type 2, write freq 10.000000
+INFO:root:Server: 81, load: 8
+INFO:root:5: node type 3, write freq 10.000000
+INFO:root:6239: node type 1, write freq 10.000000
+INFO:root:12: node type 2, write freq 10.000000
+INFO:root:3524: node type 2, write freq 10.000000
+INFO:root:3938: node type 2, write freq 10.000000
+INFO:root:4053: node type 2, write freq 10.000000
+INFO:root:4326: node type 2, write freq 10.000000
+INFO:root:7604: node type 2, write freq 10.000000
+INFO:root:Server: 82, load: 3
+INFO:root:5: node type 3, write freq 10.000000
+INFO:root:6239: node type 3, write freq 10.000000
+INFO:root:20: node type 3, write freq 10.000000
+INFO:root:Server: 83, load: 5
+INFO:root:5: node type 3, write freq 10.000000
+INFO:root:6239: node type 3, write freq 10.000000
+INFO:root:3494: node type 1, write freq 10.000000
+INFO:root:20: node type 2, write freq 10.000000
+INFO:root:6512: node type 2, write freq 10.000000
+INFO:root:Server: 84, load: 4
+INFO:root:6740: node type 1, write freq 10.000000
+INFO:root:5: node type 2, write freq 10.000000
+INFO:root:7207: node type 2, write freq 10.000000
+INFO:root:1548: node type 2, write freq 10.000000
+INFO:root:Server: 85, load: 3
+INFO:root:6740: node type 3, write freq 10.000000
+INFO:root:6239: node type 3, write freq 10.000000
+INFO:root:3494: node type 3, write freq 10.000000
+INFO:root:Server: 86, load: 3
+INFO:root:6740: node type 3, write freq 10.000000
+INFO:root:7049: node type 1, write freq 10.000000
+INFO:root:12: node type 2, write freq 10.000000
+INFO:root:Server: 87, load: 3
+INFO:root:6740: node type 3, write freq 10.000000
+INFO:root:7049: node type 3, write freq 10.000000
+INFO:root:3494: node type 3, write freq 10.000000
+INFO:root:Server: 88, load: 3
+INFO:root:7207: node type 1, write freq 10.000000
+INFO:root:5: node type 2, write freq 10.000000
+INFO:root:6740: node type 2, write freq 10.000000
+INFO:root:Server: 89, load: 3
+INFO:root:7207: node type 3, write freq 10.000000
+INFO:root:7049: node type 3, write freq 10.000000
+INFO:root:3494: node type 3, write freq 10.000000
+INFO:root:Server: 90, load: 5
+INFO:root:7207: node type 3, write freq 10.000000
+INFO:root:7049: node type 3, write freq 10.000000
+INFO:root:4698: node type 1, write freq 10.000000
+INFO:root:20: node type 2, write freq 10.000000
+INFO:root:7147: node type 2, write freq 10.000000
+INFO:root:Server: 91, load: 7
+INFO:root:7207: node type 3, write freq 10.000000
+INFO:root:7604: node type 1, write freq 10.000000
+INFO:root:12: node type 2, write freq 10.000000
+INFO:root:3524: node type 2, write freq 10.000000
+INFO:root:3938: node type 2, write freq 10.000000
+INFO:root:4326: node type 2, write freq 10.000000
+INFO:root:6239: node type 2, write freq 10.000000
+INFO:root:Server: 92, load: 3
+INFO:root:6: node type 1, write freq 10.000000
+INFO:root:1548: node type 2, write freq 10.000000
+INFO:root:4698: node type 3, write freq 10.000000
+INFO:root:Server: 93, load: 3
+INFO:root:6: node type 3, write freq 10.000000
+INFO:root:7604: node type 3, write freq 10.000000
+INFO:root:4698: node type 3, write freq 10.000000
+INFO:root:Server: 94, load: 3
+INFO:root:6: node type 3, write freq 10.000000
+INFO:root:7604: node type 3, write freq 10.000000
+INFO:root:4698: node type 3, write freq 10.000000
+INFO:root:Server: 95, load: 5
+INFO:root:6: node type 3, write freq 10.000000
+INFO:root:7604: node type 3, write freq 10.000000
+INFO:root:6512: node type 1, write freq 10.000000
+INFO:root:20: node type 2, write freq 10.000000
+INFO:root:3494: node type 2, write freq 10.000000
+INFO:root:Server: 96, load: 3
+INFO:root:1548: node type 1, write freq 10.000000
+INFO:root:6: node type 2, write freq 10.000000
+INFO:root:6740: node type 2, write freq 10.000000
+INFO:root:Server: 97, load: 13
+INFO:root:1548: node type 3, write freq 10.000000
+INFO:root:13: node type 1, write freq 10.000000
+INFO:root:273: node type 2, write freq 10.000000
+INFO:root:800: node type 2, write freq 10.000000
+INFO:root:1203: node type 2, write freq 10.000000
+INFO:root:1888: node type 2, write freq 10.000000
+INFO:root:3099: node type 2, write freq 10.000000
+INFO:root:3762: node type 2, write freq 10.000000
+INFO:root:4263: node type 2, write freq 10.000000
+INFO:root:4489: node type 2, write freq 10.000000
+INFO:root:4542: node type 2, write freq 10.000000
+INFO:root:4809: node type 2, write freq 10.000000
+INFO:root:6921: node type 2, write freq 10.000000
+INFO:root:Server: 98, load: 3
+INFO:root:1548: node type 3, write freq 10.000000
+INFO:root:13: node type 3, write freq 10.000000
+INFO:root:6512: node type 3, write freq 10.000000
+INFO:root:Server: 99, load: 3
+INFO:root:1548: node type 3, write freq 10.000000
+INFO:root:13: node type 3, write freq 10.000000
+INFO:root:6512: node type 3, write freq 10.000000
+INFO:root:Server: 100, load: 12
+INFO:root:7: node type 1, write freq 10.000000
+INFO:root:292: node type 2, write freq 10.000000
+INFO:root:1644: node type 2, write freq 10.000000
+INFO:root:3129: node type 2, write freq 10.000000
+INFO:root:3301: node type 2, write freq 10.000000
+INFO:root:3597: node type 2, write freq 10.000000
+INFO:root:3730: node type 2, write freq 10.000000
+INFO:root:4749: node type 2, write freq 10.000000
+INFO:root:6059: node type 2, write freq 10.000000
+INFO:root:6129: node type 2, write freq 10.000000
+INFO:root:7046: node type 2, write freq 10.000000
+INFO:root:7622: node type 2, write freq 10.000000
+INFO:root:Server: 101, load: 3
+INFO:root:7: node type 3, write freq 10.000000
+INFO:root:13: node type 3, write freq 10.000000
+INFO:root:6512: node type 3, write freq 10.000000
+INFO:root:Server: 102, load: 6
+INFO:root:7: node type 3, write freq 10.000000
+INFO:root:273: node type 1, write freq 10.000000
+INFO:root:13: node type 2, write freq 10.000000
+INFO:root:800: node type 2, write freq 10.000000
+INFO:root:3099: node type 2, write freq 10.000000
+INFO:root:4809: node type 2, write freq 10.000000
+INFO:root:Server: 103, load: 5
+INFO:root:7: node type 3, write freq 10.000000
+INFO:root:273: node type 3, write freq 10.000000
+INFO:root:7147: node type 1, write freq 10.000000
+INFO:root:20: node type 2, write freq 10.000000
+INFO:root:4698: node type 2, write freq 10.000000
+INFO:root:Server: 104, load: 8
+INFO:root:292: node type 1, write freq 10.000000
+INFO:root:7: node type 2, write freq 10.000000
+INFO:root:3129: node type 2, write freq 10.000000
+INFO:root:3597: node type 2, write freq 10.000000
+INFO:root:3730: node type 2, write freq 10.000000
+INFO:root:4749: node type 2, write freq 10.000000
+INFO:root:6129: node type 2, write freq 10.000000
+INFO:root:7622: node type 2, write freq 10.000000
+INFO:root:Server: 105, load: 3
+INFO:root:292: node type 3, write freq 10.000000
+INFO:root:273: node type 3, write freq 10.000000
+INFO:root:7147: node type 3, write freq 10.000000
+INFO:root:Server: 106, load: 3
+INFO:root:292: node type 3, write freq 10.000000
+INFO:root:273: node type 3, write freq 10.000000
+INFO:root:7147: node type 3, write freq 10.000000
+INFO:root:Server: 107, load: 4
+INFO:root:292: node type 3, write freq 10.000000
+INFO:root:800: node type 1, write freq 10.000000
+INFO:root:13: node type 2, write freq 10.000000
+INFO:root:273: node type 2, write freq 10.000000
+INFO:root:Server: 108, load: 4
+INFO:root:1644: node type 1, write freq 10.000000
+INFO:root:7: node type 2, write freq 10.000000
+INFO:root:6059: node type 2, write freq 10.000000
+INFO:root:7046: node type 2, write freq 10.000000
+INFO:root:Server: 109, load: 3
+INFO:root:1644: node type 3, write freq 10.000000
+INFO:root:800: node type 3, write freq 10.000000
+INFO:root:7147: node type 3, write freq 10.000000
+INFO:root:Server: 110, load: 2
+INFO:root:1644: node type 3, write freq 10.000000
+INFO:root:800: node type 3, write freq 10.000000
+INFO:root:Server: 111, load: 2
+INFO:root:1644: node type 3, write freq 10.000000
+INFO:root:800: node type 3, write freq 10.000000
+INFO:root:Server: 112, load: 7
+INFO:root:3129: node type 1, write freq 10.000000
+INFO:root:7: node type 2, write freq 10.000000
+INFO:root:292: node type 2, write freq 10.000000
+INFO:root:3730: node type 2, write freq 10.000000
+INFO:root:4749: node type 2, write freq 10.000000
+INFO:root:7046: node type 2, write freq 10.000000
+INFO:root:7622: node type 2, write freq 10.000000
+INFO:root:Server: 113, load: 4
+INFO:root:3129: node type 3, write freq 10.000000
+INFO:root:1203: node type 1, write freq 10.000000
+INFO:root:13: node type 2, write freq 10.000000
+INFO:root:4263: node type 2, write freq 10.000000
+INFO:root:Server: 114, load: 2
+INFO:root:3129: node type 3, write freq 10.000000
+INFO:root:1203: node type 3, write freq 10.000000
+INFO:root:Server: 115, load: 2
+INFO:root:3129: node type 3, write freq 10.000000
+INFO:root:1203: node type 3, write freq 10.000000
+INFO:root:Server: 116, load: 4
+INFO:root:3301: node type 1, write freq 10.000000
+INFO:root:7: node type 2, write freq 10.000000
+INFO:root:3730: node type 2, write freq 10.000000
+INFO:root:4749: node type 2, write freq 10.000000
+INFO:root:Server: 117, load: 2
+INFO:root:3301: node type 3, write freq 10.000000
+INFO:root:1203: node type 3, write freq 10.000000
+INFO:root:Server: 118, load: 3
+INFO:root:3301: node type 3, write freq 10.000000
+INFO:root:1888: node type 1, write freq 10.000000
+INFO:root:13: node type 2, write freq 10.000000
+INFO:root:Server: 119, load: 2
+INFO:root:3301: node type 3, write freq 10.000000
+INFO:root:1888: node type 3, write freq 10.000000
+INFO:root:Server: 120, load: 7
+INFO:root:3597: node type 1, write freq 10.000000
+INFO:root:7: node type 2, write freq 10.000000
+INFO:root:292: node type 2, write freq 10.000000
+INFO:root:3730: node type 2, write freq 10.000000
+INFO:root:6129: node type 2, write freq 10.000000
+INFO:root:7046: node type 2, write freq 10.000000
+INFO:root:7622: node type 2, write freq 10.000000
+INFO:root:Server: 121, load: 2
+INFO:root:3597: node type 3, write freq 10.000000
+INFO:root:1888: node type 3, write freq 10.000000
+INFO:root:Server: 122, load: 2
+INFO:root:3597: node type 3, write freq 10.000000
+INFO:root:1888: node type 3, write freq 10.000000
+INFO:root:Server: 123, load: 5
+INFO:root:3597: node type 3, write freq 10.000000
+INFO:root:3099: node type 1, write freq 10.000000
+INFO:root:13: node type 2, write freq 10.000000
+INFO:root:273: node type 2, write freq 10.000000
+INFO:root:4489: node type 2, write freq 10.000000
+INFO:root:Server: 124, load: 10
+INFO:root:3730: node type 1, write freq 10.000000
+INFO:root:7: node type 2, write freq 10.000000
+INFO:root:292: node type 2, write freq 10.000000
+INFO:root:3129: node type 2, write freq 10.000000
+INFO:root:3301: node type 2, write freq 10.000000
+INFO:root:3597: node type 2, write freq 10.000000
+INFO:root:4749: node type 2, write freq 10.000000
+INFO:root:6129: node type 2, write freq 10.000000
+INFO:root:7046: node type 2, write freq 10.000000
+INFO:root:7622: node type 2, write freq 10.000000
+INFO:root:Server: 125, load: 2
+INFO:root:3730: node type 3, write freq 10.000000
+INFO:root:3099: node type 3, write freq 10.000000
+INFO:root:Server: 126, load: 2
+INFO:root:3730: node type 3, write freq 10.000000
+INFO:root:3099: node type 3, write freq 10.000000
+INFO:root:Server: 127, load: 2
+INFO:root:3730: node type 3, write freq 10.000000
+INFO:root:3099: node type 3, write freq 10.000000
+INFO:root:Inter Server cost is 2860.000000
+INFO:root:Running relocation process
+INFO:root:Relocate change node 1
+INFO:root:Node 1 was relocated from 0 to 4
+INFO:root:Relocate change node 2400
+INFO:root:Node 2400 was relocated from 4 to 8
+INFO:root:Relocate change node 5167
+INFO:root:Node 5167 was relocated from 8 to 4
+INFO:root:Relocate change node 6042
+INFO:root:Node 6042 was relocated from 12 to 4
+INFO:root:Relocate change node 2
+INFO:root:Node 2 was relocated from 16 to 20
+INFO:root:Relocate change node 951
+INFO:root:Node 951 was relocated from 20 to 28
+INFO:root:Relocate change node 1285
+INFO:root:Node 1285 was relocated from 24 to 20
+INFO:root:Relocate change node 1490
+INFO:root:Node 1490 was relocated from 28 to 20
+INFO:root:Relocate change node 3
+INFO:root:Node 3 was relocated from 32 to 36
+INFO:root:Relocate change node 1715
