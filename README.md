@@ -15,7 +15,7 @@ CE7490 Fall 2018 Advanced Topics in Distributed System
 Must run
 ```
 Server 128:
-Fig3 on twitter sample 2, 10%
+Fig3 on twitter sample 2, 10% server count 2, 4, 8, 16, 32, 64, 96, 128
 Fig8 on facebook %2, %5, %8, 10%
 Fig9 on facebook %2, %5, %8, 10%
 Fig10 all dataset 10% expect Twitter Amazon
@@ -24,8 +24,8 @@ Fig 15 facebook 10%
 Fig 16 facebook 10%
 Fig 19 Amazon sample 10%
 
-Server 50:
-Fig3 on twitter sample 2, 10%
+Server 64:
+Fig3 on twitter sample 2, 10%, server count from 2, 4, 8, 16, 32, 64
 Fig8 on facebook %2, %5, %8, 10%
 Fig9 on facebook %2, %5, %8, 10%
 Fig10 all dataset 10% expect Twitter Amazon
@@ -34,8 +34,8 @@ Fig 15 facebook 10%
 Fig 16 facebook 10%
 Fig 19 Amazon sample 10%
 
-Server 10:
-Fig3 on twitter sample 2, 1%
+Server 8:
+Fig3 on twitter sample 2, 1%, server count from 2, 4, 6, 8
 Fig10 all dataset 1% expect Twitter Amazon
 Fig 11 all dataset 1%
 Fig 15 facebook 1%
