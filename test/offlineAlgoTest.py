@@ -52,7 +52,10 @@ def main(dataset='amazon', part_flag=0.01, log_path_end='', tmp_log_flag=False):
         print(log_str)
         algo.add_new_primary_node(node_id=n, write_freq=Constant.WRITE_FREQ)
     print_graph(server_list)
-    op.validate_result(dataset_g=algo.network_dataset.graph, server_g_list=[x.graph for x in algo.server_list])
+    op.validate_result(dataset_g=algo.network_dataset.graph,
+                       server_g_list=[x.graph for x in algo.server_list],
+                       load_differ=Constant.MAX_LOAD_DIFFERENCE_AMONG_SERVER,
+                       virtual_copy_numer=Constant.LEAST_VIRTUAL_PRIMARY_COPY_NUMBER)
     log_str = 'Inter Server cost is %f' % algo.compute_inter_server_cost()
     print(log_str)
     logging.info(log_str)
@@ -64,14 +67,18 @@ def main(dataset='amazon', part_flag=0.01, log_path_end='', tmp_log_flag=False):
     print(log_str)
     logging.info(log_str)
     print_graph(server_list)
-    op.validate_result(dataset_g=algo.network_dataset.graph, server_g_list=[x.graph for x in algo.server_list])
-
+    op.validate_result(dataset_g=algo.network_dataset.graph,
+                       server_g_list=[x.graph for x in algo.server_list],
+                       load_differ=Constant.MAX_LOAD_DIFFERENCE_AMONG_SERVER,
+                       virtual_copy_numer=Constant.LEAST_VIRTUAL_PRIMARY_COPY_NUMBER)
     print("Init merge process-------------")
     logging.info("Init merge process-------------")
     algo.init_merge_process()
     print_graph(server_list)
-    op.validate_result(dataset_g=algo.network_dataset.graph, server_g_list=[x.graph for x in algo.server_list])
-
+    op.validate_result(dataset_g=algo.network_dataset.graph,
+                       server_g_list=[x.graph for x in algo.server_list],
+                       load_differ=Constant.MAX_LOAD_DIFFERENCE_AMONG_SERVER,
+                       virtual_copy_numer=Constant.LEAST_VIRTUAL_PRIMARY_COPY_NUMBER)
     print("Start merge process-------------")
     logging.info("Start merge process-------------")
     algo.start_merge_process()
@@ -79,14 +86,18 @@ def main(dataset='amazon', part_flag=0.01, log_path_end='', tmp_log_flag=False):
     log_str = 'Inter Server cost is %f' % algo.compute_inter_server_cost()
     print(log_str)
     logging.info(log_str)
-    op.validate_result(dataset_g=algo.network_dataset.graph, server_g_list=[x.graph for x in algo.server_list])
-
+    op.validate_result(dataset_g=algo.network_dataset.graph,
+                       server_g_list=[x.graph for x in algo.server_list],
+                       load_differ=Constant.MAX_LOAD_DIFFERENCE_AMONG_SERVER,
+                       virtual_copy_numer=Constant.LEAST_VIRTUAL_PRIMARY_COPY_NUMBER)
     print("Init Group Swap process-------------")
     logging.info("Init Group Swap process-------------")
     algo.init_group_swap_process()
     print_graph(server_list)
-    op.validate_result(dataset_g=algo.network_dataset.graph, server_g_list=[x.graph for x in algo.server_list])
-
+    op.validate_result(dataset_g=algo.network_dataset.graph,
+                       server_g_list=[x.graph for x in algo.server_list],
+                       load_differ=Constant.MAX_LOAD_DIFFERENCE_AMONG_SERVER,
+                       virtual_copy_numer=Constant.LEAST_VIRTUAL_PRIMARY_COPY_NUMBER)
     print("Virtual Swap Copy Swap process-------------")
     logging.info("Virtual Swap Copy Swap process-------------")
     algo.virtual_primary_copy_swap()
@@ -94,12 +105,16 @@ def main(dataset='amazon', part_flag=0.01, log_path_end='', tmp_log_flag=False):
     log_str = 'Inter Server cost is %f' % algo.compute_inter_server_cost()
     print(log_str)
     logging.info(log_str)
-    op.validate_result(dataset_g=algo.network_dataset.graph, server_g_list=[x.graph for x in algo.server_list])
-
+    op.validate_result(dataset_g=algo.network_dataset.graph,
+                       server_g_list=[x.graph for x in algo.server_list],
+                       load_differ=Constant.MAX_LOAD_DIFFERENCE_AMONG_SERVER,
+                       virtual_copy_numer=Constant.LEAST_VIRTUAL_PRIMARY_COPY_NUMBER)
     algo.save_all(path=log_path)
     g, server = op.load_log(log_path)
-    op.validate_result(g, server)
-
+    op.validate_result(dataset_g=g,
+                       server_g_list=server,
+                       load_differ=Constant.MAX_LOAD_DIFFERENCE_AMONG_SERVER,
+                       virtual_copy_numer=Constant.LEAST_VIRTUAL_PRIMARY_COPY_NUMBER)
     log_str = 'Inter Server cost is %f' % algo.compute_inter_server_cost()
     print(log_str)
     logging.info(log_str)
@@ -109,10 +124,20 @@ def main(dataset='amazon', part_flag=0.01, log_path_end='', tmp_log_flag=False):
 
 if __name__ == '__main__':
     dataset = ['twitters1', 'twitters2', 'amazons', 'p2pgnutella', 'facebook']
-    for str_d in dataset:
-        main(dataset=str_d, part_flag=0.01, log_path_end='_v1', tmp_log_flag=True)
-    # main(dataset='twitters1', part_flag=0.01, log_path_end='debug')
-    # main(dataset='twitters2', part_flag=0.01, log_path_end='debug')
-    # main(dataset='amazons', part_flag=0.01, log_path_end='debug')
-    # main(dataset='p2pgnutella', part_flag=0.01, log_path_end='debug')
-    # main(dataset='facebook', part_flag=0.01, log_path_end='debug')
+    # for str_d in dataset:
+    #     main(dataset=str_d, part_flag=0.01, log_path_end='_v1', tmp_log_flag=True)
+    # main(dataset='twitters1', part_flag=0.1, log_path_end='debug')
+    # main(dataset='twitters2', part_flag=0.1, log_path_end='debug')
+
+    # res = [2, 4, 6, 8]
+    # for rr in res:
+    #     Constant.SERVER_NUMBER = rr
+    #     main(dataset='twitters2',
+    #          part_flag=0.01,
+    #          log_path_end='fig_3_server_%d_vir_copy_%d' % (Constant.SERVER_NUMBER, Constant.LEAST_VIRTUAL_PRIMARY_COPY_NUMBER))
+    # main(dataset='p2pgnutella', part_flag=0.1, log_path_end='debug')
+    # main(dataset='facebook', part_flag=0.1, log_path_end='debug')
+    main(dataset='amazons',
+         part_flag=0.01,
+         # log_path_end='fig_9_server_%d_vir_copy_%d' % (Constant.SERVER_NUMBER, Constant.LEAST_VIRTUAL_PRIMARY_COPY_NUMBER))
+         log_path_end='debug')

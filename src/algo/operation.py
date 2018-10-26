@@ -237,9 +237,9 @@ class Operation(Basic):
         # Check virtual primary copy number
         for node in list(dataset_g.nodes):
             if vir_copy[node] == virtual_copy_numer:
-                res = False
-            else:
                 res = True
+            else:
+                res = False
             if res is True:
                 log_str = "Node %d virtual primary copy number is %d, constraint is met" % (node, vir_copy[node])
                 logging.info(log_str)

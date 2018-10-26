@@ -28,7 +28,7 @@ class Node(Basic):
             if server_list[res[0]].id != self.server_id and (server_list[res[0]].has_node(node_id=self.id,
                                                                                           node_type=Constant.VIRTUAL_PRIMARY_COPY) is False):
                 self.add_virtual_primary_copy(target_server=server_list[res[0]])
-                if len(self.virtual_primary_copy_server_list) >= Constant.VIRTUAL_PRIMARY_COPY:
+                if len(self.virtual_primary_copy_server_list) >= Constant.LEAST_VIRTUAL_PRIMARY_COPY_NUMBER:
                     return
 
     def add_non_primary_copy(self, target_server):
