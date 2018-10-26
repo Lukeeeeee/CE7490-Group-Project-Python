@@ -32,7 +32,7 @@ class Dataset(Basic):
         elif dataset_str == 'twitters2':
             edgelist = np.loadtxt(os.path.join(DATASET_PATH, 'TwitterSample2.txt'), int)
         elif dataset_str == 'amazon':
-            edgelist = np.loadtxt(os.path.join(DATASET_PATH, 'AmazonSample.txt'), int)
+            edgelist = np.loadtxt(os.path.join(DATASET_PATH, 'Amazon.txt'), int)
         elif dataset_str == 'amazons':
             edgelist = np.loadtxt(os.path.join(DATASET_PATH, 'AmazonSample.txt'), int)
         elif dataset_str == 'p2pgnutella':
