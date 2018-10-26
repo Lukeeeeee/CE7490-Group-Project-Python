@@ -32,6 +32,7 @@ class MergedNode(Basic):
 
     def _add_node(self, node, algo, remove_flag=True):
         prev_node_id = node.id
+        assert node.server.id == self.server.id
         assert isinstance(node, MergedNode)
         for node_i in node.node_list:
             self._add_single_node(node=node_i, algo=algo, remove_flag=remove_flag)
@@ -76,6 +77,8 @@ class MergedNode(Basic):
                     adj_node_id = adj_node_list[index_i]
                     if adj_node_id not in self.node_id_list:
                         to_merge_node = algo.get_merged_node_with_id(adj_node_id)
+                        if to_merge_node.server.id != self.server.id:
+                            continue
                         copyed_adj_node = dp(to_merge_node)
                         copyed_temp_node = dp(self)
                         copyed_temp_node._add_node(node=copyed_adj_node, algo=dp(algo), remove_flag=False)
@@ -98,3 +101,18 @@ class MergedNode(Basic):
         # Add external connection with node that connected with new add node and not in the merged node
         self.external_connection -= len(algo.network_dataset.graph[node.id]) - inside_degree
         pass
+
+    def hard_update_connection(self, algo):
+        self.internal_connection = 0
+        self.external_connection = 0
+        for node_s in self.node_id_list:
+            # Add internal connection count if has edge, also remove external connection
+            for node_t in self.node_id_list:
+                if node_t != node_s and algo.network_dataset.graph.has_edge(node_s, node_t):
+                    self.internal_connection += 1
+
+            for adj_node in algo.network_dataset.get_all_adj_node_id_list(node_s):
+                if adj_node not in self.node_id_list:
+                    self.external_connection += 1
+        assert self.internal_connection % 2 == 0
+        self.internal_connection /= 2

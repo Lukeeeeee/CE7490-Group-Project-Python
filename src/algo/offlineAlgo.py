@@ -226,17 +226,27 @@ class OfflineAlgo(Algo):
             for node in self.node_list:
                 self._one_node_relocation_process(node)
 
-    def _one_node_relocation_process(self, node):
+    def relocate_one_node_on_server(self, server, not_swap=False):
+        all_pr_node_in_server = Operation.get_certain_type_node_on_server(server=server,
+                                                                          node_type=Constant.PRIMARY_COPY)
+        for node_id in all_pr_node_in_server:
+            if self._one_node_relocation_process(node=self.get_node_with_id(node_id=node_id),
+                                                 not_swap=not_swap) is True:
+                return True
+        return False
+
+    def _one_node_relocation_process(self, node, not_swap=False):
         log_str = "Relocate change node %d" % node.id
         logging.info(log_str)
         print(log_str)
         pre_server_id = node.server.id
-        if self.node_relocate(node=node) is True:
+        if self.node_relocate(node=node, not_swap=not_swap) is True:
             log_str = "Node %d was relocated from %d to %d" % (node.id, pre_server_id, node.server.id)
             logging.info(log_str)
             print(log_str)
+            return True
 
-    def node_relocate(self, node):
+    def node_relocate(self, node, not_swap=False):
         max_scb = 0.0
         final_new_server = None
         for server_i in self.server_list:
@@ -257,7 +267,7 @@ class OfflineAlgo(Algo):
                     Operation.move_node_to_server(node=node, target_server=self.get_server_with_id(pre_server_id),
                                                   algo=self)
                 return True
-            else:
+            elif not_swap is False:
                 log_str = "Node relocate change to swap "
                 print(log_str)
                 logging.info(log_str)
@@ -335,7 +345,7 @@ class OfflineAlgo(Algo):
             merged_node = self.merged_node_list[index]
             merged_node.launch_merge_node_process(algo=self)
 
-    def init_group_swap_process(self):
+    def init_group_swap_process(self, algo):
         # Get two random group
         # Compute the replica will decrease or not after swapped
         # Also check the data availability (i.e. the number of virtual primary copy)
@@ -344,19 +354,51 @@ class OfflineAlgo(Algo):
         self.merged_node_list.sort(key=lambda x: x.node_count, reverse=True)
         for i in range(len(self.merged_node_list) - 1):
             for j in range(i + 1, len(self.merged_node_list)):
+                if self.merged_node_list[i].server.id == self.merged_node_list[j].server.id:
+                    continue
                 if abs(self.merged_node_list[i].node_count - self.merged_node_list[j].node_count) > \
                         Constant.MERGED_GROUP_LOOSE_CONSTRAINT_EPSILON or \
                         self._compute_gain_in_swap_merged_node_process(s_merged_node=self.merged_node_list[i],
                                                                        t_merged_node=self.merged_node_list[j]) < 0:
                     break
                 else:
+                    assert self._check_all_load_constraint() is True
                     tmp_i_server = self.merged_node_list[i].server
+
                     Operation.move_merged_node(merged_node=self.merged_node_list[i],
                                                target_server=self.merged_node_list[j].server,
                                                algo=self)
                     Operation.move_merged_node(merged_node=self.merged_node_list[j],
                                                target_server=tmp_i_server,
                                                algo=self)
+
+                    iter_count = 0
+                    while self._check_all_load_constraint() is False and iter_count < 2:
+                        iter_count += 1
+                        if self.merged_node_list[i].server.get_load() > self.merged_node_list[j].server.get_load():
+                            self.relocate_one_node_on_server(self.merged_node_list[i].server, not_swap=True)
+                        else:
+                            self.relocate_one_node_on_server(self.merged_node_list[j].server, not_swap=True)
+                    if self._check_all_load_constraint() is False:
+                        tmp_j_server = self.merged_node_list[j].server
+                        Operation.move_merged_node(merged_node=self.merged_node_list[j],
+                                                   target_server=self.merged_node_list[i].server,
+                                                   algo=self)
+                        Operation.move_merged_node(merged_node=self.merged_node_list[i],
+                                                   target_server=tmp_j_server,
+                                                   algo=self)
+                        assert self._check_all_load_constraint() is True
+                    else:
+                        log_str = 'Merged %d and Merged %d swapped from  %d to %d' % (i, j,
+                                                                                      self.merged_node_list[
+                                                                                          j].server.id,
+                                                                                      self.merged_node_list[
+                                                                                          i].server.id)
+                        logging.info(log_str)
+                        print(log_str)
+                        self.merged_node_list[i].hard_update_connection(algo=algo)
+                        self.merged_node_list[j].hard_update_connection(algo=algo)
+                        assert self._check_all_load_constraint() is True
 
     def virtual_primary_copy_swap(self):
         # Random choose two virtual primary copy

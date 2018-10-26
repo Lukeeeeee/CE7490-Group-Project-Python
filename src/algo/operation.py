@@ -5,6 +5,7 @@ from src.algo.inter_server_cost import compute_inter_sever_cost
 import networkx as nx
 import logging
 import glob
+from src.node.mergedNode import MergedNode
 
 
 class Operation(Basic):
@@ -173,6 +174,15 @@ class Operation(Basic):
         logging.info(log_str)
         print(log_str)
         return True
+
+    @staticmethod
+    def get_certain_type_node_on_server(server, node_type):
+        node_list = list(server.graph.nodes)
+        res = []
+        for node in node_list:
+            if server.graph.nodes[node]['node_type'] == node_type:
+                res.append(node)
+        return res
 
     @staticmethod
     def move_merged_node(merged_node, target_server, algo):

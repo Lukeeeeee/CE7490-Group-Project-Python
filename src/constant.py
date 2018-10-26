@@ -3,9 +3,9 @@ import logging
 
 
 class Constant(Basic):
-    PRIMARY_COPY = 1
-    NON_PRIMARY_COPY = 2
-    VIRTUAL_PRIMARY_COPY = 3
+    PRIMARY_COPY = "1"
+    NON_PRIMARY_COPY = "2"
+    VIRTUAL_PRIMARY_COPY = "3"
 
     SSN = 1
     PSSN = 2
@@ -17,12 +17,12 @@ class Constant(Basic):
 
     # ALGO PARAMETER
     MAX_LOAD_DIFFERENCE_AMONG_SERVER = 1
-    LEAST_VIRTUAL_PRIMARY_COPY_NUMBER = 2
+    LEAST_VIRTUAL_PRIMARY_COPY_NUMBER = 0
     MAX_RELOCATE_ITERATION = 1
     SERVER_NUMBER = 8
 
     # Merge
-    MERGED_GROUP_LOOSE_CONSTRAINT_EPSILON = 4
+    MERGED_GROUP_LOOSE_CONSTRAINT_EPSILON = 0
 
     def __init__(self):
         super().__init__()

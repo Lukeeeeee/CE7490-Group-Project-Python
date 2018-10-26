@@ -92,13 +92,13 @@ def main(dataset='amazon', part_flag=0.01, log_path_end='', tmp_log_flag=False):
                        virtual_copy_numer=Constant.LEAST_VIRTUAL_PRIMARY_COPY_NUMBER)
     print("Init Group Swap process-------------")
     logging.info("Init Group Swap process-------------")
-    algo.init_group_swap_process()
+    algo.init_group_swap_process(algo)
     print_graph(server_list)
     op.validate_result(dataset_g=algo.network_dataset.graph,
                        server_g_list=[x.graph for x in algo.server_list],
                        load_differ=Constant.MAX_LOAD_DIFFERENCE_AMONG_SERVER,
                        virtual_copy_numer=Constant.LEAST_VIRTUAL_PRIMARY_COPY_NUMBER)
-    print("Virtual Swap Copy Swap process-------------")
+    print("Virtual Primary Copy Swap process-------------")
     logging.info("Virtual Swap Copy Swap process-------------")
     algo.virtual_primary_copy_swap()
     print_graph(server_list)
@@ -137,7 +137,16 @@ if __name__ == '__main__':
     #          log_path_end='fig_3_server_%d_vir_copy_%d' % (Constant.SERVER_NUMBER, Constant.LEAST_VIRTUAL_PRIMARY_COPY_NUMBER))
     # main(dataset='p2pgnutella', part_flag=0.1, log_path_end='debug')
     # main(dataset='facebook', part_flag=0.1, log_path_end='debug')
-    main(dataset='amazons',
-         part_flag=0.01,
-         # log_path_end='fig_9_server_%d_vir_copy_%d' % (Constant.SERVER_NUMBER, Constant.LEAST_VIRTUAL_PRIMARY_COPY_NUMBER))
-         log_path_end='debug')
+    server_count = [2, 4, 8, 16, 32, 64, 96, 128, 256, 512, 1000]
+    server_count = [2, 4, 6, 8]
+    for s in server_count:
+        Constant.SERVER_NUMBER = s
+        main(dataset='twitters2',
+             part_flag=0.01,
+             log_path_end='v2_fig_3_server_%d_vir_copy_%d' % (
+                 Constant.SERVER_NUMBER, Constant.LEAST_VIRTUAL_PRIMARY_COPY_NUMBER))
+    # Constant.SERVER_NUMBER = 2
+    # main(dataset='twitters2',
+    #      part_flag=0.01,
+    #      log_path_end='v2_fig_3_server_%d_vir_copy_%d' % (
+    #      Constant.SERVER_NUMBER, Constant.LEAST_VIRTUAL_PRIMARY_COPY_NUMBER))

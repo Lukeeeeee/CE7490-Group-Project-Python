@@ -25,11 +25,11 @@ class Node(Basic):
         tmp_server_list = [(i, server_list[i], server_list[i].get_load()) for i in range(len(server_list))]
         tmp_server_list.sort(key=lambda x: x[2])
         for res in tmp_server_list:
+            if len(self.virtual_primary_copy_server_list) >= Constant.LEAST_VIRTUAL_PRIMARY_COPY_NUMBER:
+                return
             if server_list[res[0]].id != self.server_id and (server_list[res[0]].has_node(node_id=self.id,
                                                                                           node_type=Constant.VIRTUAL_PRIMARY_COPY) is False):
                 self.add_virtual_primary_copy(target_server=server_list[res[0]])
-                if len(self.virtual_primary_copy_server_list) >= Constant.LEAST_VIRTUAL_PRIMARY_COPY_NUMBER:
-                    return
 
     def add_non_primary_copy(self, target_server):
         if target_server in self.non_primary_copy_server_list and \
