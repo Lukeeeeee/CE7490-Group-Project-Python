@@ -272,3 +272,5 @@ venv.bak/
 oldCode/*
 .idea/*
 !log/*
+log/tmp_log/*
+log/2018*/*

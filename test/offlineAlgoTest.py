@@ -28,10 +28,14 @@ def print_graph(server_list):
             print(log_str)
 
 
-def main(dataset='amazon', part_flag=0.01, log_path_end=''):
+def main(dataset='amazon', part_flag=0.01, log_path_end='', tmp_log_flag=False):
+    log_path = LOG_PATH
+    log_path = os.path.join(log_path, '%s_%s_%s_%s_%s' % (
+        time.strftime("%Y-%m-%d_%H-%M-%S"), 'offline', dataset, str(part_flag), log_path_end))
+    if not os.path.exists(log_path):
+        os.mkdir(log_path)
     logging.basicConfig(level=logging.DEBUG,
-                        filename=os.path.join(LOG_PATH, '%s_%s_%s_%s_%s' % (
-                            time.strftime("%Y-%m-%d_%H-%M-%S"), 'offline', dataset, str(part_flag), log_path_end)),
+                        filename=log_path + '/log',
                         filemode='w')
     Constant().log_out()
     data = Dataset(dataset_str=dataset, part_flag=part_flag)
@@ -86,4 +90,4 @@ def main(dataset='amazon', part_flag=0.01, log_path_end=''):
 
 
 if __name__ == '__main__':
-    main(dataset='amazons', part_flag=0.01, log_path_end='debug')
+    main(dataset='amazons', part_flag=0.01, log_path_end='debug', tmp_log_flag=True)
