@@ -60,4 +60,7 @@ def read_file_to_dict(filename):
             if col_data[i][_j] not in node_neighbor_dic[col_data[i][j]]:
                 node_neighbor_dic[col_data[i][j]].append(col_data[i][_j])
 
+    for key, data in node_neighbor_dic.items():
+        node_neighbor_dic[key] = set(data)
+
     return node_list, node_neighbor_dic, col_data
