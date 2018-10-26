@@ -379,7 +379,10 @@ class OfflineAlgo(Algo):
                         Operation.move_merged_node(merged_node=self.merged_node_list[i],
                                                    target_server=tmp_j_server,
                                                    algo=self)
-                        assert self._check_all_load_constraint() is True
+                        if self._check_all_load_constraint() is False:
+                            log_str = 'Load balance error'
+                            print(log_str)
+                            logging.error(log_str)
                     else:
                         log_str = 'Merged %d and Merged %d swapped from  %d to %d' % (i, j,
                                                                                       self.merged_node_list[
