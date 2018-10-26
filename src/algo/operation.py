@@ -12,6 +12,9 @@ class Operation(Basic):
 
     @staticmethod
     def move_node_to_server(node, target_server, algo):
+        log_str = "node %d moved to server %d" % (node.id, target_server.id)
+        logging.info(log_str)
+        print(log_str)
         adj_node_list = algo.network_dataset.get_all_adj_node_id_list(node_id=node.id)
         # CHECK ALL ADJ NODE WHETHER REMOVE REPLICA ON ORIGINAL SERVER (degree == 1)
         for adj_node_id in adj_node_list:
@@ -81,6 +84,7 @@ class Operation(Basic):
     def _add_new_primary_copy_node_to_server(node_id, write_freq, server, algo):
         new_node = Node(id=node_id)
         algo.node_list.append(new_node)
+        algo.node_index_list[node_id] = len(algo.node_list) - 1
         new_node.server = server
         server.add_node(node_id=node_id, node_type=Constant.PRIMARY_COPY, write_freq=write_freq)
         new_node.assign_virtual_primary_copy(server_list=algo.server_list)

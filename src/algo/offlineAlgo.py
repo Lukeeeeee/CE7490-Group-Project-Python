@@ -13,17 +13,20 @@ class OfflineAlgo(Algo):
     def __init__(self, server_list, network_dataset):
         super().__init__(server_list=server_list, network_dataset=network_dataset)
         self.server_list = server_list
+        for i in range(len(self.server_list)):
+            assert self.server_list[i].id == i
+
         self.network_dataset = network_dataset
+        max_node_id = max(list(self.network_dataset.graph.nodes))
         self.node_list = []
         self.merged_node_list = []
+        self.node_index_list = [-1 for _ in range(max_node_id + 1)]
 
     def add_new_primary_node(self, node_id, write_freq):
-        min_server = self.server_list[0]
-        for server in self.server_list:
-            if server.get_load() < min_server.get_load():
-                min_server = server
+        min_server = self.get_min_load_server()
         self._add_node_to_server(node_id=node_id, node_type=Constant.PRIMARY_COPY, write_freq=write_freq,
                                  server=min_server)
+        self._one_node_relocation_process(node=self.get_node_with_id(node_id=node_id))
 
     def _add_node_to_server(self, node_id, node_type, write_freq, server):
         Operation.add_node_to_server(node_id=node_id,
@@ -32,33 +35,52 @@ class OfflineAlgo(Algo):
                                      server=server,
                                      algo=self)
 
-    def get_primary_copy_server(self, node_id):
-        res = None
+    def get_min_load_server(self):
+        min_server = self.server_list[0]
         for server in self.server_list:
-            pr_node = server.get_node(node_id=node_id)
-            if not pr_node and pr_node['NODE_TYPE'] == Constant.PRIMARY_COPY:
-                if res is not None:
-                    logging.error("Multiple primary copy existed")
-                    raise RuntimeError("Multiple primary copy existed")
-                res = server
-                break
-        return res
+            if server.get_load() < min_server.get_load():
+                min_server = server
+        return min_server
 
-    def check_node_locality(self, node_id, adj_node_id, meet_flag=False):
+    def get_max_load_server(self):
+        max_server = self.server_list[0]
+        for server in self.server_list:
+            if server.get_load() > max_server.get_load():
+                max_server = server
+        return max_server
 
-        Operation.check_node_locality(node=self.get_node_with_id(node_id),
-                                      adj_node=self.get_node_with_id(adj_node_id),
-                                      meet_flag=meet_flag,
-                                      algo=self)
+    # def get_primary_copy_server(self, node_id):
+    #     res = None
+    #     for server in self.server_list:
+    #         pr_node = server.get_node(node_id=node_id)
+    #         if not pr_node and pr_node['NODE_TYPE'] == Constant.PRIMARY_COPY:
+    #             if res is not None:
+    #                 logging.error("Multiple primary copy existed")
+    #                 raise RuntimeError("Multiple primary copy existed")
+    #             res = server
+    #             break
+    #     return res
+
+    # def check_node_locality(self, node_id, adj_node_id, meet_flag=False):
+    #
+    #     Operation.check_node_locality(node=self.get_node_with_id(node_id),
+    #                                   adj_node=self.get_node_with_id(adj_node_id),
+    #                                   meet_flag=meet_flag,
+    #                                   algo=self)
 
     def get_node_with_id(self, node_id):
         # import bisect
         # res = bisect.bisect(self.node_list, node)
-        node = list(filter(lambda x: x.id == node_id, self.node_list))
-        assert len(node) <= 1
-        for node_i in node:
-            return node_i
-        return None
+        # node = list(filter(lambda x: x.id == node_id, self.node_list))
+        # assert len(node) <= 1
+        # for node_i in node:
+        #     return node_i
+        if self.node_index_list[node_id] == -1:
+            return None
+        else:
+            res = self.node_list[self.node_index_list[node_id]]
+            assert res.id == node_id
+            return res
 
     def get_merged_node_with_id(self, node_id):
         node = self.get_node_with_id(node_id=node_id)
@@ -67,6 +89,9 @@ class OfflineAlgo(Algo):
         for node in merged_node:
             return node
         return None
+
+    def get_server_with_id(self, server_id):
+        return self.server_list[server_id]
 
     # def get_relation_with_node(self, source_node_id, target_node_id):
     #     return -1
@@ -107,8 +132,9 @@ class OfflineAlgo(Algo):
             target_node = self.get_node_with_id(target_node_id)
 
             for node_i in source_node_adj_list:
-                if self.get_node_with_id(
-                        node_id=node_i).server.id == target_node.server.id and node_i != target_node_id:
+                if self.get_node_with_id(node_id=node_i) and \
+                        self.get_node_with_id(
+                            node_id=node_i).server.id == target_node.server.id and node_i != target_node_id:
                     return False
             return True
 
@@ -118,8 +144,9 @@ class OfflineAlgo(Algo):
     def node_bonus_on_server(self, node_id, server_id):
         adj_node_list = self.network_dataset.get_all_adj_node_id_list(node_id=node_id)
         for adj_node in adj_node_list:
-            if self.get_node_with_id(node_id=adj_node).server.id == server_id and self.is_dsn_with(
-                    source_node_id=node_id, target_node_id=adj_node):
+            if self.get_node_with_id(node_id=adj_node) and \
+                    self.get_node_with_id(node_id=adj_node).server.id == server_id and self.is_dsn_with(
+                source_node_id=node_id, target_node_id=adj_node):
                 # TODO the bonus do is a two-value 1 or 0
                 return 1
         return 0
@@ -127,8 +154,9 @@ class OfflineAlgo(Algo):
     def node_penalty_on_server(self, node_id, server_id):
         adj_node_list = self.network_dataset.get_all_adj_node_id_list(node_id=node_id)
         for adj_node in adj_node_list:
-            if self.get_node_with_id(node_id=adj_node).server.id == server_id and self.is_ssn_with(
-                    source_node_id=node_id, target_node_id=adj_node):
+            if self.get_node_with_id(node_id=adj_node) and self.get_node_with_id(
+                    node_id=adj_node).server.id == server_id and self.is_ssn_with(
+                source_node_id=node_id, target_node_id=adj_node):
                 return -1
         return 0
 
@@ -176,8 +204,9 @@ class OfflineAlgo(Algo):
         # TODO this can be done by Operation.count_adj_node_server_id()?
         adj_node_list = self.network_dataset.get_all_adj_node_id_list(node_id=source_node_id)
         for adj_node in adj_node_list:
-            if self.get_node_with_id(node_id=adj_node).server.id == target_server_id and relation_func(
-                    source_node_id=source_node_id, target_node_id=adj_node):
+            if self.get_node_with_id(node_id=adj_node) and self.get_node_with_id(
+                    node_id=adj_node).server.id == target_server_id and relation_func(
+                source_node_id=source_node_id, target_node_id=adj_node):
                 count += 1
         return count
 
@@ -194,14 +223,17 @@ class OfflineAlgo(Algo):
     def node_relocation_process(self, iteration_times=Constant.MAX_RELOCATE_ITERATION):
         for _ in range(iteration_times):
             for node in self.node_list:
-                log_str = "Relocate change node %d" % node.id
-                logging.info(log_str)
-                print(log_str)
-                pre_server_id = node.server.id
-                if self.node_relocate(node=node):
-                    log_str = "Node %d was relocated from %d to %d" % (node.id, pre_server_id, node.server.id)
-                    logging.info(log_str)
-                    print(log_str)
+                self._one_node_relocation_process(node)
+
+    def _one_node_relocation_process(self, node):
+        log_str = "Relocate change node %d" % node.id
+        logging.info(log_str)
+        print(log_str)
+        pre_server_id = node.server.id
+        if self.node_relocate(node=node) is True:
+            log_str = "Node %d was relocated from %d to %d" % (node.id, pre_server_id, node.server.id)
+            logging.info(log_str)
+            print(log_str)
 
     def node_relocate(self, node):
         max_scb = 0.0
@@ -213,26 +245,50 @@ class OfflineAlgo(Algo):
                     max_scb = scb
                     final_new_server = server_i
         if final_new_server:
-            if abs(final_new_server.get_load() + 1 - (
-                    node.server.get_load() - 1)) <= Constant.MAX_LOAD_DIFFERENCE_AMONG_SERVER:
+            if self._check_load_constraint_when_swap(source_server=node.server, target_server=final_new_server):
                 Operation.move_node_to_server(node=node, target_server=final_new_server, algo=self)
+                return True
             else:
+                log_str = "Node relocate change to swap "
+                print(log_str)
+                logging.info(log_str)
                 assert final_new_server.id != node.server_id
-                self.swap_node_on_server(node=node, target_server=final_new_server, scb=max_scb)
-            return True
+                return self.swap_node_on_server(node=node, target_server=final_new_server, scb=max_scb)
         else:
             return False
 
+    def _check_load_constraint_when_swap(self, source_server, target_server):
+        if abs(target_server.get_load() + 1 - (
+                source_server.get_load() - 1)) > Constant.MAX_LOAD_DIFFERENCE_AMONG_SERVER:
+            return False
+        if self.get_min_load_server().id != target_server.id and \
+                abs(target_server.get_load() + 1 - (
+                self.get_min_load_server().get_load())) > Constant.MAX_LOAD_DIFFERENCE_AMONG_SERVER:
+            return False
+
+        return True
+
     def swap_node_on_server(self, node, target_server, scb):
         adj_node_list = self.network_dataset.get_all_adj_node_id_list(node_id=node.id)
+        swap_flag = False
+
         for adj_node_i in adj_node_list:
             adj_node = self.get_node_with_id(node_id=adj_node_i)
-            if adj_node.server.id == target_server.id:
-                if self.compute_scb(node_id=adj_node_i, target_server_id=node.server.id) + scb > 0:
-                    Operation.move_node_to_server(node=node, target_server=target_server, algo=self)
-                    Operation.move_node_to_server(adj_node, target_server=node.server, algo=self)
-                    break
-        Operation.remove_redundant_replica_of_node(node=node, algo=self)
+            if not adj_node:
+                continue
+            else:
+                if adj_node.server.id == target_server.id:
+                    if self.compute_scb(node_id=adj_node_i, target_server_id=node.server.id) + scb > 0:
+                        pre_server_id = node.server.id
+
+                        Operation.move_node_to_server(node=node, target_server=target_server, algo=self)
+                        Operation.move_node_to_server(adj_node, target_server=self.get_server_with_id(pre_server_id),
+                                                      algo=self)
+                        swap_flag = True
+                        break
+        if swap_flag:
+            Operation.remove_redundant_replica_of_node(node=node, algo=self)
+        return swap_flag
 
     def init_merge_process(self):
         node_rand_index = np.arange(len(self.node_list))

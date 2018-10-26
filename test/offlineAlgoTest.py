@@ -28,10 +28,10 @@ def print_graph(server_list):
             print(log_str)
 
 
-def main(dataset='amazon', part_flag=0.01):
+def main(dataset='amazon', part_flag=0.01, log_path_end=''):
     logging.basicConfig(level=logging.DEBUG,
-                        filename=os.path.join(LOG_PATH, '%s_%s_%s_%s' % (
-                            time.strftime("%Y-%m-%d_%H-%M-%S"), 'offline', dataset, str(part_flag))),
+                        filename=os.path.join(LOG_PATH, '%s_%s_%s_%s_%s' % (
+                            time.strftime("%Y-%m-%d_%H-%M-%S"), 'offline', dataset, str(part_flag), log_path_end)),
                         filemode='w')
     Constant().log_out()
     data = Dataset(dataset_str=dataset, part_flag=part_flag)
@@ -46,8 +46,6 @@ def main(dataset='amazon', part_flag=0.01):
         logging.info(log_str)
         print(log_str)
         algo.add_new_primary_node(node_id=n, write_freq=Constant.WRITE_FREQ)
-    # print_graph(server_list)
-    algo.node_list.sort(key=lambda x: x.id)
     print_graph(server_list)
 
     log_str = 'Inter Server cost is %f' % algo.compute_inter_server_cost()
@@ -88,4 +86,4 @@ def main(dataset='amazon', part_flag=0.01):
 
 
 if __name__ == '__main__':
-    main(dataset='amazons', part_flag=0.01)
+    main(dataset='amazons', part_flag=0.01, log_path_end='debug')

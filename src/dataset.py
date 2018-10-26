@@ -15,6 +15,10 @@ class Dataset(Basic):
 
             for i in range(split_index, len(self.node_list)):
                 self.graph.remove_node(n=self.node_list[i])
+        max_node_id = max(list(self.graph.nodes))
+        self.adj_list = [-1 for _ in range(max_node_id + 1)]
+        for node in list(self.graph.nodes):
+            self.adj_list[node] = list(self.graph[node])
 
     def load_dataset(self, dataset_str):
         g = nx.Graph()
@@ -39,10 +43,10 @@ class Dataset(Basic):
         return g
 
     def get_all_adj_node_id_list(self, node_id):
-        return list(self.graph[node_id])
+        return self.adj_list[node_id]
 
     def has_edge(self, s_node_id, t_node_id):
-        if t_node_id in list(self.graph.adj[s_node_id]):
+        if t_node_id in self.adj_list[s_node_id]:
             return True
         else:
             return False
