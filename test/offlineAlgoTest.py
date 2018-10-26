@@ -66,14 +66,14 @@ def main(dataset='amazon', part_flag=0.01, log_path_end='', tmp_log_flag=False):
     print_graph(server_list)
     op.validate_result(dataset_g=algo.network_dataset.graph, server_g_list=[x.graph for x in algo.server_list])
 
-    print("Running relocation process-------------")
-    logging.info("Running relocation process-------------")
+    print("Init merge process-------------")
+    logging.info("Init merge process-------------")
     algo.init_merge_process()
     print_graph(server_list)
     op.validate_result(dataset_g=algo.network_dataset.graph, server_g_list=[x.graph for x in algo.server_list])
 
-    print("Running relocation process-------------")
-    logging.info("Running relocation process-------------")
+    print("Start merge process-------------")
+    logging.info("Start merge process-------------")
     algo.start_merge_process()
     print_graph(server_list)
     log_str = 'Inter Server cost is %f' % algo.compute_inter_server_cost()
@@ -81,14 +81,14 @@ def main(dataset='amazon', part_flag=0.01, log_path_end='', tmp_log_flag=False):
     logging.info(log_str)
     op.validate_result(dataset_g=algo.network_dataset.graph, server_g_list=[x.graph for x in algo.server_list])
 
-    print("Running relocation process-------------")
-    logging.info("Running relocation process-------------")
+    print("Init Group Swap process-------------")
+    logging.info("Init Group Swap process-------------")
     algo.init_group_swap_process()
     print_graph(server_list)
     op.validate_result(dataset_g=algo.network_dataset.graph, server_g_list=[x.graph for x in algo.server_list])
 
-    print("Running relocation process-------------")
-    logging.info("Running relocation process-------------")
+    print("Virtual Swap Copy Swap process-------------")
+    logging.info("Virtual Swap Copy Swap process-------------")
     algo.virtual_primary_copy_swap()
     print_graph(server_list)
     log_str = 'Inter Server cost is %f' % algo.compute_inter_server_cost()
@@ -103,10 +103,16 @@ def main(dataset='amazon', part_flag=0.01, log_path_end='', tmp_log_flag=False):
     log_str = 'Inter Server cost is %f' % algo.compute_inter_server_cost()
     print(log_str)
     logging.info(log_str)
+    for handler in logging.root.handlers[:]:
+        logging.root.removeHandler(handler)
 
 
 if __name__ == '__main__':
-    dataset = ['twitters1', 'twitters2', 'amazon', 'amazons', 'p2pgnutella']
-    # for str_d in dataset:
-    #     main(dataset=str_d, part_flag=0.01, log_path_end='small_test', tmp_log_flag=True)
-    main(dataset='amazons', part_flag=0.01, log_path_end='debug', tmp_log_flag=True)
+    dataset = ['twitters1', 'twitters2', 'amazons', 'p2pgnutella', 'facebook']
+    for str_d in dataset:
+        main(dataset=str_d, part_flag=0.01, log_path_end='_v1', tmp_log_flag=True)
+    # main(dataset='twitters1', part_flag=0.01, log_path_end='debug')
+    # main(dataset='twitters2', part_flag=0.01, log_path_end='debug')
+    # main(dataset='amazons', part_flag=0.01, log_path_end='debug')
+    # main(dataset='p2pgnutella', part_flag=0.01, log_path_end='debug')
+    # main(dataset='facebook', part_flag=0.01, log_path_end='debug')

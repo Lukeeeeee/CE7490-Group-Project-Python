@@ -1,0 +1,25 @@
+Fri 26 Oct 2018 16:01:08 INFO spar_sample.py 124 13698 Start experiment 1
+Fri 26 Oct 2018 16:01:08 INFO spar_sample.py 126 13698 Stop at 10 percent of the data
+Fri 26 Oct 2018 16:01:09 INFO spar_sample.py 134 13698 file AmazonSample, server number = 10, nodes = 33, edges = 75 cost = 79, time = 0.008272171020507812
+Fri 26 Oct 2018 16:01:09 INFO spar_sample.py 136 13698 average: replica_per_node=2, master_per_server=3, replicas_per_server=7
+Fri 26 Oct 2018 16:01:11 INFO spar_sample.py 134 13698 file TwitterSample1, server number = 10, nodes = 36, edges = 234 cost = 165, time = 0.04605507850646973
+Fri 26 Oct 2018 16:01:11 INFO spar_sample.py 136 13698 average: replica_per_node=4, master_per_server=3, replicas_per_server=16
+Fri 26 Oct 2018 16:01:16 INFO spar_sample.py 134 13698 file TwitterSample2, server number = 10, nodes = 72, edges = 143 cost = 180, time = 0.02066659927368164
+Fri 26 Oct 2018 16:01:16 INFO spar_sample.py 136 13698 average: replica_per_node=2, master_per_server=7, replicas_per_server=18
+Fri 26 Oct 2018 16:01:23 INFO spar_sample.py 134 13698 file Facebook, server number = 10, nodes = 40, edges = 63 cost = 88, time = 0.00581812858581543
+Fri 26 Oct 2018 16:01:23 INFO spar_sample.py 136 13698 average: replica_per_node=2, master_per_server=4, replicas_per_server=8
+Fri 26 Oct 2018 16:01:26 INFO spar_sample.py 134 13698 file p2pGnutella, server number = 10, nodes = 81, edges = 100 cost = 166, time = 0.018599510192871094
+Fri 26 Oct 2018 16:01:26 INFO spar_sample.py 136 13698 average: replica_per_node=2, master_per_server=8, replicas_per_server=16
+Fri 26 Oct 2018 16:01:26 INFO spar_sample.py 140 13698 replica 2 results: {'AmazonSample': 79, 'TwitterSample1': 165, 'TwitterSample2': 180, 'Facebook': 88, 'p2pGnutella': 166}
+Fri 26 Oct 2018 16:01:27 INFO spar_sample.py 150 13698 file AmazonSample, server number = 10, nodes = 33, edges = 75 cost = 106, time = 0.004785776138305664
+Fri 26 Oct 2018 16:01:27 INFO spar_sample.py 152 13698 average: replica_per_node=3, master_per_server=3, replicas_per_server=10
+Fri 26 Oct 2018 16:01:29 INFO spar_sample.py 150 13698 file TwitterSample1, server number = 10, nodes = 36, edges = 234 cost = 187, time = 0.04353976249694824
+Fri 26 Oct 2018 16:01:29 INFO spar_sample.py 152 13698 average: replica_per_node=5, master_per_server=3, replicas_per_server=18
+Fri 26 Oct 2018 16:01:34 INFO spar_sample.py 150 13698 file TwitterSample2, server number = 10, nodes = 72, edges = 143 cost = 238, time = 0.021090030670166016
+Fri 26 Oct 2018 16:01:34 INFO spar_sample.py 152 13698 average: replica_per_node=3, master_per_server=7, replicas_per_server=23
+Fri 26 Oct 2018 16:01:41 INFO spar_sample.py 150 13698 file Facebook, server number = 10, nodes = 40, edges = 63 cost = 122, time = 0.006340503692626953
+Fri 26 Oct 2018 16:01:41 INFO spar_sample.py 152 13698 average: replica_per_node=3, master_per_server=4, replicas_per_server=12
+Fri 26 Oct 2018 16:01:45 INFO spar_sample.py 150 13698 file p2pGnutella, server number = 10, nodes = 81, edges = 100 cost = 245, time = 0.018700838088989258
+Fri 26 Oct 2018 16:01:45 INFO spar_sample.py 152 13698 average: replica_per_node=3, master_per_server=8, replicas_per_server=24
+Fri 26 Oct 2018 16:01:45 INFO spar_sample.py 156 13698 replica 3 results: {'AmazonSample': 106, 'TwitterSample1': 187, 'TwitterSample2': 238, 'Facebook': 122, 'p2pGnutella': 245}
+Fri 26 Oct 2018 16:01:45 INFO spar_sample.py 157 13698 End experiment 1
