@@ -75,7 +75,7 @@ class TestOfflineAlgo(unittest.TestCase):
         self.assertTrue(algo.is_pdsn_with(2, 0))
 
     def test_node_move(self):
-        algo = create_algo(server_count=2, node_count=10)
+        algo = create_algo(server_count=4, node_count=10)
         algo.network_dataset.graph.add_edge(0, 1)
         algo._add_node_to_server(node_id=0, node_type=Constant.PRIMARY_COPY, write_freq=10.0,
                                  server=algo.server_list[0])
@@ -185,6 +185,7 @@ class TestOfflineAlgo(unittest.TestCase):
         data.graph = nx.Graph()
         data.graph.add_node(0)
         server_list = [Server(serer_id=i) for i in range(2)]
+        Constant.LEAST_VIRTUAL_PRIMARY_COPY_NUMBER = 1
         algo = OfflineAlgo(server_list=server_list, network_dataset=data)
         node_list = list(data.graph.nodes)
         node_len = len(node_list)
@@ -211,7 +212,8 @@ class TestOfflineAlgo(unittest.TestCase):
                 Operation.swap_virtual_primary_copy(s_node=algo.node_list[0],
                                                     t_node=algo.node_list[1],
                                                     s_server=vir_server,
-                                                    t_server=algo.node_list[1].virtual_primary_copy_server_list[0])
+                                                    t_server=algo.node_list[1].virtual_primary_copy_server_list[0],
+                                                    algo=algo)
                 break
         self.assertTrue(tmp_server_1_id.has_node(algo.node_list[1].id, node_type=Constant.VIRTUAL_PRIMARY_COPY))
         self.assertTrue(tmp_server_2_id.has_node(algo.node_list[0].id, node_type=Constant.VIRTUAL_PRIMARY_COPY))

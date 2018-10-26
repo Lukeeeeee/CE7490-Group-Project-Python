@@ -52,6 +52,8 @@ class OfflineAlgo(Algo):
                                       algo=self)
 
     def get_node_with_id(self, node_id):
+        # import bisect
+        # res = bisect.bisect(self.node_list, node)
         node = list(filter(lambda x: x.id == node_id, self.node_list))
         assert len(node) <= 1
         for node_i in node:

@@ -47,6 +47,7 @@ def main(dataset='amazon', part_flag=0.01):
         print(log_str)
         algo.add_new_primary_node(node_id=n, write_freq=Constant.WRITE_FREQ)
     # print_graph(server_list)
+    algo.node_list.sort(key=lambda x: x.id)
     print_graph(server_list)
 
     log_str = 'Inter Server cost is %f' % algo.compute_inter_server_cost()
@@ -87,4 +88,4 @@ def main(dataset='amazon', part_flag=0.01):
 
 
 if __name__ == '__main__':
-    main(dataset='p2pgnutella', part_flag=0.1)
+    main(dataset='amazons', part_flag=0.01)

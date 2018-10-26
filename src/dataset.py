@@ -9,13 +9,12 @@ class Dataset(Basic):
     def __init__(self, dataset_str, part_flag=None):
         super().__init__()
         self.graph = self.load_dataset(dataset_str)
+        self.node_list = list(self.graph.nodes)
         if part_flag:
-            self.node_list = list(self.graph.nodes)
-        split_index = int(len(self.node_list) * part_flag)
+            split_index = int(len(self.node_list) * part_flag)
 
-        for i in range(split_index, len(self.node_list)):
-            self.graph.remove_node(n=self.node_list[i])
-        pass
+            for i in range(split_index, len(self.node_list)):
+                self.graph.remove_node(n=self.node_list[i])
 
     def load_dataset(self, dataset_str):
         g = nx.Graph()
