@@ -1,15 +1,22 @@
 from src.dataset import Dataset
 from src.server.server import Server
 from src.algo.baselines.randomP.randomP import RandomP
+from dataset import DATASET_PATH
 import random
 import time
+import os
 
+
+from src.algo.baselines.SPAR.read_data import read_file_digraph, read_file_ndgraph
 
 def main():
-    network_dataset = Dataset('amazons')
+
+    network_dataset = Dataset('facebook')
+
+    nl, node_neighbor_dic, col_data = read_file_ndgraph(os.path.join(DATASET_PATH, 'Facebook.txt'))
 
     #10% sampling
-    nbunch=[i for i in range(0,network_dataset.graph.order()//10)]
+    nbunch = nl[0:(len(nl)//10)]
     network_dataset.graph=network_dataset.graph.subgraph(nbunch)
 
     server_list = [Server(k) for k in range(0, 127)]
@@ -29,6 +36,5 @@ def main():
     end=time.time()
     print('Random Partitioning Time:',end-start,'seconds')
     m.compute_inter_sever_cost()
-
 
 main()
