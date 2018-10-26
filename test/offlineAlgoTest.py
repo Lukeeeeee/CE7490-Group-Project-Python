@@ -144,14 +144,15 @@ if __name__ == '__main__':
     #      part_flag=0.010,
     #      log_path_end='v2_fig_11_server_%d_vir_copy_%d' % (
     #          Constant.SERVER_NUMBER, Constant.LEAST_VIRTUAL_PRIMARY_COPY_NUMBER))
-    Constant.SERVER_NUMBER = 8
+    Constant.SERVER_NUMBER = 64
     # res = [0.08, 0.05, 0.02]
     # for r in dataset:
     # res = [0, 1, 2, 3]
-    res = [ 4, 5, 6, 7]
-    for r in res:
-        Constant.LEAST_VIRTUAL_PRIMARY_COPY_NUMBER = r
-        main(dataset='amazons',
-             part_flag=0.1,
-             log_path_end='v2_fig_19_server_%d_vir_copy_%d' % (
-                 Constant.SERVER_NUMBER, Constant.LEAST_VIRTUAL_PRIMARY_COPY_NUMBER))
+    # res = [ 4, 5, 6, 7]
+    # for r in res:
+    Constant.LEAST_VIRTUAL_PRIMARY_COPY_NUMBER = 3
+    Constant.MAX_RELOCATE_ITERATION = 1
+    main(dataset='p2pgnutella',
+         part_flag=0.1,
+         log_path_end='fix_v2_fig_11_server_%d_vir_copy_%d' % (
+             Constant.SERVER_NUMBER, Constant.LEAST_VIRTUAL_PRIMARY_COPY_NUMBER))

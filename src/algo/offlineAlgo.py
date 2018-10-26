@@ -371,14 +371,6 @@ class OfflineAlgo(Algo):
                     Operation.move_merged_node(merged_node=self.merged_node_list[j],
                                                target_server=tmp_i_server,
                                                algo=self)
-
-                    iter_count = 0
-                    while self._check_all_load_constraint() is False and iter_count < 2:
-                        iter_count += 1
-                        if self.merged_node_list[i].server.get_load() > self.merged_node_list[j].server.get_load():
-                            self.relocate_one_node_on_server(self.merged_node_list[i].server, not_swap=True)
-                        else:
-                            self.relocate_one_node_on_server(self.merged_node_list[j].server, not_swap=True)
                     if self._check_all_load_constraint() is False:
                         tmp_j_server = self.merged_node_list[j].server
                         Operation.move_merged_node(merged_node=self.merged_node_list[j],
