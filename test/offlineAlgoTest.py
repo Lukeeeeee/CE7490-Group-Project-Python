@@ -14,6 +14,7 @@ from src.dataset import Dataset
 from src.server.server import Server
 from src.constant import Constant
 import time
+from src.algo.operation import Operation as op
 
 
 def print_graph(server_list):
@@ -51,43 +52,61 @@ def main(dataset='amazon', part_flag=0.01, log_path_end='', tmp_log_flag=False):
         print(log_str)
         algo.add_new_primary_node(node_id=n, write_freq=Constant.WRITE_FREQ)
     print_graph(server_list)
-
+    op.validate_result(dataset_g=algo.network_dataset.graph, server_g_list=[x.graph for x in algo.server_list])
     log_str = 'Inter Server cost is %f' % algo.compute_inter_server_cost()
     print(log_str)
     logging.info(log_str)
 
-    print("Running relocation process")
-    logging.info("Running relocation process")
+    print("Running relocation process-------------")
+    logging.info("Running relocation process-------------")
     algo.node_relocation_process()
-
     log_str = 'Inter Server cost is %f' % algo.compute_inter_server_cost()
     print(log_str)
     logging.info(log_str)
+    print_graph(server_list)
+    op.validate_result(dataset_g=algo.network_dataset.graph, server_g_list=[x.graph for x in algo.server_list])
 
-    print("Running init merge process")
-    logging.info("Running init merge process")
+    print("Running relocation process-------------")
+    logging.info("Running relocation process-------------")
     algo.init_merge_process()
+    print_graph(server_list)
+    op.validate_result(dataset_g=algo.network_dataset.graph, server_g_list=[x.graph for x in algo.server_list])
 
-    print("Running node merge process")
-    logging.info("Running node merge process")
+    print("Running relocation process-------------")
+    logging.info("Running relocation process-------------")
     algo.start_merge_process()
-
+    print_graph(server_list)
     log_str = 'Inter Server cost is %f' % algo.compute_inter_server_cost()
     print(log_str)
     logging.info(log_str)
+    op.validate_result(dataset_g=algo.network_dataset.graph, server_g_list=[x.graph for x in algo.server_list])
 
-    print("Running group swap process")
-    logging.info("Running group swap process")
+    print("Running relocation process-------------")
+    logging.info("Running relocation process-------------")
     algo.init_group_swap_process()
+    print_graph(server_list)
+    op.validate_result(dataset_g=algo.network_dataset.graph, server_g_list=[x.graph for x in algo.server_list])
 
-    print("Running virtual primary copy swap process")
-    logging.info("Running virtual primary copy swap process")
+    print("Running relocation process-------------")
+    logging.info("Running relocation process-------------")
     algo.virtual_primary_copy_swap()
     print_graph(server_list)
+    log_str = 'Inter Server cost is %f' % algo.compute_inter_server_cost()
+    print(log_str)
+    logging.info(log_str)
+    op.validate_result(dataset_g=algo.network_dataset.graph, server_g_list=[x.graph for x in algo.server_list])
+
+    algo.save_all(path=log_path)
+    g, server = op.load_log(log_path)
+    op.validate_result(g, server)
+
     log_str = 'Inter Server cost is %f' % algo.compute_inter_server_cost()
     print(log_str)
     logging.info(log_str)
 
 
 if __name__ == '__main__':
+    dataset = ['twitters1', 'twitters2', 'amazon', 'amazons', 'p2pgnutella']
+    # for str_d in dataset:
+    #     main(dataset=str_d, part_flag=0.01, log_path_end='small_test', tmp_log_flag=True)
     main(dataset='amazons', part_flag=0.01, log_path_end='debug', tmp_log_flag=True)

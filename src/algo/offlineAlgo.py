@@ -7,6 +7,7 @@ from src.algo.algo import Algo
 import numpy as np
 from src.node.mergedNode import MergedNode
 import logging
+import networkx as nx
 
 
 class OfflineAlgo(Algo):
@@ -245,8 +246,16 @@ class OfflineAlgo(Algo):
                     max_scb = scb
                     final_new_server = server_i
         if final_new_server:
+            pre_server_id = node.server.id
             if self._check_load_constraint_when_swap(source_server=node.server, target_server=final_new_server):
                 Operation.move_node_to_server(node=node, target_server=final_new_server, algo=self)
+                if not self._check_all_load_constraint():
+                    log_str = 'Relocate cancel for node %d from %d to %d' % (
+                        node.id, pre_server_id, final_new_server.id)
+                    logging.info(log_str)
+                    print(log_str)
+                    Operation.move_node_to_server(node=node, target_server=self.get_server_with_id(pre_server_id),
+                                                  algo=self)
                 return True
             else:
                 log_str = "Node relocate change to swap "
@@ -254,6 +263,7 @@ class OfflineAlgo(Algo):
                 logging.info(log_str)
                 assert final_new_server.id != node.server_id
                 return self.swap_node_on_server(node=node, target_server=final_new_server, scb=max_scb)
+
         else:
             return False
 
@@ -263,9 +273,15 @@ class OfflineAlgo(Algo):
             return False
         if self.get_min_load_server().id != target_server.id and \
                 abs(target_server.get_load() + 1 - (
-                self.get_min_load_server().get_load())) > Constant.MAX_LOAD_DIFFERENCE_AMONG_SERVER:
+                        self.get_min_load_server().get_load())) > Constant.MAX_LOAD_DIFFERENCE_AMONG_SERVER:
             return False
+        return True
 
+    def _check_all_load_constraint(self):
+        min_s = self.get_min_load_server()
+        for server in self.server_list:
+            if server.get_load() - min_s.get_load() > Constant.MAX_LOAD_DIFFERENCE_AMONG_SERVER:
+                return False
         return True
 
     def swap_node_on_server(self, node, target_server, scb):
@@ -280,12 +296,24 @@ class OfflineAlgo(Algo):
                 if adj_node.server.id == target_server.id:
                     if self.compute_scb(node_id=adj_node_i, target_server_id=node.server.id) + scb > 0:
                         pre_server_id = node.server.id
-
+                        pre_adj_server_id = adj_node.server.id
                         Operation.move_node_to_server(node=node, target_server=target_server, algo=self)
                         Operation.move_node_to_server(adj_node, target_server=self.get_server_with_id(pre_server_id),
                                                       algo=self)
-                        swap_flag = True
-                        break
+                        if self._check_all_load_constraint() is False:
+                            log_str = 'Relocate cancel for node %d from %d to %d' % (
+                                node.id, pre_server_id, pre_adj_server_id)
+                            logging.info(log_str)
+                            print(log_str)
+                            Operation.move_node_to_server(node=node,
+                                                          target_server=self.get_server_with_id(pre_server_id),
+                                                          algo=self)
+                            Operation.move_node_to_server(node=adj_node,
+                                                          target_server=self.get_server_with_id(pre_adj_server_id),
+                                                          algo=self)
+                        else:
+                            swap_flag = True
+                            break
         if swap_flag:
             Operation.remove_redundant_replica_of_node(node=node, algo=self)
         return swap_flag
@@ -334,9 +362,10 @@ class OfflineAlgo(Algo):
         # Random choose two virtual primary copy
         # if swapped resulted into eliminating the non-primary copy, then swap
         for node in self.node_list:
+            swapped_flag = False
             for vir_pr_server in node.virtual_primary_copy_server_list:
-                swapped_flag = False
                 for non_pr_server in node.non_primary_copy_server_list:
+                    assert vir_pr_server.id != non_pr_server.id
                     non_pr_node_list = vir_pr_server.return_type_nodes(
                         node_type=Constant.NON_PRIMARY_COPY)
                     vir_pr_node_list = non_pr_server.return_type_nodes(
@@ -344,11 +373,28 @@ class OfflineAlgo(Algo):
 
                     satisfied_node_list = list(set(non_pr_node_list) & set(vir_pr_node_list))
                     for t_node in satisfied_node_list:
+                        t_node = self.get_node_with_id(t_node)
+                        flag_1 = int(Operation.has_adj_node_server_id(node=node,
+                                                                      server=vir_pr_server,
+                                                                      algo=self,
+                                                                      adj_node_type=Constant.PRIMARY_COPY))
+                        flag_2 = int(Operation.has_adj_node_server_id(node=t_node,
+                                                                      server=non_pr_server,
+                                                                      algo=self,
+                                                                      adj_node_type=Constant.PRIMARY_COPY))
+                        if flag_1 + flag_2 == 2:
+                            continue
                         if Operation.swap_virtual_primary_copy(s_node=node,
-                                                               t_node=self.get_node_with_id(t_node),
+                                                               t_node=t_node,
                                                                s_server=vir_pr_server,
                                                                t_server=non_pr_server,
                                                                algo=self) is True:
+                            assert non_pr_server in node.virtual_primary_copy_server_list
+                            assert vir_pr_server in t_node.virtual_primary_copy_server_list
+                            if flag_1 == 1:
+                                node.add_non_primary_copy(target_server=vir_pr_server)
+                            if flag_2 == 1:
+                                t_node.add_non_primary_copy(target_server=non_pr_server)
                             swapped_flag = True
                             break
                     if swapped_flag is True:
@@ -396,3 +442,8 @@ class OfflineAlgo(Algo):
                                                        algo=self) == 1:
                 reduced_replica += 1
         return reduced_replica
+
+    def save_all(self, path):
+        nx.write_gpickle(self.network_dataset.graph, path + '/dataset_graph.gpickle')
+        for i in range(len(self.server_list)):
+            nx.write_gpickle(self.server_list[i].graph, path + '/server_%d.gpickle' % i)
