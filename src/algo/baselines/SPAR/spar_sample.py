@@ -51,7 +51,7 @@ def test_spar_sample(file, server_number, minimum_replicas, percent10_stop, path
     start_time = time.time()
     spar = Spar(server_number, minimum_replicas)
     if percent10_stop is True:
-        for i in range(int(len(node_list) / 10)):
+        for i in range(int(len(node_list) / 100)):
             n = node_list[i]
             spar.new_node(n, node_neighbor_dic[n])
             node_num += 1
@@ -95,9 +95,9 @@ def spar_experiment_1(percent10_stop=False):
 
 
     #digraph_files = ['AmazonSample', 'Amazon', 'Twitter', 'TwitterSample1', 'TwitterSample2', 'Facebook', 'p2pGnutella']
-    digraph_files = ['AmazonSample', 'TwitterSample1', 'TwitterSample2', 'Facebook', 'p2pGnutella']
+    # digraph_files = ['AmazonSample', 'TwitterSample1', 'TwitterSample2', 'Facebook', 'p2pGnutella']
     #digraph_files = ['Amazon', 'Twitter']
-    #digraph_files = ['AmazonSample']
+    digraph_files = ['AmazonSample']
 
     num_server = Constant.SERVER_NUMBER
 
@@ -241,6 +241,6 @@ def spar_fig8_9(fig8=True):
 
 
 if __name__ == '__main__':
-    # spar_experiment_1(percent10_stop=True)
+    spar_experiment_1(percent10_stop=True)
     # spar_fig3()
-    spar_fig8_9(fig8=True)
+    # spar_fig8_9(fig8=True)
