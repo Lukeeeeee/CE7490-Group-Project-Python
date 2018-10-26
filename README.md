@@ -16,28 +16,32 @@ Must run
 ```
 1. Fig3 on twitter sample 2
     1.1 10% data, server count 2, 4, 8, 16, 32, 64, 96, 128
-    1.1 1% data, server count 2, 4, 6, 8
+    1.2 1% data, server count 2, 4, 6, 8
+    # 1.3 50% data server count  2, 4, 8, 16, 32, 64, 96, 128, 256, 512
       
 2. Fig8 on facebook 
-    2.1 %2, %5, %8, 10% data, server count 128
-    2.1 %2, %5, %8, 10% data, server count 64
+    2.1 %2, %5, %8, 10% 50% data, server count 128
+    2.2 %2, %5, %8, 10% 50% data, server count 64
    
 3. Fig9 on facebook 
-    3.1 %2, %5, %8, 10% data, server count 128
-    3.1 %2, %5, %8, 10% data, server count 64
+    3.1 %2, %5, %8, 10% 50% data, server count 128
+    3.2 %2, %5, %8, 10% 50% data, server count 64
 
 4. Fig11 all dataset
     4.1 10% data, server count 128
-    4.1 10% data, server count 64
-    4.1 1% data, server count 8
+    4.2 10% data, server count 64
+    4.3 1% data, server count 8
+    4.4 50% data, server count 128
 
 5. Fig 15 facebook
     5.1 10% data
     5.2 1% data
+    5.3 50% data
 
 5. Fig 16 facebook
     5.1 10% data
     5.2 1% data
+    5.3 50% data
 
 6.Fig 19 Amazon sample 
     6.1 10% data

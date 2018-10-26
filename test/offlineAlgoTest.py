@@ -118,35 +118,40 @@ def main(dataset='amazon', part_flag=0.01, log_path_end='', tmp_log_flag=False):
     log_str = 'Inter Server cost is %f' % algo.compute_inter_server_cost()
     print(log_str)
     logging.info(log_str)
+    print(log_path)
     for handler in logging.root.handlers[:]:
         logging.root.removeHandler(handler)
 
 
 if __name__ == '__main__':
     dataset = ['twitters1', 'twitters2', 'amazons', 'p2pgnutella', 'facebook']
-    # for str_d in dataset:
-    #     main(dataset=str_d, part_flag=0.01, log_path_end='_v1', tmp_log_flag=True)
-    # main(dataset='twitters1', part_flag=0.1, log_path_end='debug')
-    # main(dataset='twitters2', part_flag=0.1, log_path_end='debug')
 
-    # res = [2, 4, 6, 8]
-    # for rr in res:
-    #     Constant.SERVER_NUMBER = rr
+    Constant.LEAST_VIRTUAL_PRIMARY_COPY_NUMBER = 0
+    # Constant.SERVER_NUMBER = 8
+    server_count = [2, 4, 6, 8]
+    # server_count = [2, 4, 8, 16, 32, 64, 96, 128]
+    # server_count = [2, 4, 8, 16, 32, 64, 96, 128, 256, 512]
+
+    # for s in server_count:
+    #     Constant.SERVER_NUMBER = s
     #     main(dataset='twitters2',
     #          part_flag=0.01,
-    #          log_path_end='fig_3_server_%d_vir_copy_%d' % (Constant.SERVER_NUMBER, Constant.LEAST_VIRTUAL_PRIMARY_COPY_NUMBER))
-    # main(dataset='p2pgnutella', part_flag=0.1, log_path_end='debug')
-    # main(dataset='facebook', part_flag=0.1, log_path_end='debug')
-    server_count = [2, 4, 8, 16, 32, 64, 96, 128, 256, 512, 1000]
-    server_count = [2, 4, 6, 8]
-    for s in server_count:
-        Constant.SERVER_NUMBER = s
-        main(dataset='twitters2',
-             part_flag=0.01,
-             log_path_end='v2_fig_3_server_%d_vir_copy_%d' % (
+    #          log_path_end='v2_fig_3_server_%d_vir_copy_%d' % (
+    #              Constant.SERVER_NUMBER, Constant.LEAST_VIRTUAL_PRIMARY_COPY_NUMBER))
+    # Constant.LEAST_VIRTUAL_PRIMARY_COPY_NUMBER = 0
+    # Constant.SERVER_NUMBER = 8
+    # main(dataset='amazons',
+    #      part_flag=0.010,
+    #      log_path_end='v2_fig_11_server_%d_vir_copy_%d' % (
+    #          Constant.SERVER_NUMBER, Constant.LEAST_VIRTUAL_PRIMARY_COPY_NUMBER))
+    Constant.SERVER_NUMBER = 8
+    # res = [0.08, 0.05, 0.02]
+    # for r in dataset:
+    # res = [0, 1, 2, 3]
+    res = [ 4, 5, 6, 7]
+    for r in res:
+        Constant.LEAST_VIRTUAL_PRIMARY_COPY_NUMBER = r
+        main(dataset='amazons',
+             part_flag=0.1,
+             log_path_end='v2_fig_19_server_%d_vir_copy_%d' % (
                  Constant.SERVER_NUMBER, Constant.LEAST_VIRTUAL_PRIMARY_COPY_NUMBER))
-    # Constant.SERVER_NUMBER = 2
-    # main(dataset='twitters2',
-    #      part_flag=0.01,
-    #      log_path_end='v2_fig_3_server_%d_vir_copy_%d' % (
-    #      Constant.SERVER_NUMBER, Constant.LEAST_VIRTUAL_PRIMARY_COPY_NUMBER))
