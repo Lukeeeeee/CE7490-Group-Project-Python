@@ -1,0 +1,887 @@
+ep1.1(f3 10%)=========================
+2------------------------------------
+Dataset information: TwitterSample2
+Nodes Number: 725 
+Edge Number: 4407
+Using Random Partitioning Method...
+Server Number: 2 
+Virtual Primary Copy Number: 0 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.040435791015625 seconds
+Inter-Server Cost:  678
+4-------------------------------------
+Dataset information: TwitterSample2
+Nodes Number: 725 
+Edge Number: 4407
+Using Random Partitioning Method...
+Server Number: 4 
+Virtual Primary Copy Number: 0 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.0650031566619873 seconds
+Inter-Server Cost:  1762
+8-------------------------------------
+Dataset information: TwitterSample2
+Nodes Number: 725 
+Edge Number: 4407
+Using Random Partitioning Method...
+Server Number: 8 
+Virtual Primary Copy Number: 0 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.06250762939453125 seconds
+Inter-Server Cost:  3277
+16------------------------------------
+Dataset information: TwitterSample2
+Nodes Number: 725 
+Edge Number: 4407
+Using Random Partitioning Method...
+Server Number: 16 
+Virtual Primary Copy Number: 0 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.06900739669799805 seconds
+Inter-Server Cost:  4845
+32-------------------------------------
+Dataset information: TwitterSample2
+Nodes Number: 725 
+Edge Number: 4407
+Using Random Partitioning Method...
+Server Number: 32 
+Virtual Primary Copy Number: 0 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.08700156211853027 seconds
+Inter-Server Cost:  6495
+64-------------------------------------
+Dataset information: TwitterSample2
+Nodes Number: 725 
+Edge Number: 4407
+Using Random Partitioning Method...
+Server Number: 64 
+Virtual Primary Copy Number: 0 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.0809471607208252 seconds
+Inter-Server Cost:  7361
+96-------------------------------------
+Dataset information: TwitterSample2
+Nodes Number: 725 
+Edge Number: 4407
+Using Random Partitioning Method...
+Server Number: 96 
+Virtual Primary Copy Number: 0 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.08077239990234375 seconds
+Inter-Server Cost:  7851
+128------------------------------------
+Dataset information: TwitterSample2
+Nodes Number: 725 
+Edge Number: 4407
+Using Random Partitioning Method...
+Server Number: 128 
+Virtual Primary Copy Number: 0 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.07000589370727539 seconds
+Inter-Server Cost:  8147
+
+
+ep1.2(f3 1%)===========================
+2--------------------------------------
+Dataset information: TwitterSample2
+Nodes Number: 72 
+Edge Number: 143
+Using Random Partitioning Method...
+Server Number: 2 
+Virtual Primary Copy Number: 0 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.0 seconds
+Inter-Server Cost:  59
+4--------------------------------------
+Nodes Number: 72 
+Edge Number: 143
+Using Random Partitioning Method...
+Server Number: 4 
+Virtual Primary Copy Number: 0 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.008042097091674805 seconds
+Inter-Server Cost:  133
+6--------------------------------------
+Dataset information: TwitterSample2
+Nodes Number: 72 
+Edge Number: 143
+Using Random Partitioning Method...
+Server Number: 6 
+Virtual Primary Copy Number: 0 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.0 seconds
+Inter-Server Cost:  178
+8--------------------------------------
+Dataset information: TwitterSample2
+Nodes Number: 72 
+Edge Number: 143
+Using Random Partitioning Method...
+Server Number: 8 
+Virtual Primary Copy Number: 0 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.0 seconds
+Inter-Server Cost:  188
+ep1.3(f3 50%)===========================
+2---------------------------------------
+Dataset information: TwitterSample2
+Nodes Number: 3625 
+Edge Number: 25245
+Using Random Partitioning Method...
+Server Number: 2 
+Virtual Primary Copy Number: 0 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.15625 seconds
+Inter-Server Cost:  3380
+4---------------------------------------
+Dataset information: TwitterSample2
+Nodes Number: 3625 
+Edge Number: 25245
+Using Random Partitioning Method...
+Server Number: 4 
+Virtual Primary Copy Number: 0 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.18749308586120605 seconds
+Inter-Server Cost:  8757
+8---------------------------------------
+Dataset information: TwitterSample2
+Nodes Number: 3625 
+Edge Number: 25245
+Using Random Partitioning Method...
+Server Number: 8 
+Virtual Primary Copy Number: 0 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.20312166213989258 seconds
+Inter-Server Cost:  16283
+16--------------------------------------
+Dataset information: TwitterSample2
+Nodes Number: 3625 
+Edge Number: 25245
+Using Random Partitioning Method...
+Server Number: 16 
+Virtual Primary Copy Number: 0 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.23436498641967773 seconds
+Inter-Server Cost:  25163
+32--------------------------------------
+Dataset information: TwitterSample2
+Nodes Number: 3625 
+Edge Number: 25245
+Using Random Partitioning Method...
+Server Number: 32 
+Virtual Primary Copy Number: 0 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.24999022483825684 seconds
+Inter-Server Cost:  33692
+64--------------------------------------
+Dataset information: TwitterSample2
+Nodes Number: 3625 
+Edge Number: 25245
+Using Random Partitioning Method...
+Server Number: 64 
+Virtual Primary Copy Number: 0 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.26561808586120605 seconds
+Inter-Server Cost:  40010
+96--------------------------------------
+Dataset information: TwitterSample2
+Nodes Number: 3625 
+Edge Number: 25245
+Using Random Partitioning Method...
+Server Number: 96 
+Virtual Primary Copy Number: 0 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.27274584770202637 seconds
+Inter-Server Cost:  43100
+128-------------------------------------
+Dataset information: TwitterSample2
+Nodes Number: 3625 
+Edge Number: 25245
+Using Random Partitioning Method...
+Server Number: 128 
+Virtual Primary Copy Number: 0 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.28124237060546875 seconds
+Inter-Server Cost:  45053
+256-------------------------------------
+Dataset information: TwitterSample2
+Nodes Number: 3625 
+Edge Number: 25245
+Using Random Partitioning Method...
+Server Number: 256 
+Virtual Primary Copy Number: 0 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.28124046325683594 seconds
+Inter-Server Cost:  47464
+512-------------------------------------
+Dataset information: TwitterSample2
+Nodes Number: 3625 
+Edge Number: 25245
+Using Random Partitioning Method...
+Server Number: 512 
+Virtual Primary Copy Number: 0 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.29686856269836426 seconds
+Inter-Server Cost:  49204
+
+ep2.1(f8 128)===========================
+2%--------------------------------------
+Dataset information: Facebook
+Nodes Number: 80 
+Edge Number: 193
+Using Random Partitioning Method...
+Server Number: 128 
+Virtual Primary Copy Number: 0 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.015625953674316406 seconds
+Inter-Server Cost:  386
+5%--------------------------------------
+Dataset information: Facebook
+Nodes Number: 201 
+Edge Number: 997
+Using Random Partitioning Method...
+Server Number: 128 
+Virtual Primary Copy Number: 0 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.010998249053955078 seconds
+Inter-Server Cost:  1876
+8%--------------------------------------
+Dataset information: Facebook
+Nodes Number: 323 
+Edge Number: 2424
+Using Random Partitioning Method...
+Server Number: 128 
+Virtual Primary Copy Number: 0 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.029993057250976562 seconds
+Inter-Server Cost:  4341
+10%-------------------------------------
+Dataset information: Facebook
+Nodes Number: 403 
+Edge Number: 3128
+Using Random Partitioning Method...
+Server Number: 128 
+Virtual Primary Copy Number: 0 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.04687166213989258 seconds
+Inter-Server Cost:  5453
+50%-------------------------------------
+Dataset information: Facebook
+Nodes Number: 2019 
+Edge Number: 40033
+Using Random Partitioning Method...
+Server Number: 128 
+Virtual Primary Copy Number: 0 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.35936617851257324 seconds
+Inter-Server Cost:  60880
+
+
+ep2.2(f8 64)===========================
+2%--------------------------------------
+Dataset information: Facebook
+Nodes Number: 80 
+Edge Number: 193
+Using Random Partitioning Method...
+Server Number: 64 
+Virtual Primary Copy Number: 0 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.0 seconds
+Inter-Server Cost:  357
+5%--------------------------------------
+Dataset information: Facebook
+Nodes Number: 201 
+Edge Number: 997
+Using Random Partitioning Method...
+Server Number: 64 
+Virtual Primary Copy Number: 0 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.015624046325683594 seconds
+Inter-Server Cost:  1710
+8%--------------------------------------
+Dataset information: Facebook
+Nodes Number: 323 
+Edge Number: 2424
+Using Random Partitioning Method...
+Server Number: 64 
+Virtual Primary Copy Number: 0 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.03124523162841797 seconds
+Inter-Server Cost:  3811
+10%-------------------------------------
+Dataset information: Facebook
+Nodes Number: 403 
+Edge Number: 3128
+Using Random Partitioning Method...
+Server Number: 64 
+Virtual Primary Copy Number: 0 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.031250715255737305 seconds
+Inter-Server Cost:  4966
+50%-------------------------------------
+Dataset information: Facebook
+Nodes Number: 2019 
+Edge Number: 40033
+Using Random Partitioning Method...
+Server Number: 64 
+Virtual Primary Copy Number: 0 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.32811594009399414 seconds
+Inter-Server Cost:  48353
+
+ep3.1(f9 128)===========================
+2%--------------------------------------
+Dataset information: Facebook
+Nodes Number: 80 
+Edge Number: 193
+Using Random Partitioning Method...
+Server Number: 128 
+Virtual Primary Copy Number: 3 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.0 seconds
+Inter-Server Cost:  376
+5%--------------------------------------
+Dataset information: Facebook
+Nodes Number: 201 
+Edge Number: 997
+Using Random Partitioning Method...
+Server Number: 128 
+Virtual Primary Copy Number: 3 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.015619039535522461 seconds
+Inter-Server Cost:  1783
+8%--------------------------------------
+Dataset information: Facebook
+Nodes Number: 323 
+Edge Number: 2424
+Using Random Partitioning Method...
+Server Number: 128 
+Virtual Primary Copy Number: 3 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.031250715255737305 seconds
+Inter-Server Cost:  4221
+10%-------------------------------------
+Dataset information: Facebook
+Nodes Number: 403 
+Edge Number: 3128
+Using Random Partitioning Method...
+Server Number: 128 
+Virtual Primary Copy Number: 3 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.031249284744262695 seconds
+Inter-Server Cost:  5390
+50%-------------------------------------
+Dataset information: Facebook
+Nodes Number: 2019 
+Edge Number: 40033
+Using Random Partitioning Method...
+Server Number: 128 
+Virtual Primary Copy Number: 3 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.37498950958251953 seconds
+Inter-Server Cost:  59515
+
+ep3.2(f9 64)============================
+2%--------------------------------------
+Dataset information: Facebook
+Nodes Number: 80 
+Edge Number: 193
+Using Random Partitioning Method...
+Server Number: 64 
+Virtual Primary Copy Number: 3 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.015626192092895508 seconds
+Inter-Server Cost:  348
+5%--------------------------------------
+Dataset information: Facebook
+Nodes Number: 201 
+Edge Number: 997
+Using Random Partitioning Method...
+Server Number: 64 
+Virtual Primary Copy Number: 3 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.015620231628417969 seconds
+Inter-Server Cost:  1594
+8%--------------------------------------
+Dataset information: Facebook
+Nodes Number: 323 
+Edge Number: 2424
+Using Random Partitioning Method...
+Server Number: 64 
+Virtual Primary Copy Number: 3 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.031250715255737305 seconds
+Inter-Server Cost:  3620
+10%-------------------------------------
+Dataset information: Facebook
+Nodes Number: 403 
+Edge Number: 3128
+Using Random Partitioning Method...
+Server Number: 64 
+Virtual Primary Copy Number: 3 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.04687190055847168 seconds
+Inter-Server Cost:  4743
+50%--------------------------------------
+Dataset information: Facebook
+Nodes Number: 2019 
+Edge Number: 40033
+Using Random Partitioning Method...
+Server Number: 64 
+Virtual Primary Copy Number: 3 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.3437378406524658 seconds
+Inter-Server Cost:  45547
+
+ep4.1(f11 10% 128)============================
+facebook--------------------------------------
+Dataset information: Facebook
+Nodes Number: 403 
+Edge Number: 3128
+Using Random Partitioning Method...
+Server Number: 128 
+Virtual Primary Copy Number: 2 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.031249523162841797 seconds
+Inter-Server Cost:  5439
+p2pgnutella-----------------------------------
+Dataset information: p2pGnutella
+Nodes Number: 811 
+Edge Number: 1800
+Using Random Partitioning Method...
+Server Number: 128 
+Virtual Primary Copy Number: 2 
+Write Frequency of Nodes: 1
+Random Partitioning Time: 0.04686880111694336 seconds
+Inter-Server Cost:  3410
+twitter---------------------------------------
+twitters1-------------------------------------
+Dataset information: TwitterSample1
+Nodes Number: 361 
+Edge Number: 5669
+Using Random Partitioning Method...
+Server Number: 128 
+Virtual Primary Copy Number: 2 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.06249547004699707 seconds
+Inter-Server Cost:  9780
+twitters2-------------------------------------
+Dataset information: TwitterSample2
+Nodes Number: 725 
+Edge Number: 4407
+Using Random Partitioning Method...
+Server Number: 128 
+Virtual Primary Copy Number: 2 
+Write Frequency of Nodes: 1
+Random Partitioning Time: 0.07812285423278809 seconds
+Inter-Server Cost:  7959
+amazon----------------------------------------
+amazons---------------------------------------
+Dataset information: AmazonSample
+Nodes Number: 335 
+Edge Number: 925
+Using Random Partitioning Method...
+Server Number: 128 
+Virtual Primary Copy Number: 2 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.014068365097045898 seconds
+Inter-Server Cost:  1803
+
+ep4.2(f11 10% 64)=============================
+facebook--------------------------------------
+Dataset information: Facebook
+Nodes Number: 403 
+Edge Number: 3128
+Using Random Partitioning Method...
+Server Number: 64 
+Virtual Primary Copy Number: 2 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.046875715255737305 seconds
+Inter-Server Cost:  4848
+p2pgnutella-----------------------------------
+Dataset information: p2pGnutella
+Nodes Number: 811 
+Edge Number: 1800
+Using Random Partitioning Method...
+Server Number: 64 
+Virtual Primary Copy Number: 2 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.031246423721313477 seconds
+Inter-Server Cost:  3231
+twitter---------------------------------------
+twitters1-------------------------------------
+Dataset information: TwitterSample1
+Nodes Number: 361 
+Edge Number: 5669
+Using Random Partitioning Method...
+Server Number: 64 
+Virtual Primary Copy Number: 2 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.062497615814208984 seconds
+Inter-Server Cost:  7851
+twitters2-------------------------------------
+Dataset information: TwitterSample2
+Nodes Number: 725 
+Edge Number: 4407
+Using Random Partitioning Method...
+Server Number: 64 
+Virtual Primary Copy Number: 2 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.0781245231628418 seconds
+Inter-Server Cost:  7274
+amazon----------------------------------------
+amazons---------------------------------------
+Dataset information: AmazonSample
+Nodes Number: 335 
+Edge Number: 925
+Using Random Partitioning Method...
+Server Number: 64 
+Virtual Primary Copy Number: 2 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.015624046325683594 seconds
+Inter-Server Cost:  1706
+
+
+ep4.3(f11 1% 8)===============================
+facebook--------------------------------------
+Nodes Number: 40 
+Edge Number: 63
+Using Random Partitioning Method...
+Server Number: 8 
+Virtual Primary Copy Number: 2 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.0 seconds
+Inter-Server Cost:  57
+p2pgnutella-----------------------------------
+Dataset information: p2pGnutella
+Nodes Number: 81 
+Edge Number: 100
+Using Random Partitioning Method...
+Server Number: 8 
+Virtual Primary Copy Number: 2 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.015629291534423828 seconds
+Inter-Server Cost:  95
+twitters1-------------------------------------
+Dataset information: TwitterSample1
+Nodes Number: 36 
+Edge Number: 234
+Using Random Partitioning Method...
+Server Number: 8 
+Virtual Primary Copy Number: 2 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.01562643051147461 seconds
+Inter-Server Cost:  136
+twitters2-------------------------------------
+Dataset information: TwitterSample2
+Nodes Number: 72 
+Edge Number: 143
+Using Random Partitioning Method...
+Server Number: 8 
+Virtual Primary Copy Number: 2 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.0 seconds
+Inter-Server Cost:  156
+amazons---------------------------------------
+Dataset information: AmazonSample
+Nodes Number: 33 
+Edge Number: 75
+Using Random Partitioning Method...
+Server Number: 8 
+Virtual Primary Copy Number: 2 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.0 seconds
+Inter-Server Cost:  69
+
+
+ep4.4(f11 50% 128)===============================
+facebook--------------------------------------
+Dataset information: Facebook
+Nodes Number: 2019 
+Edge Number: 40033
+Using Random Partitioning Method...
+Server Number: 128 
+Virtual Primary Copy Number: 2 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.3593628406524658 seconds
+Inter-Server Cost:  59078
+p2pgnutella-----------------------------------
+Dataset information: p2pGnutella
+Nodes Number: 4057 
+Edge Number: 12449
+Using Random Partitioning Method...
+Server Number: 128 
+Virtual Primary Copy Number: 2 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.21874356269836426 seconds
+Inter-Server Cost:  23207
+twitters1-------------------------------------
+Dataset information: TwitterSample1
+Nodes Number: 1805 
+Edge Number: 22184
+Using Random Partitioning Method...
+Server Number: 128 
+Virtual Primary Copy Number: 2 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.23436427116394043 seconds
+Inter-Server Cost:  35690
+twitters2-------------------------------------
+Dataset information: TwitterSample2
+Nodes Number: 3625 
+Edge Number: 25245
+Using Random Partitioning Method...
+Server Number: 128 
+Virtual Primary Copy Number: 2 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.31249213218688965 seconds
+Inter-Server Cost:  44183
+amazons---------------------------------------
+Dataset information: AmazonSample
+Nodes Number: 1675 
+Edge Number: 5008
+Using Random Partitioning Method...
+Server Number: 128 
+Virtual Primary Copy Number: 2 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.07811832427978516 seconds
+Inter-Server Cost:  9529
+
+ep6.1(f19 10%)================================
+0---------------------------------------------
+Dataset information: AmazonSample
+Nodes Number: 335 
+Edge Number: 925
+Using Random Partitioning Method...
+Server Number: 8 
+Virtual Primary Copy Number: 0 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.0156252384185791 seconds
+Inter-Server Cost:  1156
+1---------------------------------------------
+Dataset information: AmazonSample
+Nodes Number: 335 
+Edge Number: 925
+Using Random Partitioning Method...
+Server Number: 8 
+Virtual Primary Copy Number: 1 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.0 seconds
+Inter-Server Cost:  963
+2---------------------------------------------
+Dataset information: AmazonSample
+Nodes Number: 335 
+Edge Number: 925
+Using Random Partitioning Method...
+Server Number: 8 
+Virtual Primary Copy Number: 2 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.015625953674316406 seconds
+Inter-Server Cost:  800
+3---------------------------------------------
+Dataset information: AmazonSample
+Nodes Number: 335 
+Edge Number: 925
+Using Random Partitioning Method...
+Server Number: 8 
+Virtual Primary Copy Number: 3 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.015623807907104492 seconds
+Inter-Server Cost:  669
+4---------------------------------------------
+Dataset information: AmazonSample
+Nodes Number: 335 
+Edge Number: 925
+Using Random Partitioning Method...
+Server Number: 8 
+Virtual Primary Copy Number: 4 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.015624284744262695 seconds
+Inter-Server Cost:  462
+5---------------------------------------------
+Dataset information: AmazonSample
+Nodes Number: 335 
+Edge Number: 925
+Using Random Partitioning Method...
+Server Number: 8 
+Virtual Primary Copy Number: 5 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.0156252384185791 seconds
+Inter-Server Cost:  320
+6---------------------------------------------
+Dataset information: AmazonSample
+Nodes Number: 335 
+Edge Number: 925
+Using Random Partitioning Method...
+Server Number: 8 
+Virtual Primary Copy Number: 6 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.015624046325683594 seconds
+Inter-Server Cost:  175
+7---------------------------------------------
+Dataset information: AmazonSample
+Nodes Number: 335 
+Edge Number: 925
+Using Random Partitioning Method...
+Server Number: 8 
+Virtual Primary Copy Number: 7 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.015623092651367188 seconds
+Inter-Server Cost:  0
+
+
+
+ep6.2(f19 1%)=================================
+0---------------------------------------------
+Dataset information: AmazonSample
+Nodes Number: 33 
+Edge Number: 75
+Using Random Partitioning Method...
+Server Number: 8 
+Virtual Primary Copy Number: 0 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.0 seconds
+Inter-Server Cost:  111
+1---------------------------------------------
+Dataset information: AmazonSample
+Nodes Number: 33 
+Edge Number: 75
+Using Random Partitioning Method...
+Server Number: 8 
+Virtual Primary Copy Number: 1 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.0 seconds
+Inter-Server Cost:  87
+2---------------------------------------------
+Dataset information: AmazonSample
+Nodes Number: 33 
+Edge Number: 75
+Using Random Partitioning Method...
+Server Number: 8 
+Virtual Primary Copy Number: 2 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.0 seconds
+Inter-Server Cost:  68
+3---------------------------------------------
+Dataset information: AmazonSample
+Nodes Number: 33 
+Edge Number: 75
+Using Random Partitioning Method...
+Server Number: 8 
+Virtual Primary Copy Number: 3 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.0 seconds
+Inter-Server Cost:  51
+4---------------------------------------------
+Dataset information: AmazonSample
+Nodes Number: 33 
+Edge Number: 75
+Using Random Partitioning Method...
+Server Number: 8 
+Virtual Primary Copy Number: 4 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.0 seconds
+Inter-Server Cost:  50
+5---------------------------------------------
+Dataset information: AmazonSample
+Nodes Number: 33 
+Edge Number: 75
+Using Random Partitioning Method...
+Server Number: 8 
+Virtual Primary Copy Number: 5 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.0 seconds
+Inter-Server Cost:  25
+6---------------------------------------------
+Dataset information: AmazonSample
+Nodes Number: 33 
+Edge Number: 75
+Using Random Partitioning Method...
+Server Number: 8 
+Virtual Primary Copy Number: 6 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.0 seconds
+Inter-Server Cost:  17
+7---------------------------------------------
+Nodes Number: 33 
+Edge Number: 75
+Using Random Partitioning Method...
+Server Number: 8 
+Virtual Primary Copy Number: 7 
+Write Frequency of Nodes: 1
+Load of servers are balanced.
+Random Partitioning Time: 0.0 seconds
+Inter-Server Cost:  0
