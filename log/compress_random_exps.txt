@@ -1,0 +1,119 @@
+exp1.1(f3 dataset=twitters2 vpc=0 nodes=10%)=========================
+server  cost
+2       678
+4       1762
+8       3277
+16      4845
+32      6495
+64      7361
+96      7851
+128     8147
+
+exp1.2(f3 dataset=twitters2 vpc=0 nodes=1%)===========================
+server  cost
+2       59
+4       133
+6       178
+8       188
+
+ep1.3(f3 dataset=twitters2 vpc=0 nodes=50%)===========================
+server  cost
+2       3380
+4       8757
+8       16283
+16      25163
+32      33692
+64      40010
+96      43100
+128     45053
+256     47464
+512     49204
+
+ep2.1(f8 dataset=facebook vpc=0 server=128)===========================
+nodes   cost
+2%      386
+5%      1876
+8%      4341
+10%     5453
+50%     60880
+
+
+ep2.2(f8 dataset=facebook vpc=0 server=64)===========================
+nodes   cost
+2%      357
+5%      1710
+8%      3811
+10%     4966
+50%     48353
+
+ep3.1(f9 dataset=facebook vpc=3 server=128)===========================
+nodes   cost
+2%      376
+5%      1783
+8%      4221
+10%     5390
+50%     59515
+
+ep3.2(f9 dataset=facebook vpc=3 server=64)============================
+nodes   cost
+2%      348
+5%      1594
+8%      3620
+10%     4743
+50%     45547
+
+ep4.1(f11 vpc=3 nodes=10% server=128)============================
+dataset      cost
+facebook     5439
+p2pgnutella  3410
+twitters1    9780
+twitters2    7959
+amazons      1803
+
+ep4.2(f11 vpc=3 nodes=10% server=64)=============================
+dataset      cost
+facebook     4848
+p2pgnutella  3231
+twitters1    7851
+twitters2    7274
+amazons      1706
+
+
+ep4.3(f11 vpc=3 nodes=1% server=8)===============================
+dataset      cost
+facebook     57
+p2pgnutella  95
+twitters1    136
+twitters2    156
+amazons      69
+
+
+ep4.4(f11 vpc=3 nodes=50% server=128)===============================
+dataset      cost
+facebook     59078
+p2pgnutella  23207
+twitters1    35690
+twitters2    44183
+amazons      9529
+
+ep6.1(f19 dataset=amazons nodes=10% server=8)================================
+vpc    cost  
+0      1156
+1      963
+2      800
+3      669
+4      462
+5      320
+6      175
+7      0
+
+ep6.2(f19 dataset=amazons nodes=1% server=8)=================================
+vpc    cost 
+0      111
+1      87
+2      68
+3      51
+4      50
+5      25
+6      17
+7      0
