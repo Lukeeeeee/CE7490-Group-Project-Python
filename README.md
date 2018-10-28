@@ -31,7 +31,7 @@ Must run
     4.1 10% data, server count 128
     4.2 10% data, server count 64
     4.3 1% data, server count 8
-    4.4 50% data, server count 128
+    4.4 50% data, server count 128****
 
 5. Fig 15 facebook
     5.1 10% data
