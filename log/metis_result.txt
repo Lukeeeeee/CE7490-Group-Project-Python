@@ -1,0 +1,8 @@
+ ['AmazonSample', 'TwitterSample1', 'TwitterSample2', 'Facebook', 'p2pGnutella'], server number = 128, percent = 0.5, cost = [7770, 32630, 28442, 74832, 23807]
+
+ ['AmazonSample', 'TwitterSample1', 'TwitterSample2', 'Facebook', 'p2pGnutella'], server number = 128, percent = 0.1, cost = [2062, 8668, 11623, 18437, 6745]
+
+['AmazonSample', 'TwitterSample1', 'TwitterSample2', 'Facebook', 'p2pGnutella'], server number = 64, percent = 0.1, cost = [1858, 7670, 9704, 16834, 6498]
+
+ ['AmazonSample', 'TwitterSample1', 'TwitterSample2', 'Facebook', 'p2pGnutella'], server number = 8, percent = 0.01, cost = [277, 945, 1662, 1543, 750]
+
