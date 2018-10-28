@@ -220,5 +220,15 @@ def fig19():
 
 
 if __name__ == '__main__':
-    dataset = ['twitters1', 'twitters2', 'amazons', 'p2pgnutella', 'facebook']
-    fig19()
+    from src.algo.inter_server_cost import compute_inter_sever_cost, compute_inter_sever_cost_graph
+
+    # dataset = ['twitters1', 'twitters2', 'amazons', 'p2pgnutella', 'facebook']
+    # fig19()
+    log_path = '/home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_22-40-36_offline_twitters2_0.1_v2_fig_3_server_2_vir_copy_0'
+    g, server = op.load_log(log_path)
+    op.validate_result(dataset_g=g,
+                       server_g_list=server,
+                       load_differ=Constant.MAX_LOAD_DIFFERENCE_AMONG_SERVER,
+                       virtual_copy_numer=Constant.LEAST_VIRTUAL_PRIMARY_COPY_NUMBER)
+    print(compute_inter_sever_cost_graph(server))
+    # log_str = 'Inter Server cost is %f' % algo.compute_inter_server_cost()

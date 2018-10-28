@@ -42,8 +42,25 @@ def get_res(path_list):
                 print(path, cost)
 
 
+def get_update_res(path_list):
+    from src.algo.operation import Operation
+    for path in path_list:
+        if os.path.isfile(os.path.join(path, 'log')):
+            with open(os.path.join(path, 'log'), 'r') as f:
+                last_two_line = f.readlines()[-2:]
+                last_line = last_two_line[1] if last_two_line[1] != '\n' else last_two_line[0]
+                cost = float(last_line.split(' ')[-1])
+                print(path, cost)
+                if os.path.isfile(path + '/dataset_graph.gpickle'):
+                    g, server_g = Operation.load_log(log_path=path)
+                    print("update cost is %f" % Operation.remove_redundant_node_on_graph(g, server_g))
+
+
 if __name__ == '__main__':
     key_word = ['fig_19', '0.01']
-    get_res(path_list=find_path_list(path=LOG_PATH + '/',
-                                     key_word=key_word,
-                                     ex_word=[]))
+    # get_res(path_list=find_path_list(path=LOG_PATH + '/',
+    #                                  key_word=key_word,
+    #                                  ex_word=[]))
+    get_update_res(path_list=find_path_list(path=LOG_PATH + '/',
+                                            key_word=key_word,
+                                            ex_word=[]))

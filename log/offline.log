@@ -1,166 +1,208 @@
 Fig 3
 
 dataset 0.01
-virtual primary copy = 6
 /home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_22-40-06_offline_twitters2_0.01_v2_fig_3_server_6_vir_copy_0 191.0
-
-virtual primary copy = 4
+update cost is 100.000000
 /home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_22-40-03_offline_twitters2_0.01_v2_fig_3_server_4_vir_copy_0 149.0
-
-virtual primary copy = 8
+update cost is 86.000000
 /home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_22-40-08_offline_twitters2_0.01_v2_fig_3_server_8_vir_copy_0 246.0
-
-virtual primary copy = 2
+update cost is 124.000000
 /home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_22-40-00_offline_twitters2_0.01_v2_fig_3_server_2_vir_copy_0 61.0
+update cost is 45.000000
 
 dataset 0.1
-server = 32
 /home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_22-40-50_offline_twitters2_0.1_v2_fig_3_server_32_vir_copy_0 8401.0
-
-server = 4
+update cost is 4592.000000
 /home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_22-45-24_offline_twitters2_0.1_v2_fig_3_server_4_vir_copy_0 1728.0
-
-server = 64
+update cost is 1451.000000
 /home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_22-47-38_offline_twitters2_0.1_v2_fig_3_server_64_vir_copy_0 11903.0
-
-server = 8
+update cost is 5412.000000
 /home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_22-51-23_offline_twitters2_0.1_v2_fig_3_server_8_vir_copy_0 3380.0
-
-server = 128
+update cost is 2475.000000
 /home/dls/meng/CE7490-Group-Project-Python/log/2018-10-27_00-26-29_offline_twitters2_0.1_v2_fig_3_server_128_vir_copy_0 17765.0
-
-server = 96
+update cost is 6562.000000
 /home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_23-17-03_offline_twitters2_0.1_v2_fig_3_server_96_vir_copy_0 14215.0
-
-server = 16
+update cost is 5997.000000
 /home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_22-56-29_offline_twitters2_0.1_v2_fig_3_server_16_vir_copy_0 5453.0
-
-server = 2
+update cost is 3438.000000
 /home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_22-40-36_offline_twitters2_0.1_v2_fig_3_server_2_vir_copy_0 633.0
+update cost is 546.000000
 
 dataset 0.5
 
-server = 64
 /home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_22-42-14_offline_twitters2_0.5_v2_fig_3_server_64_vir_copy_0 58007.0
-
-server = 4
+update cost is 29574.000000
 /home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_22-41-41_offline_twitters2_0.5_v2_fig_3_server_4_vir_copy_0 8493.0
-
-server = 96
+update cost is 7086.000000
 /home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_22-42-27_offline_twitters2_0.5_v2_fig_3_server_96_vir_copy_0 71257.0
-
-server = 512
-/home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_22-42-59_offline_twitters2_0.5_v2_fig_3_server_512_vir_copy_0 92.0
-
-server = 256
+update cost is 31813.000000
+/home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_22-42-59_offline_twitters2_0.5_v2_fig_3_server_512_vir_copy_0 5948.0
 /home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_22-42-52_offline_twitters2_0.5_v2_fig_3_server_256_vir_copy_0 110705.0
-
-server = 8
+update cost is 37535.000000
 /home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_22-41-52_offline_twitters2_0.5_v2_fig_3_server_8_vir_copy_0 16479.0
-
-server= 128
+update cost is 12341.000000
 /home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_22-42-34_offline_twitters2_0.5_v2_fig_3_server_128_vir_copy_0 78942.0
-
-server= 2
+update cost is 33126.000000
 /home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_22-41-32_offline_twitters2_0.5_v2_fig_3_server_2_vir_copy_0 3129.0
-
-server= 16
+update cost is 2781.000000
 /home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_22-42-00_offline_twitters2_0.5_v2_fig_3_server_16_vir_copy_0 27361.0
-
-server= 32
+update cost is 17756.000000
 /home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_22-42-08_offline_twitters2_0.5_v2_fig_3_server_32_vir_copy_0 40627.0
-
+update cost is 23882.000000
 
 Fig 8
+
+64 server
 /home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_22-47-54_offline_facebook_0.02_v2_fig_8_server_64_vir_copy_0 863.0
-/home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_22-48-52_offline_facebook_0.05_v2_fig_8_server_64_vir_copy_0 3084.0
-/home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_22-53-33_offline_facebook_0.08_v2_fig_8_server_64_vir_copy_0 5860.0
-/home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_23-09-27_offline_facebook_0.1_v2_fig_8_server_64_vir_copy_0 7494.0
+update cost is 338.000000
 /home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_22-49-06_offline_facebook_0.5_v2_fig_8_server_64_vir_copy_0 58926.0
+update cost is 35722.000000
+/home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_22-48-52_offline_facebook_0.05_v2_fig_8_server_64_vir_copy_0 3084.0
+update cost is 1432.000000
+/home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_22-53-33_offline_facebook_0.08_v2_fig_8_server_64_vir_copy_0 5860.0
+update cost is 3154.000000
+/home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_23-09-27_offline_facebook_0.1_v2_fig_8_server_64_vir_copy_0 7494.0
+update cost is 3875.000000
 
 128 server
-/home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_22-46-15_offline_facebook_0.02_v2_fig_8_server_128_vir_copy_0 1848.0
-/home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_22-50-11_offline_facebook_0.05_v2_fig_8_server_128_vir_copy_0 4970.0
 /home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_23-14-59_offline_facebook_0.08_v2_fig_8_server_128_vir_copy_0 8745.0
+update cost is 3740.000000
 /home/dls/meng/CE7490-Group-Project-Python/log/2018-10-27_00-15-56_offline_facebook_0.1_v2_fig_8_server_128_vir_copy_0 11434.0
+update cost is 4698.000000
+/home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_22-46-15_offline_facebook_0.02_v2_fig_8_server_128_vir_copy_0 1848.0
+update cost is 386.000000
+/home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_22-50-11_offline_facebook_0.05_v2_fig_8_server_128_vir_copy_0 4970.0
+update cost is 1718.000000
 /home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_22-49-30_offline_facebook_0.5_v2_fig_8_server_128_vir_copy_0 88047.0
+update cost is 45678.000000
 
 
 
 Fig 9
 
 64 server
+
 /home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_22-55-43_offline_facebook_0.05_v2_fig_9_server_64_vir_copy_3 1705.0
+update cost is 982.000000
 /home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_22-54-29_offline_facebook_0.02_v2_fig_9_server_64_vir_copy_3 459.0
+update cost is 243.000000
 /home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_22-51-34_offline_facebook_0.5_v2_fig_9_server_64_vir_copy_3 40698.0
+update cost is 24943.000000
 /home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_23-02-27_offline_facebook_0.08_v2_fig_9_server_64_vir_copy_3 3340.0
+update cost is 2189.000000
 /home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_23-21-40_offline_facebook_0.1_v2_fig_9_server_64_vir_copy_3 4451.0
+update cost is 2794.000000
 
 
 128 server
-/home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_23-28-24_offline_facebook_0.08_v2_fig_9_server_128_vir_copy_3 6325.0
-/home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_22-54-48_offline_facebook_0.02_v2_fig_9_server_128_vir_copy_3 825.0
-/home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_22-59-41_offline_facebook_0.05_v2_fig_9_server_128_vir_copy_3 3063.0
-/home/dls/meng/CE7490-Group-Project-Python/log/2018-10-27_00-31-32_offline_facebook_0.1_v2_fig_9_server_128_vir_copy_3 8099.0
-/home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_22-50-50_offline_facebook_0.5_v2_fig_9_server_128_vir_copy_3 72144.0
 
+/home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_23-28-24_offline_facebook_0.08_v2_fig_9_server_128_vir_copy_3 6325.0
+update cost is 2934.000000
+/home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_22-54-48_offline_facebook_0.02_v2_fig_9_server_128_vir_copy_3 825.0
+update cost is 320.000000
+/home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_22-59-41_offline_facebook_0.05_v2_fig_9_server_128_vir_copy_3 3063.0
+update cost is 1264.000000
+/home/dls/meng/CE7490-Group-Project-Python/log/2018-10-27_00-31-32_offline_facebook_0.1_v2_fig_9_server_128_vir_copy_3 8099.0
+update cost is 3880.000000
+/home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_22-50-50_offline_facebook_0.5_v2_fig_9_server_128_vir_copy_3 72144.0
+update cost is 36865.000000
 
 Fig 11
 
 128 server 10% dataset
+
 /home/dls/meng/CE7490-Group-Project-Python/log/2018-10-27_02-45-02_offline_amazons_0.1_v2_fig_11_server_128_vir_copy_3 3248.0
+update cost is 1069.000000
 /home/dls/meng/CE7490-Group-Project-Python/log/2018-10-27_03-00-43_offline_p2pgnutella_0.1_v2_fig_11_server_128_vir_copy_3 7398.0
+update cost is 2297.000000
 /home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_22-58-24_offline_twitters1_0.1_v2_fig_11_server_128_vir_copy_3 14737.0
+update cost is 7161.000000
 /home/dls/meng/CE7490-Group-Project-Python/log/2018-10-27_01-21-02_offline_twitters2_0.1_v2_fig_11_server_128_vir_copy_3 13271.0
+update cost is 5438.000000
 /home/dls/meng/CE7490-Group-Project-Python/log/2018-10-27_03-34-41_offline_facebook_0.1_v2_fig_11_server_128_vir_copy_3 8672.0
+update cost is 3937.000000
 
 64 server 10% dataset
+
 /home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_22-58-04_offline_twitters1_0.1_v2_fig_11_server_64_vir_copy_3 6449.0
+update cost is 4168.000000
 /home/dls/meng/CE7490-Group-Project-Python/log/2018-10-27_00-09-02_offline_amazons_0.1_v2_fig_11_server_64_vir_copy_3 2673.0
+update cost is 1029.000000
 /home/dls/meng/CE7490-Group-Project-Python/log/2018-10-27_00-15-02_offline_p2pgnutella_0.1_v2_fig_11_server_64_vir_copy_3 4224.0
+update cost is 1988.000000
 /home/dls/meng/CE7490-Group-Project-Python/log/2018-10-27_00-29-11_offline_facebook_0.1_v2_fig_11_server_64_vir_copy_3 4452.0
+update cost is 2856.000000
 /home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_23-37-56_offline_twitters2_0.1_v2_fig_11_server_64_vir_copy_3 7876.0
+update cost is 3993.000000
 
 8 server 1% dataset
+
 /home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_22-57-58_offline_amazons_0.01_v2_fig_11_server_8_vir_copy_3 27.0
+update cost is 25.000000
 /home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_22-58-07_offline_facebook_0.01_v2_fig_11_server_8_vir_copy_3 31.0
+update cost is 30.000000
 /home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_22-57-50_offline_twitters2_0.01_v2_fig_11_server_8_vir_copy_3 59.0
+update cost is 31.000000
 /home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_22-57-46_offline_twitters1_0.01_v2_fig_11_server_8_vir_copy_3 36.0
+update cost is 36.000000
 /home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_22-58-00_offline_p2pgnutella_0.01_v2_fig_11_server_8_vir_copy_3 39.0
+update cost is 25.000000
 
 128 server 50% dataset
+
 /home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_22-59-08_offline_p2pgnutella_0.5_v2_fig_11_server_128_vir_copy_3 48548.0
+update cost is 17290.000000
 /home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_22-59-00_offline_amazons_0.5_v2_fig_11_server_128_vir_copy_3 17969.0
+update cost is 5635.000000
 /home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_22-58-46_offline_twitters1_0.5_v2_fig_11_server_128_vir_copy_3 46962.0
+update cost is 24237.000000
 /home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_22-59-16_offline_facebook_0.5_v2_fig_11_server_128_vir_copy_3 72089.0
+update cost is 37598.000000
 /home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_22-58-52_offline_twitters2_0.5_v2_fig_11_server_128_vir_copy_3 66760.0
+update cost is 28655.000000
 
 Fig 15 16
 
-10% dataset
 /home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_23-00-41_offline_facebook_0.1_v2_fig_15_16_server_10_vir_copy_0 2305.0
-50% dataset
+update cost is 1582.000000
 /home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_23-00-32_offline_facebook_0.5_v2_fig_15_16_server_10_vir_copy_0 14543.0
-1% dataset
+update cost is 12542.000000
 /home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_23-00-51_offline_facebook_0.01_v2_fig_15_16_server_10_vir_copy_0 90.0
+update cost is 64.000000
 
 
 Fig 19
 10% dataset
+
 /home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_23-08-03_offline_amazons_0.1_v2_fig_19_server_8_vir_copy_7 0.0
+update cost is 0.000000
 /home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_23-04-31_offline_amazons_0.1_v2_fig_19_server_8_vir_copy_0 1201.0
+update cost is 660.000000
 /home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_23-06-09_offline_amazons_0.1_v2_fig_19_server_8_vir_copy_2 524.0
+update cost is 319.000000
 /home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_23-05-15_offline_amazons_0.1_v2_fig_19_server_8_vir_copy_1 758.0
+update cost is 460.000000
 /home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_23-05-44_offline_amazons_0.1_v2_fig_19_server_8_vir_copy_4 198.0
+update cost is 151.000000
 /home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_23-04-04_offline_amazons_0.1_v2_fig_19_server_8_vir_copy_3 291.0
+update cost is 233.000000
 /home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_23-06-52_offline_amazons_0.1_v2_fig_19_server_8_vir_copy_6 34.0
+update cost is 29.000000
 
 Fig 19
 1% dataset
+
 /home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_23-03-49_offline_amazons_0.01_v2_fig_19_server_8_vir_copy_6 3.0
+update cost is 3.000000
 /home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_23-03-51_offline_amazons_0.01_v2_fig_19_server_8_vir_copy_7 0.0
+update cost is 0.000000
 /home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_23-03-47_offline_amazons_0.01_v2_fig_19_server_8_vir_copy_4 16.0
+update cost is 14.000000
 /home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_23-03-41_offline_amazons_0.01_v2_fig_19_server_8_vir_copy_1 75.0
+update cost is 46.000000
 /home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_23-03-45_offline_amazons_0.01_v2_fig_19_server_8_vir_copy_3 27.0
+update cost is 25.000000
 /home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_23-03-39_offline_amazons_0.01_v2_fig_19_server_8_vir_copy_0 126.0
+update cost is 74.000000
 /home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_23-03-43_offline_amazons_0.01_v2_fig_19_server_8_vir_copy_2 39.0
+update cost is 28.000000

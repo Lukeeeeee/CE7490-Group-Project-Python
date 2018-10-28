@@ -1,7 +1,7 @@
 from src.core import Basic
 from src.constant import Constant
 from src.node.node import Node
-from src.algo.inter_server_cost import compute_inter_sever_cost
+from src.algo.inter_server_cost import compute_inter_sever_cost, compute_inter_sever_cost_graph
 import networkx as nx
 import logging
 import glob
@@ -209,7 +209,26 @@ class Operation(Basic):
             node.virtual_primary_copy_server_list.pop()
 
     @staticmethod
-    def validate_result(dataset_g, server_g_list, load_differ=1, virtual_copy_numer=2):
+    def validate_locality(dataset_g, server_g_list):
+        for server in server_g_list:
+            for node in list(server.nodes):
+                if server.nodes[node]['node_type'] == Constant.PRIMARY_COPY:
+                    met_flag = True
+                    for adj_node in list(dataset_g[node]):
+                        if not server.has_node(adj_node):
+                            met_flag = False
+                            log_str = "Node %d missed adj %d" % (node, adj_node)
+                            logging.error(log_str)
+                            print(log_str)
+                            global_flag = False
+                    if met_flag:
+                        # log_str = "Node %d met locality" % (node)
+                        # logging.info(log_str)
+                        # print(log_str)
+                        pass
+
+    @staticmethod
+    def validate_result(dataset_g, server_g_list, load_differ=1, virtual_copy_number=2):
         node_list = list(dataset_g.nodes)
         vir_copy = [0 for _ in range(max(node_list) + 1)]
         non_copy = [0 for _ in range(max(node_list) + 1)]
@@ -246,7 +265,7 @@ class Operation(Basic):
             logging.info(log_str)
         # Check virtual primary copy number
         for node in list(dataset_g.nodes):
-            if vir_copy[node] == virtual_copy_numer:
+            if vir_copy[node] == virtual_copy_number:
                 res = True
             else:
                 res = False
@@ -303,10 +322,35 @@ class Operation(Basic):
         server_f_list = glob.glob(log_path + '/server_*.gpickle')
         for f in server_f_list:
             server_g_list.append(nx.read_gpickle(f))
-        log_str = 'read the log'
-        logging.info(log_str)
-        print(log_str)
+        # log_str = 'read the log'
+        # logging.info(log_str)
+        # print(log_str)
         return dataset_g, server_g_list
+
+    @staticmethod
+    def remove_redundant_node_on_graph(graph, server_graph_list):
+
+        for node in list(graph.nodes):
+            adj_node_list = list(graph[node])
+            for server_g in server_graph_list:
+                if server_g.has_node(node) and server_g.nodes[node]['node_type'] == Constant.NON_PRIMARY_COPY:
+                    remove_flag = True
+                    for adj_node in adj_node_list:
+                        if server_g.has_node(adj_node) and server_g.nodes[adj_node][
+                            'node_type'] == Constant.PRIMARY_COPY:
+                            remove_flag = False
+                    if remove_flag is True:
+                        server_g.remove_node(node)
+        Operation.validate_locality(graph, server_graph_list)
+        load_l = []
+        for server_g in server_graph_list:
+            load = 0
+            for node in list(server_g.nodes):
+                if server_g.nodes[node]['node_type'] != Constant.NON_PRIMARY_COPY:
+                    load += 1
+            load_l.append(load)
+        # print(load_l)
+        return compute_inter_sever_cost_graph(server_graph_list)
 
 
 if __name__ == '__main__':
