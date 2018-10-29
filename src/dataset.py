@@ -50,3 +50,18 @@ class Dataset(Basic):
             return True
         else:
             return False
+
+def read_file_to_dict(filename):
+    col_data = []
+    with open(filename) as f:
+        data = f.readlines()
+    for line in data:
+            col_data.append([int(line.strip().split("\t")[0]), int(line.strip().split("\t")[1])])
+            nl = []
+    for i in range(len(col_data)):
+        for j in range(2):
+            _j = 1 ^ j
+            if col_data[i][j] not in nl:
+                nl.append(col_data[i][j])
+    return nl
+
