@@ -48,72 +48,72 @@ nodes   cost
 
 ep3.1(f9 dataset=facebook vpc=3 server=128)===========================
 nodes   cost
-2%      376
-5%      1783
-8%      4221
-10%     5390
-50%     59515
+2%      616
+5%      2386
+8%      5180
+10%     6599
+50%     65572
 
 ep3.2(f9 dataset=facebook vpc=3 server=64)============================
 nodes   cost
-2%      348
-5%      1594
-8%      3620
-10%     4743
-50%     45547
+2%      588
+5%      2197
+8%      4589
+10%     5952
+50%     51604
 
 ep4.1(f11 vpc=3 nodes=10% server=128)============================
 dataset      cost
-facebook     5439
-p2pgnutella  3410
-twitters1    9780
-twitters2    7959
-amazons      1803
+facebook     6648
+p2pgnutella  5843
+twitters1    10863
+twitters2    10134
+amazons      2808
 
 ep4.2(f11 vpc=3 nodes=10% server=64)=============================
 dataset      cost
-facebook     4848
-p2pgnutella  3231
-twitters1    7851
-twitters2    7274
-amazons      1706
+facebook     6057
+p2pgnutella  5664
+twitters1    8934
+twitters2    9449
+amazons      2711
 
 
 ep4.3(f11 vpc=3 nodes=1% server=8)===============================
 dataset      cost
-facebook     57
-p2pgnutella  95
-twitters1    136
-twitters2    156
-amazons      69
+facebook     177
+p2pgnutella  338
+twitters1    244
+twitters2    372
+amazons      168
 
 
 ep4.4(f11 vpc=3 nodes=50% server=128)===============================
 dataset      cost
-facebook     59078
-p2pgnutella  23207
-twitters1    35690
-twitters2    44183
-amazons      9529
+facebook     65135
+p2pgnutella  35378
+twitters1    41105
+twitters2    55058
+amazons      14554
 
 ep6.1(f19 dataset=amazons nodes=10% server=8)================================
 vpc    cost  
 0      1156
-1      963
-2      800
-3      669
-4      462
-5      320
-6      175
-7      0
+1      1298
+2      1470
+3      1674
+4      1802
+5      1995
+6      2185
+7      2345
 
 ep6.2(f19 dataset=amazons nodes=1% server=8)=================================
 vpc    cost 
 0      111
-1      87
-2      68
-3      51
-4      50
-5      25
-6      17
-7      0
+1      120
+2      134
+3      150
+4      182
+5      190
+6      215
+7      231
