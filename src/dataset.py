@@ -38,7 +38,7 @@ class Dataset(Basic):
         elif dataset_str == 'p2pgnutella':
             edgelist = np.loadtxt(os.path.join(DATASET_PATH, 'p2pGnutella.txt'), int)
         else:
-            pass
+            raise ValueError
         g.add_edges_from(edgelist)
         return g
 

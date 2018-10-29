@@ -85,6 +85,7 @@ class Plotter(object):
 
 
 if __name__ == '__main__':
+    # Plotter utility for visualization
     p = Plotter(log_path='.')
     p.plot_fig(fig_num=1,
                x=list(range(5)),
