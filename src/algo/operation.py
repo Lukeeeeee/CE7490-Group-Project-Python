@@ -350,6 +350,26 @@ class Operation(Basic):
                     load += 1
             load_l.append(load)
         # print(load_l)
+        vir_copy_count = []
+        non_pr_copy_count = []
+        pr_copy_count = []
+        for server in server_graph_list:
+            vir_c = 0
+            non_pr_c = 0
+            pr_count = 0
+            for node in list(server.nodes):
+                if server.nodes[node]['node_type'] == Constant.NON_PRIMARY_COPY:
+                    non_pr_c += 1
+                if server.nodes[node]['node_type'] == Constant.VIRTUAL_PRIMARY_COPY:
+                    vir_c += 1
+                if server.nodes[node]['node_type'] == Constant.PRIMARY_COPY:
+                    pr_count += 1
+            vir_copy_count.append(vir_c)
+            non_pr_copy_count.append(non_pr_c)
+            pr_copy_count.append(pr_count)
+        # print("Virtual primary distribution is ", vir_copy_count)
+        print("Non primary copy distribution is ", non_pr_copy_count)
+        print("Primary copy distribution is ", pr_copy_count)
         return compute_inter_sever_cost_graph(server_graph_list)
 
 
