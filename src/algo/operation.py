@@ -381,7 +381,7 @@ class Operation(Basic):
             res_list.append(res)
         res_list = np.array(res_list)
         res_list = res_list / np.sum(res_list) * 100
-        print("non pr copy distribute", list(res_list))
+        # print("non pr copy distribute", list(res_list))
         return compute_inter_sever_cost_graph(server_graph_list)
 
 

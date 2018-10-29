@@ -57,7 +57,7 @@ def get_update_res(path_list):
 
 
 if __name__ == '__main__':
-    key_word = ['fig_15_16']
+    key_word = ['fig_19', '0.1']
     # get_res(path_list=find_path_list(path=LOG_PATH + '/',
     #                                  key_word=key_word,
     #                                  ex_word=[]))

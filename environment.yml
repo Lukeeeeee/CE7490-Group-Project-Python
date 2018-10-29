@@ -15,8 +15,18 @@ dependencies:
 - zlib=1.2.11=0
 - pip:
   - config==0.4.0
+  - cycler==0.10.0
   - decorator==4.3.0
+  - kiwisolver==1.0.1
+  - matplotlib==3.0.1
   - networkx==2.2
   - numpy==1.15.2
+  - pandas==0.23.4
+  - pyparsing==2.2.2
+  - python-dateutil==2.7.5
+  - pytz==2018.6
+  - scipy==1.1.0
+  - seaborn==0.9.0
+  - six==1.11.0
+  - tqdm==4.27.0
 prefix: /home/dls/anaconda3/envs/CE7490-Group-Project-Python
-
