@@ -18,7 +18,7 @@ def create_algo(server_count=4, node_count=10):
 
 
 class TestOfflineAlgo(unittest.TestCase):
-
+    # this is a simple unit test for offline algorithm when we develop the code.
     def test_basic_assign_new_node(self):
         algo = create_algo(node_count=4, server_count=10)
         algo.network_dataset.graph.add_edge(0, 1)

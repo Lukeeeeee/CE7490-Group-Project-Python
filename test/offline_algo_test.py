@@ -55,7 +55,7 @@ def main(dataset='amazon', part_flag=0.01, log_path_end='', tmp_log_flag=False):
     op.validate_result(dataset_g=algo.network_dataset.graph,
                        server_g_list=[x.graph for x in algo.server_list],
                        load_differ=Constant.MAX_LOAD_DIFFERENCE_AMONG_SERVER,
-                       virtual_copy_numer=Constant.LEAST_VIRTUAL_PRIMARY_COPY_NUMBER)
+                       virtual_copy_number=Constant.LEAST_VIRTUAL_PRIMARY_COPY_NUMBER)
     log_str = 'Inter Server cost is %f' % algo.compute_inter_server_cost()
     print(log_str)
     logging.info(log_str)
@@ -70,7 +70,7 @@ def main(dataset='amazon', part_flag=0.01, log_path_end='', tmp_log_flag=False):
     op.validate_result(dataset_g=algo.network_dataset.graph,
                        server_g_list=[x.graph for x in algo.server_list],
                        load_differ=Constant.MAX_LOAD_DIFFERENCE_AMONG_SERVER,
-                       virtual_copy_numer=Constant.LEAST_VIRTUAL_PRIMARY_COPY_NUMBER)
+                       virtual_copy_number=Constant.LEAST_VIRTUAL_PRIMARY_COPY_NUMBER)
     print("Init merge process-------------")
     logging.info("Init merge process-------------")
     algo.init_merge_process()
@@ -78,7 +78,7 @@ def main(dataset='amazon', part_flag=0.01, log_path_end='', tmp_log_flag=False):
     op.validate_result(dataset_g=algo.network_dataset.graph,
                        server_g_list=[x.graph for x in algo.server_list],
                        load_differ=Constant.MAX_LOAD_DIFFERENCE_AMONG_SERVER,
-                       virtual_copy_numer=Constant.LEAST_VIRTUAL_PRIMARY_COPY_NUMBER)
+                       virtual_copy_number=Constant.LEAST_VIRTUAL_PRIMARY_COPY_NUMBER)
     print("Start merge process-------------")
     logging.info("Start merge process-------------")
     algo.start_merge_process()
@@ -89,7 +89,7 @@ def main(dataset='amazon', part_flag=0.01, log_path_end='', tmp_log_flag=False):
     op.validate_result(dataset_g=algo.network_dataset.graph,
                        server_g_list=[x.graph for x in algo.server_list],
                        load_differ=Constant.MAX_LOAD_DIFFERENCE_AMONG_SERVER,
-                       virtual_copy_numer=Constant.LEAST_VIRTUAL_PRIMARY_COPY_NUMBER)
+                       virtual_copy_number=Constant.LEAST_VIRTUAL_PRIMARY_COPY_NUMBER)
     print("Init Group Swap process-------------")
     logging.info("Init Group Swap process-------------")
     algo.init_group_swap_process(algo)
@@ -97,7 +97,7 @@ def main(dataset='amazon', part_flag=0.01, log_path_end='', tmp_log_flag=False):
     op.validate_result(dataset_g=algo.network_dataset.graph,
                        server_g_list=[x.graph for x in algo.server_list],
                        load_differ=Constant.MAX_LOAD_DIFFERENCE_AMONG_SERVER,
-                       virtual_copy_numer=Constant.LEAST_VIRTUAL_PRIMARY_COPY_NUMBER)
+                       virtual_copy_number=Constant.LEAST_VIRTUAL_PRIMARY_COPY_NUMBER)
     print("Virtual Primary Copy Swap process-------------")
     logging.info("Virtual Swap Copy Swap process-------------")
     algo.virtual_primary_copy_swap()
@@ -108,13 +108,13 @@ def main(dataset='amazon', part_flag=0.01, log_path_end='', tmp_log_flag=False):
     op.validate_result(dataset_g=algo.network_dataset.graph,
                        server_g_list=[x.graph for x in algo.server_list],
                        load_differ=Constant.MAX_LOAD_DIFFERENCE_AMONG_SERVER,
-                       virtual_copy_numer=Constant.LEAST_VIRTUAL_PRIMARY_COPY_NUMBER)
+                       virtual_copy_number=Constant.LEAST_VIRTUAL_PRIMARY_COPY_NUMBER)
     algo.save_all(path=log_path)
     g, server = op.load_log(log_path)
     op.validate_result(dataset_g=g,
                        server_g_list=server,
                        load_differ=Constant.MAX_LOAD_DIFFERENCE_AMONG_SERVER,
-                       virtual_copy_numer=Constant.LEAST_VIRTUAL_PRIMARY_COPY_NUMBER)
+                       virtual_copy_number=Constant.LEAST_VIRTUAL_PRIMARY_COPY_NUMBER)
     log_str = 'Inter Server cost is %f' % algo.compute_inter_server_cost()
     print(log_str)
     logging.info(log_str)
@@ -128,35 +128,25 @@ def fig3():
     server_c = [2, 4, 8, 16, 32, 64, 96, 128, 256, 512]
     server_c = [2, 4, 8, 16, 32, 64, 96, 128]
     server_c = [2, 4, 8, 16]
-    # server_c = [32, 64, 96, 128]
-    # server_c = [2, 4, 6, 8]
-    # for s in server_c:
-    #     Constant.SERVER_NUMBER = s
-    #     main(dataset='twitters2',
-    #          part_flag=0.5,
-    #          log_path_end='v2_fig_3_server_%d_vir_copy_%d' % (
-    #              Constant.SERVER_NUMBER, Constant.LEAST_VIRTUAL_PRIMARY_COPY_NUMBER))
-
-    Constant.SERVER_NUMBER = 512
-    main(dataset='twitters2',
-         part_flag=0.5,
-         log_path_end='v2_fig_3_server_%d_vir_copy_%d' % (
-             Constant.SERVER_NUMBER, Constant.LEAST_VIRTUAL_PRIMARY_COPY_NUMBER))
+    server_c = [32, 64, 96, 128]
+    server_c = [2, 4, 6, 8]
+    for s in server_c:
+        Constant.SERVER_NUMBER = s
+        main(dataset='twitters2',
+             part_flag=0.5,
+             log_path_end='v2_fig_3_server_%d_vir_copy_%d' % (
+                 Constant.SERVER_NUMBER, Constant.LEAST_VIRTUAL_PRIMARY_COPY_NUMBER))
 
 
 def fig8():
     Constant.LEAST_VIRTUAL_PRIMARY_COPY_NUMBER = 0
     Constant.SERVER_NUMBER = 128
     res = [0.02, 0.05, 0.08, 0.10]
-    # for r in res:
-    #     main(dataset='facebook',
-    #          part_flag=r,
-    #          log_path_end='v2_fig_8_server_%d_vir_copy_%d' % (
-    #              Constant.SERVER_NUMBER, Constant.LEAST_VIRTUAL_PRIMARY_COPY_NUMBER))
-    main(dataset='facebook',
-         part_flag=0.5,
-         log_path_end='v2_fig_8_server_%d_vir_copy_%d' % (
-             Constant.SERVER_NUMBER, Constant.LEAST_VIRTUAL_PRIMARY_COPY_NUMBER))
+    for r in res:
+        main(dataset='facebook',
+             part_flag=r,
+             log_path_end='v2_fig_8_server_%d_vir_copy_%d' % (
+                 Constant.SERVER_NUMBER, Constant.LEAST_VIRTUAL_PRIMARY_COPY_NUMBER))
 
 
 def fig9():
@@ -168,25 +158,17 @@ def fig9():
              part_flag=r,
              log_path_end='v2_fig_9_server_%d_vir_copy_%d' % (
                  Constant.SERVER_NUMBER, Constant.LEAST_VIRTUAL_PRIMARY_COPY_NUMBER))
-    # main(dataset='facebook',
-    #      part_flag=0.5,
-    #      log_path_end='v2_fig_9_server_%d_vir_copy_%d' % (
-    #          Constant.SERVER_NUMBER, Constant.LEAST_VIRTUAL_PRIMARY_COPY_NUMBER))
 
 
 def fig11():
     dataset = ['twitters1', 'twitters2', 'amazons', 'p2pgnutella', 'facebook']
     Constant.LEAST_VIRTUAL_PRIMARY_COPY_NUMBER = 3
     Constant.SERVER_NUMBER = 128
-    # for r in dataset:
-    #     main(dataset=r,
-    #          part_flag=0.1,
-    #          log_path_end='v2_fig_11_server_%d_vir_copy_%d' % (
-    #              Constant.SERVER_NUMBER, Constant.LEAST_VIRTUAL_PRIMARY_COPY_NUMBER))
-    main(dataset='facebook',
-         part_flag=0.5,
-         log_path_end='v2_fig_11_server_%d_vir_copy_%d' % (
-             Constant.SERVER_NUMBER, Constant.LEAST_VIRTUAL_PRIMARY_COPY_NUMBER))
+    for r in dataset:
+        main(dataset=r,
+             part_flag=0.1,
+             log_path_end='v2_fig_11_server_%d_vir_copy_%d' % (
+                 Constant.SERVER_NUMBER, Constant.LEAST_VIRTUAL_PRIMARY_COPY_NUMBER))
 
 
 def fig15_16():
@@ -205,31 +187,21 @@ def fig15_16():
 
 def fig19():
     Constant.SERVER_NUMBER = 8
-    res = [0, 1, 2]
-    # res = [3, 4, 6, 7]
+    res = [0, 1, 2, 3, 4, 6, 7]
     for r in res:
         Constant.LEAST_VIRTUAL_PRIMARY_COPY_NUMBER = r
         main(dataset='amazons',
              part_flag=0.1,
              log_path_end='v2_fig_19_server_%d_vir_copy_%d' % (
                  Constant.SERVER_NUMBER, Constant.LEAST_VIRTUAL_PRIMARY_COPY_NUMBER))
-    # main(dataset='facebook',
-    #      part_flag=0.01,
-    #      log_path_end='v2_fig_19_server_%d_vir_copy_%d' % (
-    #          Constant.SERVER_NUMBER, Constant.LEAST_VIRTUAL_PRIMARY_COPY_NUMBER))
 
 
 if __name__ == '__main__':
-    from src.algo.inter_server_cost import compute_inter_sever_cost, compute_inter_sever_cost_graph
-
-    # dataset = ['twitters1', 'twitters2', 'amazons', 'p2pgnutella', 'facebook']
-    # fig19()
-    # log_path = '/home/dls/meng/CE7490-Group-Project-Python/log/2018-10-26_22-40-36_offline_twitters2_0.1_v2_fig_3_server_2_vir_copy_0'
-    # g, server = op.load_log(log_path)
-    # op.validate_result(dataset_g=g,
-    #                    server_g_list=server,
-    #                    load_differ=Constant.MAX_LOAD_DIFFERENCE_AMONG_SERVER,
-    #                    virtual_copy_numer=Constant.LEAST_VIRTUAL_PRIMARY_COPY_NUMBER)
-    # print(compute_inter_sever_cost_graph(server))
-    # log_str = 'Inter Server cost is %f' % algo.compute_inter_server_cost()
-    main()
+    # part flag is to decide the percentage of data to be used due to the limitation of our computing resources
+    # Each experiments will have a log folder at /CE7490-Group-Project-Python/log/
+    # log_path_end will be append to the log path
+    main(part_flag=0.01,
+         dataset='amazons',
+         log_path_end='test')
+    # You can run experiments corresponding to different figures of the original paper by:
+    fig3()
