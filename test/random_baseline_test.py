@@ -14,7 +14,7 @@ import random
 import time
 import os
 from src.dataset import read_file_to_dict
-from graphs.random import RANDOM_GRAPH_PATH
+from log.graphs.random import RANDOM_GRAPH_PATH
 
 
 def main():

@@ -274,3 +274,4 @@ oldCode/*
 !log/*
 log/tmp_log/*
 log/2018*/*
+log/offline/*

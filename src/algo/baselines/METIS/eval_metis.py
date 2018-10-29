@@ -1,8 +1,6 @@
 import numpy as np
-import networkx as nx
 import pickle
-from graphs.metis import METIS_GRAPH_SAVE_PATH
-from dataset import DATASET_PATH
+from log.graphs import METIS_GRAPH_SAVE_PATH
 import logging
 from log import LOG_PATH
 import os

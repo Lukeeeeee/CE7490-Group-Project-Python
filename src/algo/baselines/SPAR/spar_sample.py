@@ -1,5 +1,3 @@
-import numpy as np
-import networkx as nx
 import time
 import os
 import logging
@@ -8,7 +6,7 @@ from tqdm import tqdm
 from src.algo.baselines.SPAR.read_data import read_file_to_dict
 from src.algo.baselines.SPAR.Spar import Spar
 from dataset import DATASET_PATH
-from graphs.spar import SPAR_GRAPH_SAVE_PATH
+from log.graphs import SPAR_GRAPH_SAVE_PATH
 from log import LOG_PATH
 from src.constant import Constant
 
