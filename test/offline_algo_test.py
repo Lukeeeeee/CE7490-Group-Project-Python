@@ -109,6 +109,14 @@ def main(dataset='amazon', part_flag=0.01, log_path_end='', tmp_log_flag=False):
                        server_g_list=[x.graph for x in algo.server_list],
                        load_differ=Constant.MAX_LOAD_DIFFERENCE_AMONG_SERVER,
                        virtual_copy_number=Constant.LEAST_VIRTUAL_PRIMARY_COPY_NUMBER)
+
+    print("Remove redundant replica-------------")
+    logging.info("Remove redundant replica-------------")
+    algo.remove_unnecessary_replica()
+    log_str = 'Inter Server cost is %f' % algo.compute_inter_server_cost()
+    print(log_str)
+    logging.info(log_str)
+
     algo.save_all(path=log_path)
     g, server = op.load_log(log_path)
     op.validate_result(dataset_g=g,
@@ -202,6 +210,6 @@ if __name__ == '__main__':
     # log_path_end will be append to the log path
     main(part_flag=0.01,
          dataset='amazons',
-         log_path_end='test')
+         log_path_end='debug')
     # You can run experiments corresponding to different figures of the original paper by:
-    fig3()
+    # fig3()

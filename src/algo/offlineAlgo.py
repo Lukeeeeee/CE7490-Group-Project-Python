@@ -484,3 +484,7 @@ class OfflineAlgo(Algo):
         nx.write_gpickle(self.network_dataset.graph, path + '/dataset_graph.gpickle')
         for i in range(len(self.server_list)):
             nx.write_gpickle(self.server_list[i].graph, path + '/server_%d.gpickle' % i)
+
+    def remove_unnecessary_replica(self):
+        Operation.remove_redundant_node_on_graph(graph=self.network_dataset.graph,
+                                                 server_graph_list=[x.graph for x in self.server_list])
