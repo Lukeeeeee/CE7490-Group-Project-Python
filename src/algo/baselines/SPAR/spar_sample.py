@@ -37,7 +37,7 @@ def calculate_mean_length(dict):
     for key, data in dict.items():
         length += len(data)
         iter += 1
-    return length/iter
+    return length / iter
 
 
 def test_spar_sample(file, server_number, minimum_replicas, percent_stop, path):
@@ -51,11 +51,10 @@ def test_spar_sample(file, server_number, minimum_replicas, percent_stop, path):
     start_time = time.time()
     spar = Spar(server_number, minimum_replicas)
 
-    for i in range(int(len(node_list)*percent_stop)):
+    for i in range(int(len(node_list) * percent_stop)):
         n = node_list[i]
         spar.new_node(n, node_neighbor_dic[n])
         node_num += 1
-
 
     running_time = time.time() - start_time
     master_node_to_server = spar.node_server_dic
@@ -71,14 +70,14 @@ def test_spar_sample(file, server_number, minimum_replicas, percent_stop, path):
     averages = [ave_replicas_of_nodes, ave_master_in_servers, ave_slaves_in_servers]
     cost = spar_inter_server_cost(replicas_in_each_server)
     print(file)
-    print('servers'+str(server_number))
-    print('node'+str(node_num))
-    print('edge'+str(num_edges))
-    print('cost'+str(cost))
-    print('averages'+str(averages))
-    save_obj(graph, file+'_graph'+str(percent_stop), path)
-    save_obj(replicas_in_each_server, file + '_replicas'+str(percent_stop), path)
-    save_obj(masters_in_each_server, file + '_masters'+str(percent_stop), path)
+    print('servers' + str(server_number))
+    print('node' + str(node_num))
+    print('edge' + str(num_edges))
+    print('cost' + str(cost))
+    print('averages' + str(averages))
+    save_obj(graph, file + '_graph' + str(percent_stop), path)
+    save_obj(replicas_in_each_server, file + '_replicas' + str(percent_stop), path)
+    save_obj(masters_in_each_server, file + '_masters' + str(percent_stop), path)
 
     del spar
 
@@ -87,10 +86,10 @@ def test_spar_sample(file, server_number, minimum_replicas, percent_stop, path):
 
 def spar_Fig10_11(percent_stop, server_number):
     # Experiment 1 inter server traffic cost
-    #digraph_files = ['AmazonSample', 'Amazon', 'Twitter', 'TwitterSample1', 'TwitterSample2', 'Facebook', 'p2pGnutella']
+    # digraph_files = ['AmazonSample', 'Amazon', 'Twitter', 'TwitterSample1', 'TwitterSample2', 'Facebook', 'p2pGnutella']
     digraph_files = ['AmazonSample', 'TwitterSample1', 'TwitterSample2', 'Facebook', 'p2pGnutella']
-    #digraph_files = ['Amazon', 'Twitter']
-    #digraph_files = ['AmazonSample']
+    # digraph_files = ['Amazon', 'Twitter']
+    # digraph_files = ['AmazonSample']
 
     num_server = server_number
 
@@ -100,7 +99,7 @@ def spar_Fig10_11(percent_stop, server_number):
     logger.setLevel(logging.DEBUG)
 
     # create file handler
-    log_path = LOG_PATH + '/spar_Fig10_11_server_'+str(num_server)+'stop_'+str(percent_stop)+'.log'
+    log_path = LOG_PATH + '/spar_Fig10_11_server_' + str(num_server) + 'stop_' + str(percent_stop) + '.log'
     fh = logging.FileHandler(log_path)
     fh.setLevel(logging.INFO)
 
@@ -119,8 +118,8 @@ def spar_Fig10_11(percent_stop, server_number):
     minimum_replica = 2
     for file in digraph_files:
         print('Processing 2 replicas' + file)
-        cost, running_time, averages, num_nodes, num_edges,= test_spar_sample(file, num_server, minimum_replica,
-                                                                              percent_stop, save_file_dir)
+        cost, running_time, averages, num_nodes, num_edges, = test_spar_sample(file, num_server, minimum_replica,
+                                                                               percent_stop, save_file_dir)
         logger.info('file %s, server number = %s, nodes = %s, edges = %s cost = %s, time = %s', file,
                     str(num_server), str(num_nodes), str(num_edges), str(cost), str(running_time))
         logger.info('average: replica_per_node=%s, master_per_server=%s, replicas_per_server=%s, stop_at =%s',
@@ -149,25 +148,26 @@ def spar_Fig10_11(percent_stop, server_number):
     logger.info('replica 3 results: %s', str(replica_3_result))
     logger.info('End experiment Fig11')
 
+
 def spar_fig3(percent_stop):
     dataset = 'TwitterSample2'
     logging.basicConfig(level=logging.DEBUG,
                         filename=os.path.join(LOG_PATH, '%s_%s_%s_%s' % (
                             time.strftime("%Y-%m-%d_%H-%M-%S"), 'spar_fig3', dataset, str(percent_stop))),
                         filemode='w')
-    num_servers = [2,4,8,16,32,64,96,128,256]
+    num_servers = [2, 4, 8, 16, 32, 64, 96, 128, 256]
     if percent_stop == 0.01:
         num_servers = [2, 4, 6, 8]
     minimum_replica = 0
     logging.info('Experiment Fig.3, different server number, dataset = %s, stop_at = %s', dataset, percent_stop)
     for server_num in num_servers:
-        save_file_dir = SPAR_GRAPH_SAVE_PATH + '/Fig3_'+str(server_num)+'_'
+        save_file_dir = SPAR_GRAPH_SAVE_PATH + '/Fig3_' + str(server_num) + '_'
         cost, running_time, averages, node_num, num_edges = test_spar_sample(dataset, server_num, minimum_replica,
                                                                              percent_stop, path=save_file_dir)
         logging.info('file %s, server number = %s, nodes = %s, edges = %s cost = %s, time = %s', dataset,
-                    str(server_num), str(node_num), str(num_edges), str(cost), str(running_time))
+                     str(server_num), str(node_num), str(num_edges), str(cost), str(running_time))
         logging.info('average: replica_per_node=%s, master_per_server=%s, replicas_per_server=%s',
-                    str(averages[0]), str(averages[1]), str(averages[2]))
+                     str(averages[0]), str(averages[1]), str(averages[2]))
         logging.info('End experiment fig3')
 
 
@@ -206,7 +206,7 @@ def spar_fig8_9(server_number, fig8=True):
         name = 'fig9'
     logging.basicConfig(level=logging.DEBUG,
                         filename=os.path.join(LOG_PATH, '%s_%s_%s_%s' % (
-                            time.strftime("%Y-%m-%d_%H-%M-%S"), 'spar_'+name, dataset, str(server_number))),
+                            time.strftime("%Y-%m-%d_%H-%M-%S"), 'spar_' + name, dataset, str(server_number))),
                         filemode='w')
 
     per_nodes = [0.02, 0.05, 0.08, 0.1, 0.5]
@@ -219,7 +219,7 @@ def spar_fig8_9(server_number, fig8=True):
     node_list, node_neighbor_dic, col_data = read_file_to_dict(filename)
     num_nodes = []
     for per in per_nodes:
-        num_nodes.append(int(per*len(node_list)))
+        num_nodes.append(int(per * len(node_list)))
     node_num = 0
 
     spar = Spar(server_number, minimum_replicas)
@@ -228,7 +228,7 @@ def spar_fig8_9(server_number, fig8=True):
         spar.new_node(n, node_neighbor_dic[n])
         node_num += 1
         if node_num in num_nodes:
-            path = SPAR_GRAPH_SAVE_PATH + '/'+ name+'_' +str(node_num)+'_'
+            path = SPAR_GRAPH_SAVE_PATH + '/' + name + '_' + str(node_num) + '_'
             cost, averages, num, num_edges = fig89_check_points(spar, node_num, dataset, server_number,
                                                                 minimum_replicas, path)
             logging.info('file %s, server number = %s, nodes = %s, edges = %s cost = %s', dataset,
@@ -278,11 +278,11 @@ def spar_fig15_16(percent_stop=0.1):
         master_list.append(len(data))
     for key, data in replicas_in_each_server.items():
         replica_list.append(len(data))
-    replica_list = np.array(replica_list)/sum(replica_list)
-    master_list = np.array(master_list)/sum(master_list)
+    replica_list = np.array(replica_list) / sum(replica_list)
+    master_list = np.array(master_list) / sum(master_list)
     cost = spar_inter_server_cost(replicas_in_each_server)
-    logging.info('Fig15:'+str(replica_list))
-    logging.info('Fig16:'+str(master_list))
+    logging.info('Fig15:' + str(replica_list))
+    logging.info('Fig16:' + str(master_list))
 
     print(file)
     print('servers' + str(server_number))
@@ -296,8 +296,8 @@ def spar_fig15_16(percent_stop=0.1):
     logging.info('End experiment fig1516')
 
 
-def spar_fig19(percent_stop = 0.1):
-    Phi = [0,1,2,3,4,5,6,7]
+def spar_fig19(percent_stop=0.1):
+    Phi = [0, 1, 2, 3, 4, 5, 6, 7]
     file = 'AmazonSample'
     server_number = 8
 
@@ -309,17 +309,17 @@ def spar_fig19(percent_stop = 0.1):
     logging.info('Experiment Fig.19, dataset = %s, server_num = %s, stop_at = %s', file, str(server_number),
                  str(percent_stop))
     for minimum_replica in Phi:
-        save_file_dir = SPAR_GRAPH_SAVE_PATH + '/Fig19_'+str(minimum_replica)+'_'
+        save_file_dir = SPAR_GRAPH_SAVE_PATH + '/Fig19_' + str(minimum_replica) + '_'
         cost, running_time, averages, node_num, num_edges = test_spar_sample(file, server_number, minimum_replica,
                                                                              percent_stop, path=save_file_dir)
         logging.info('file %s, server number = %s, nodes = %s, edges = %s cost = %s, time = %s', file,
-                    str(server_number), str(node_num), str(num_edges), str(cost), str(running_time))
+                     str(server_number), str(node_num), str(num_edges), str(cost), str(running_time))
         logging.info('average: replica_per_node=%s, master_per_server=%s, replicas_per_server=%s',
-                    str(averages[0]), str(averages[1]), str(averages[2]))
+                     str(averages[0]), str(averages[1]), str(averages[2]))
     logging.info('End experiment fig19')
 
-def spar_experiments():
 
+def spar_experiments():
     print('spar_fig3(0.1)')
     spar_fig3(0.1)
     print('spar_fig3(0.01)')
@@ -338,12 +338,12 @@ def spar_experiments():
     spar_Fig10_11(0.5, 128)
     print('spar_fig11(0.1,64)')
     spar_Fig10_11(0.5, 64)
-    #spar_fig11(0.01,8)')
-    #spar_Fig10_11(0.01, 8)
+    # spar_fig11(0.01,8)')
+    # spar_Fig10_11(0.01, 8)
 
     print('spar1516')
     spar_fig15_16(percent_stop=0.5)
-    #spar_fig15_16(percent_stop=0.01)
+    # spar_fig15_16(percent_stop=0.01)
 
     print('spar19')
     spar_fig19(percent_stop=0.1)
@@ -351,6 +351,4 @@ def spar_experiments():
 
 
 if __name__ == '__main__':
-   spar_experiments()
-
-
+    spar_experiments()
