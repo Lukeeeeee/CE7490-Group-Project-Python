@@ -353,12 +353,14 @@ class Operation(Basic):
         vir_copy_count = []
         non_pr_copy_count = []
         pr_copy_count = []
+        node_non_pr_count = [0 for _ in range(100000)]
         for server in server_graph_list:
             vir_c = 0
             non_pr_c = 0
             pr_count = 0
             for node in list(server.nodes):
                 if server.nodes[node]['node_type'] == Constant.NON_PRIMARY_COPY:
+                    node_non_pr_count[node] += 1
                     non_pr_c += 1
                 if server.nodes[node]['node_type'] == Constant.VIRTUAL_PRIMARY_COPY:
                     vir_c += 1
@@ -368,8 +370,18 @@ class Operation(Basic):
             non_pr_copy_count.append(non_pr_c)
             pr_copy_count.append(pr_count)
         # print("Virtual primary distribution is ", vir_copy_count)
-        print("Non primary copy distribution is ", non_pr_copy_count)
-        print("Primary copy distribution is ", pr_copy_count)
+        # print("Non primary copy distribution is ", non_pr_copy_count)
+        # print("Primary copy distribution is ", pr_copy_count)
+        min_val = 0
+        max_val = max(node_non_pr_count)
+        res_list = []
+        import numpy as np
+        for i in range(1, max_val + 1):
+            res = np.sum(np.array(node_non_pr_count) == i)
+            res_list.append(res)
+        res_list = np.array(res_list)
+        res_list = res_list / np.sum(res_list) * 100
+        print("non pr copy distribute", list(res_list))
         return compute_inter_sever_cost_graph(server_graph_list)
 
 
