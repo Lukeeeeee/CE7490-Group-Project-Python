@@ -275,3 +275,4 @@ oldCode/*
 log/tmp_log/*
 log/2018*/*
 log/offline/*
+!log/offline/README.md

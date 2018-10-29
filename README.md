@@ -28,3 +28,8 @@ For the offline algorithm, running it by:
 ```
 python test/offline_algo_test.py
 ```
+
+### Log
+Because the log file is too large, so we upload it to google drive, please follow the README at log/offline to download 
+the original log file.
+The download link is: https://drive.google.com/file/d/11V7UFc7Ja58UwwqqEAlz0dLApYcnvq1E/view?usp=sharing
